@@ -35,6 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.foundation.text.KeyboardOptions
+import com.cocode.tmsmeasurement.BuildConfig
 import com.cocode.tmsmeasurement.ui.theme.TMSMeasurementTheme
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -69,102 +70,97 @@ fun MeasurementApp() {
     var niInput by rememberSaveable { mutableStateOf("") }
     var hcInput by rememberSaveable { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf<String?>(null) }
+    var screen by rememberSaveable { mutableStateOf(AppScreen.Measurement) }
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = { TopAppBar(title = { Text("TMS F3 Measurement") }) }
-    ) { innerPadding ->
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .padding(horizontal = 16.dp),
-            contentPadding = PaddingValues(vertical = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            item {
-                InputSection(
-                    clientName = clientName,
-                    onClientNameChange = { clientName = it },
-                    tttInput = tttInput,
-                    onTttChange = { tttInput = it },
-                    niInput = niInput,
-                    onNiChange = { niInput = it },
-                    hcInput = hcInput,
-                    onHcChange = { hcInput = it },
-                    errorMessage = errorMessage,
-                    onCalculate = {
-                        val trimmedName = clientName.trim()
-                        val ttt = tttInput.toDoubleOrNull()
-                        val ni = niInput.toDoubleOrNull()
-                        val hc = hcInput.toDoubleOrNull()
-
-                        val validationError = when {
-                            trimmedName.isEmpty() -> "Client name is required."
-                            ttt == null || ttt <= 0 -> "Tragus to tragus must be a positive number."
-                            ni == null || ni <= 0 -> "Nasion to inion must be a positive number."
-                            hc == null || hc <= 0 -> "Head circumference must be a positive number."
-                            else -> null
-                        }
-
-                        if (validationError != null) {
-                            errorMessage = validationError
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        if (screen == AppScreen.Measurement) {
+                            "TMS F3 Measurement"
                         } else {
-                            val timestamp = System.currentTimeMillis()
-                            val tttValue = requireNotNull(ttt)
-                            val niValue = requireNotNull(ni)
-                            val hcValue = requireNotNull(hc)
-                            val avg = (tttValue + niValue) / 2.0
-                            val rawY = 0.2637 * avg
-                            val computed = MeasurementRecord(
-                                id = timestamp.toString(),
-                                clientName = trimmedName,
-                                tttCm = roundToTwo(tttValue),
-                                niCm = roundToTwo(niValue),
-                                hcCm = roundToTwo(hcValue),
-                                xCm = roundToTwo(0.1154 * hcValue),
-                                yCm = roundToTwo(rawY),
-                                yAdjCm = roundToTwo(rawY + 0.35),
-                                timestampMs = timestamp
-                            )
-                            val updated = listOf(computed) + records
-                            records = updated
-                            storage.saveAll(updated)
-                            lastResult = computed
-                            errorMessage = null
+                            "About"
+                        }
+                    )
+                },
+                navigationIcon = {
+                    if (screen == AppScreen.About) {
+                        TextButton(onClick = { screen = AppScreen.Measurement }) {
+                            Text("Back")
                         }
                     }
-                )
-            }
-
-            if (lastResult != null) {
-                item {
-                    ResultSection(record = lastResult!!)
+                },
+                actions = {
+                    if (screen == AppScreen.Measurement) {
+                        TextButton(onClick = { screen = AppScreen.About }) {
+                            Text("About")
+                        }
+                    }
                 }
-            }
+            )
+        }
+    ) { innerPadding ->
+        if (screen == AppScreen.Measurement) {
+            MeasurementScreen(
+                innerPadding = innerPadding,
+                clientName = clientName,
+                onClientNameChange = { clientName = it },
+                tttInput = tttInput,
+                onTttChange = { tttInput = it },
+                niInput = niInput,
+                onNiChange = { niInput = it },
+                hcInput = hcInput,
+                onHcChange = { hcInput = it },
+                errorMessage = errorMessage,
+                lastResult = lastResult,
+                records = records,
+                onRecordClick = { selectedRecord = it },
+                onCalculate = {
+                    val trimmedName = clientName.trim()
+                    val ttt = tttInput.toDoubleOrNull()
+                    val ni = niInput.toDoubleOrNull()
+                    val hc = hcInput.toDoubleOrNull()
 
-            item {
-                Text(
-                    text = "History",
-                    style = MaterialTheme.typography.titleMedium
-                )
-            }
+                    val validationError = when {
+                        trimmedName.isEmpty() -> "Client name is required."
+                        ttt == null || ttt <= 0 -> "Tragus to tragus must be a positive number."
+                        ni == null || ni <= 0 -> "Nasion to inion must be a positive number."
+                        hc == null || hc <= 0 -> "Head circumference must be a positive number."
+                        else -> null
+                    }
 
-            if (records.isEmpty()) {
-                item {
-                    Text(
-                        text = "No saved measurements yet.",
-                        style = MaterialTheme.typography.bodyMedium
-                    )
+                    if (validationError != null) {
+                        errorMessage = validationError
+                    } else {
+                        val timestamp = System.currentTimeMillis()
+                        val tttValue = requireNotNull(ttt)
+                        val niValue = requireNotNull(ni)
+                        val hcValue = requireNotNull(hc)
+                        val avg = (tttValue + niValue) / 2.0
+                        val rawY = 0.2637 * avg
+                        val computed = MeasurementRecord(
+                            id = timestamp.toString(),
+                            clientName = trimmedName,
+                            tttCm = roundToTwo(tttValue),
+                            niCm = roundToTwo(niValue),
+                            hcCm = roundToTwo(hcValue),
+                            xCm = roundToTwo(0.1154 * hcValue),
+                            yCm = roundToTwo(rawY),
+                            yAdjCm = roundToTwo(rawY + 0.35),
+                            timestampMs = timestamp
+                        )
+                        val updated = listOf(computed) + records
+                        records = updated
+                        storage.saveAll(updated)
+                        lastResult = computed
+                        errorMessage = null
+                    }
                 }
-            } else {
-                items(records, key = { it.id }) { record ->
-                    HistoryRow(
-                        record = record,
-                        onClick = { selectedRecord = record }
-                    )
-                }
-            }
+            )
+        } else {
+            AboutScreen(innerPadding = innerPadding)
         }
     }
 
@@ -202,6 +198,128 @@ fun MeasurementApp() {
                 }
             }
         )
+    }
+}
+
+private enum class AppScreen {
+    Measurement,
+    About
+}
+
+@Composable
+private fun MeasurementScreen(
+    innerPadding: PaddingValues,
+    clientName: String,
+    onClientNameChange: (String) -> Unit,
+    tttInput: String,
+    onTttChange: (String) -> Unit,
+    niInput: String,
+    onNiChange: (String) -> Unit,
+    hcInput: String,
+    onHcChange: (String) -> Unit,
+    errorMessage: String?,
+    lastResult: MeasurementRecord?,
+    records: List<MeasurementRecord>,
+    onRecordClick: (MeasurementRecord) -> Unit,
+    onCalculate: () -> Unit
+) {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(innerPadding)
+            .padding(horizontal = 16.dp),
+        contentPadding = PaddingValues(vertical = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        item {
+            InputSection(
+                clientName = clientName,
+                onClientNameChange = onClientNameChange,
+                tttInput = tttInput,
+                onTttChange = onTttChange,
+                niInput = niInput,
+                onNiChange = onNiChange,
+                hcInput = hcInput,
+                onHcChange = onHcChange,
+                errorMessage = errorMessage,
+                onCalculate = onCalculate
+            )
+        }
+
+        if (lastResult != null) {
+            item {
+                ResultSection(record = lastResult)
+            }
+        }
+
+        item {
+            Text(
+                text = "History",
+                style = MaterialTheme.typography.titleMedium
+            )
+        }
+
+        if (records.isEmpty()) {
+            item {
+                Text(
+                    text = "No saved measurements yet.",
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
+        } else {
+            items(records, key = { it.id }) { record ->
+                HistoryRow(
+                    record = record,
+                    onClick = { onRecordClick(record) }
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun AboutScreen(innerPadding: PaddingValues) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(innerPadding)
+            .padding(horizontal = 16.dp, vertical = 24.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        Card {
+            Column(
+                modifier = Modifier.padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Text(
+                    text = "About",
+                    style = MaterialTheme.typography.titleMedium
+                )
+                Text(
+                    text = "TMS Measurement App implements the Beam F3 heuristic to " +
+                        "help clinicians calculate and store F3 targeting measurements.",
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Text(
+                    text = "Version ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})",
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
+        }
+        Card {
+            Column(
+                modifier = Modifier.padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                Text(
+                    text = "Created by",
+                    style = MaterialTheme.typography.titleMedium
+                )
+                Text("Babak Bandpey")
+                Text("bb@cocode.dk")
+                Text("https://cocode.dk")
+            }
+        }
     }
 }
 
