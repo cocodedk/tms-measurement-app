@@ -43,6 +43,6 @@ The Beam F3 method is based on research showing that geometric parameters accura
 
 ## About
 
-Made by Babak Bandpey  
-bb@cocode.dk  
-https://cocode.dk
+**Author:** Babak Bandpey  
+**Email:** bb@cocode.dk  
+**Website:** https://cocode.dk
