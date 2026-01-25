@@ -34,7 +34,7 @@ jobs:
           cache: "gradle"
 
       - name: Prepare signing keystore
-        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' && secrets.ANDROID_KEYSTORE_BASE64 != null }}
         run: |
           mkdir -p keystore
           echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 --decode > keystore/tmsmeasurement-release.jks
