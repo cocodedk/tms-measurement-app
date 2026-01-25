@@ -17,8 +17,8 @@ permissions:
 jobs:
   release:
     if: >
-      (github.event_name != 'push') ||
-      (github.event.head_commit.message && !startsWith(github.event.head_commit.message, 'Bump version to '))
+      github.event_name != 'push' ||
+      !startsWith(github.event.head_commit.message || '', 'Bump version to ')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
