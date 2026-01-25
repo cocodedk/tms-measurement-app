@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TMS Measurement App</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Sora:wght@400;600&display=swap");
+      :root {
+        color-scheme: light;
+        --ink: #102a2a;
+        --muted: rgba(16, 42, 42, 0.7);
+        --accent: #e66a2c;
+        --teal: #2a6f6b;
+        --sand: #f3e6d6;
+        --mint: #d9efe7;
+        --card: #fffaf3;
+        --shadow: rgba(16, 42, 42, 0.16);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Sora", "Helvetica", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 20% 10%, #ffffff 0%, #f5efe4 40%, #ead8c3 100%),
+          linear-gradient(120deg, #eef8f4 0%, var(--mint) 45%, #c9e0d6 100%);
+      }
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 72px 24px 88px;
+      }
+      .hero {
+        display: grid;
+        gap: 32px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        align-items: center;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: rgba(16, 42, 42, 0.08);
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .badge span {
+        background: var(--accent);
+        color: #fff;
+        padding: 4px 10px;
+        border-radius: 999px;
+      }
+      h1 {
+        font-family: "Playfair Display", "Georgia", serif;
+        font-size: clamp(2.4rem, 3vw, 3.6rem);
+        margin: 18px 0 10px;
+      }
+      h2 {
+        font-family: "Playfair Display", "Georgia", serif;
+      }
+      p {
+        margin: 0 0 12px;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 18px;
+        border-radius: 999px;
+        background: var(--ink);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .card {
+        background: var(--card);
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: 0 16px 36px var(--shadow);
+      }
+      .feature-grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        margin-top: 28px;
+      }
+      .chip {
+        background: #fff;
+        border-radius: 18px;
+        padding: 12px 16px;
+        border: 1px solid rgba(16, 42, 42, 0.12);
+        font-size: 0.95rem;
+      }
+      .formula {
+        font-family: "Sora", monospace;
+        background: #0f1f20;
+        color: #f2f0e9;
+        padding: 14px 18px;
+        border-radius: 16px;
+        font-size: 0.9rem;
+      }
+      .illustration {
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #fdf9f1 0%, #f3e4d1 100%);
+        border-radius: 28px;
+        padding: 28px;
+        position: relative;
+        overflow: hidden;
+      }
+      .illustration::before,
+      .illustration::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.3;
+      }
+      .illustration::before {
+        width: 180px;
+        height: 180px;
+        background: var(--mint);
+        top: -40px;
+        right: -40px;
+        animation: drift 8s ease-in-out infinite;
+      }
+      .illustration::after {
+        width: 140px;
+        height: 140px;
+        background: #ffe1cc;
+        bottom: -30px;
+        left: -30px;
+        animation: drift 10s ease-in-out infinite reverse;
+      }
+      svg.hero-icon {
+        width: min(260px, 70vw);
+        animation: float 4s ease-in-out infinite;
+      }
+      .section-title {
+        font-size: 1.8rem;
+        margin-top: 0;
+      }
+      .step-grid {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        margin-top: 20px;
+      }
+      .step-card {
+        background: #fff;
+        border-radius: 22px;
+        padding: 16px;
+        box-shadow: 0 12px 24px rgba(16, 42, 42, 0.12);
+        display: grid;
+        gap: 12px;
+      }
+      .step-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+      }
+      .step-label span {
+        background: var(--teal);
+        color: #fff;
+        width: 32px;
+        height: 32px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+      }
+      .step-card img {
+        width: 100%;
+        border-radius: 16px;
+        border: 1px solid rgba(16, 42, 42, 0.12);
+      }
+      .instruction-list {
+        display: grid;
+        gap: 12px;
+        margin: 16px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      .instruction-list li {
+        background: rgba(16, 42, 42, 0.06);
+        padding: 12px 14px;
+        border-radius: 14px;
+        color: var(--muted);
+      }
+      .map-card {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        align-items: center;
+      }
+      .map-card img {
+        width: 100%;
+        border-radius: 20px;
+        border: 1px solid rgba(16, 42, 42, 0.12);
+      }
+      .footer {
+        margin-top: 44px;
+        font-size: 0.9rem;
+        color: rgba(16, 42, 42, 0.6);
+      }
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+      @keyframes drift {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(12px); }
+        100% { transform: translateY(0px); }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="hero">
+        <div>
+          <div class="badge"><span>Android</span> TMS Measurement</div>
+          <h1>Fast Beam F3 targeting, ready at the chairside.</h1>
+          <p>
+            TMS Measurement App calculates F3 placement from three head measurements,
+            stores client records locally, and keeps your clinical workflow consistent.
+          </p>
+          <p>
+            Enter tragus-to-tragus, nasion-to-inion, and head circumference to get
+            X and adjusted Y distances with a clear explanation.
+          </p>
+          <a class="cta" href="https://github.com/cocodedk/tms-measurement-app">View on GitHub</a>
+          <div class="feature-grid">
+            <div class="chip">Offline-first history</div>
+            <div class="chip">Beam F3 formula built-in</div>
+            <div class="chip">Clinician-friendly UI</div>
+            <div class="chip">Instant validation</div>
+          </div>
+        </div>
+        <div class="illustration">
+          <svg class="hero-icon" viewBox="0 0 160 160" role="img" aria-label="Head targeting icon">
+            <defs>
+              <linearGradient id="face" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f7efe4" />
+                <stop offset="100%" stop-color="#e9d0b9" />
+              </linearGradient>
+            </defs>
+            <circle cx="80" cy="76" r="52" fill="url(#face)" stroke="#2a6f6b" stroke-width="6" />
+            <circle cx="64" cy="60" r="8" fill="#e66a2c" />
+            <circle cx="64" cy="60" r="16" fill="none" stroke="#2a6f6b" stroke-width="4" />
+            <path d="M80 28 L80 124" stroke="#2a6f6b" stroke-width="4" stroke-linecap="round" />
+            <path d="M32 76 L128 76" stroke="#2a6f6b" stroke-width="4" stroke-linecap="round" />
+            <path d="M108 118c-10 10-22 14-40 14" stroke="#e66a2c" stroke-width="6" stroke-linecap="round" fill="none" />
+          </svg>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top: 32px;">
+        <h2 class="section-title">How to measure</h2>
+        <p>
+          Take the three measurements first. Use a flexible tape and keep the subject
+          relaxed and seated. The images below come from the Beam F3 measurement guide.
+        </p>
+        <div class="step-grid">
+          <article class="step-card">
+            <div class="step-label"><span>1</span> Tragus to tragus (TTT)</div>
+            <img src="images/beamf3-step-1.jpg" alt="Tragus to tragus measurement" />
+            <p>Measure straight across the head from left tragus to right tragus.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-label"><span>2</span> Nasion to inion (NI)</div>
+            <img src="images/beamf3-step-2.jpg" alt="Nasion to inion measurement" />
+            <p>Measure from the nasion over the scalp to the inion.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-label"><span>3</span> Head circumference (HC)</div>
+            <img src="images/beamf3-step-3.jpg" alt="Head circumference measurement" />
+            <p>Measure the head circumference through the FPz-Oz midline plane.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top: 24px;">
+        <h2 class="section-title">Locate F3</h2>
+        <p>
+          The app calculates X and Y from your measurements and applies the Beam F3
+          adjustment. Use the steps below to mark the site.
+        </p>
+        <div class="formula">
+          X = 0.1154 × HC &nbsp;&nbsp;|&nbsp;&nbsp; Y = 0.2637 × ((TTT + NI) / 2) &nbsp;&nbsp;|&nbsp;&nbsp; Yadj = Y + 0.35 cm
+        </div>
+        <ul class="instruction-list">
+          <li>Measure X along the circumference from the midline toward the left side.</li>
+          <li>From the vertex (Cz), draw a line through the left pre-auricular point.</li>
+          <li>Measure Yadj along that line to locate the F3 point.</li>
+        </ul>
+      </section>
+
+      <section class="card" style="margin-top: 24px;">
+        <h2 class="section-title">Reference map</h2>
+        <div class="map-card">
+          <div>
+            <p>
+              The EEG reference map helps confirm the F3 region relative to the 10-20
+              system. Use it alongside the calculated distances for placement.
+            </p>
+            <p>
+              The app stores every measurement locally, so clinicians can review
+              previous sessions without network access.
+            </p>
+          </div>
+          <img src="images/beamf3-eeg-map.jpg" alt="EEG 10-20 reference map" />
+        </div>
+      </section>
+
+      <div class="footer">
+        Images sourced from clinicalresearcher.org/F3. Built by cocodedk for fast,
+        reliable TMS documentation.
+      </div>
+    </main>
+  </body>
+</html>
