@@ -207,6 +207,76 @@
         border-radius: 20px;
         border: 1px solid rgba(16, 42, 42, 0.12);
       }
+      .calc-grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        margin-top: 18px;
+      }
+      .calc-field {
+        display: grid;
+        gap: 8px;
+        font-weight: 600;
+      }
+      .calc-input {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #fff;
+        border-radius: 14px;
+        padding: 10px 12px;
+        border: 1px solid rgba(16, 42, 42, 0.12);
+      }
+      .calc-input input {
+        border: none;
+        outline: none;
+        width: 100%;
+        font-size: 1rem;
+        font-family: "Sora", "Helvetica", sans-serif;
+        color: var(--ink);
+        background: transparent;
+      }
+      .calc-input span {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .calc-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+      .calc-button {
+        border: none;
+        cursor: pointer;
+      }
+      .calc-reset {
+        background: #fff;
+        color: var(--ink);
+        border: 1px solid rgba(16, 42, 42, 0.18);
+      }
+      .calc-results {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        margin-top: 18px;
+      }
+      .calc-result {
+        background: rgba(16, 42, 42, 0.06);
+        border-radius: 16px;
+        padding: 12px 14px;
+        display: grid;
+        gap: 6px;
+        color: var(--muted);
+      }
+      .calc-result strong {
+        color: var(--ink);
+        font-size: 1.1rem;
+      }
+      .calc-note {
+        margin-top: 12px;
+        font-size: 0.9rem;
+      }
       .footer {
         margin-top: 44px;
         font-size: 0.9rem;
@@ -265,26 +335,27 @@
       </section>
 
       <section class="card" style="margin-top: 32px;">
-        <h2 class="section-title">How to measure</h2>
+        <h2 class="section-title">Mark the Beam F3 distances</h2>
         <p>
-          Take the three measurements first. Use a flexible tape and keep the subject
-          relaxed and seated. The images below come from the Beam F3 measurement guide.
+          Enter the three head measurements first. Then use the calculated distances
+          to mark the site. The images below show the X, Y, and Z distances as labeled
+          in the Beam F3 guide.
         </p>
         <div class="step-grid">
           <article class="step-card">
-            <div class="step-label"><span>1</span> Tragus to tragus (TTT)</div>
-            <img src="images/beamf3-step-1.jpg" alt="Tragus to tragus measurement" />
-            <p>Measure straight across the head from left tragus to right tragus.</p>
+            <div class="step-label"><span>1</span> X distance from midline</div>
+            <img src="images/beamf3-step-1.jpg" alt="X distance marked from the midline across the forehead" />
+            <p>Mark the X cm distance from the midline across the forehead.</p>
           </article>
           <article class="step-card">
-            <div class="step-label"><span>2</span> Nasion to inion (NI)</div>
-            <img src="images/beamf3-step-2.jpg" alt="Nasion to inion measurement" />
-            <p>Measure from the nasion over the scalp to the inion.</p>
+            <div class="step-label"><span>2</span> Y distance along the midline</div>
+            <img src="images/beamf3-step-2.jpg" alt="Y distance marked along the midline on top of the head" />
+            <p>Measure the Y cm distance along the midline on the top of the head.</p>
           </article>
           <article class="step-card">
-            <div class="step-label"><span>3</span> Head circumference (HC)</div>
-            <img src="images/beamf3-step-3.jpg" alt="Head circumference measurement" />
-            <p>Measure the head circumference through the FPz-Oz midline plane.</p>
+            <div class="step-label"><span>3</span> Z distance toward the ear</div>
+            <img src="images/beamf3-step-3.jpg" alt="Z distance marked from the vertex toward the ear" />
+            <p>Measure the Z cm distance from the vertex toward the ear.</p>
           </article>
         </div>
       </section>
@@ -322,10 +393,109 @@
         </div>
       </section>
 
+      <section class="card" style="margin-top: 24px;">
+        <h2 class="section-title">Calculate F3</h2>
+        <p>
+          Enter the three head measurements in centimeters to calculate the Beam F3
+          distances used for site marking.
+        </p>
+        <form class="calc-grid" id="beamf3-form">
+          <label class="calc-field">
+            <span>Tragus to tragus (TTT)</span>
+            <div class="calc-input">
+              <input type="number" name="ttt" min="0" step="0.1" inputmode="decimal" placeholder="0.0" required />
+              <span>cm</span>
+            </div>
+          </label>
+          <label class="calc-field">
+            <span>Nasion to inion (NI)</span>
+            <div class="calc-input">
+              <input type="number" name="ni" min="0" step="0.1" inputmode="decimal" placeholder="0.0" required />
+              <span>cm</span>
+            </div>
+          </label>
+          <label class="calc-field">
+            <span>Head circumference (HC)</span>
+            <div class="calc-input">
+              <input type="number" name="hc" min="0" step="0.1" inputmode="decimal" placeholder="0.0" required />
+              <span>cm</span>
+            </div>
+          </label>
+          <div class="calc-actions">
+            <button class="cta calc-button" type="submit">Calculate</button>
+            <button class="cta calc-button calc-reset" type="reset">Reset</button>
+          </div>
+        </form>
+        <div class="calc-results" aria-live="polite">
+          <div class="calc-result">
+            <span>X (circumference)</span>
+            <strong id="calc-x">—</strong>
+          </div>
+          <div class="calc-result">
+            <span>Y (radial distance)</span>
+            <strong id="calc-y">—</strong>
+          </div>
+          <div class="calc-result">
+            <span>Yadj (adjusted)</span>
+            <strong id="calc-yadj">—</strong>
+          </div>
+        </div>
+        <p class="calc-note">
+          X = 0.1154 × HC, Y = 0.2637 × ((TTT + NI) / 2), Yadj = Y + 0.35 cm.
+        </p>
+      </section>
+
       <div class="footer">
         Images sourced from clinicalresearcher.org/F3. Built by cocodedk for fast,
         reliable TMS documentation.
       </div>
     </main>
+    <script>
+      const beamForm = document.getElementById("beamf3-form");
+      const outputX = document.getElementById("calc-x");
+      const outputY = document.getElementById("calc-y");
+      const outputYAdj = document.getElementById("calc-yadj");
+
+      const formatCm = (value) => `${value.toFixed(2)} cm`;
+      const clearOutputs = () => {
+        outputX.textContent = "—";
+        outputY.textContent = "—";
+        outputYAdj.textContent = "—";
+      };
+      const parseValue = (name) => {
+        const raw = beamForm.elements[name].value;
+        const value = Number.parseFloat(raw);
+        if (!Number.isFinite(value)) {
+          return null;
+        }
+        return value;
+      };
+      const updateOutputs = () => {
+        const ttt = parseValue("ttt");
+        const ni = parseValue("ni");
+        const hc = parseValue("hc");
+        if ([ttt, ni, hc].some((value) => value === null || value <= 0)) {
+          clearOutputs();
+          return;
+        }
+        const x = 0.1154 * hc;
+        const y = 0.2637 * ((ttt + ni) / 2);
+        const yAdj = y + 0.35;
+        outputX.textContent = formatCm(x);
+        outputY.textContent = formatCm(y);
+        outputYAdj.textContent = formatCm(yAdj);
+      };
+
+      beamForm.addEventListener("input", updateOutputs);
+      beamForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (beamForm.reportValidity()) {
+          updateOutputs();
+        }
+      });
+      beamForm.addEventListener("reset", () => {
+        setTimeout(clearOutputs, 0);
+      });
+    </script>
   </body>
 </html>

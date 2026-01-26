@@ -40,7 +40,6 @@ import com.cocode.tmsmeasurement.ui.theme.TMSMeasurementTheme
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import kotlin.math.round
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -138,17 +137,16 @@ fun MeasurementApp() {
                         val tttValue = requireNotNull(ttt)
                         val niValue = requireNotNull(ni)
                         val hcValue = requireNotNull(hc)
-                        val avg = (tttValue + niValue) / 2.0
-                        val rawY = 0.2637 * avg
+                        val result = BeamF3Calculator.calculate(tttValue, niValue, hcValue)
                         val computed = MeasurementRecord(
                             id = timestamp.toString(),
                             clientName = trimmedName,
-                            tttCm = roundToTwo(tttValue),
-                            niCm = roundToTwo(niValue),
-                            hcCm = roundToTwo(hcValue),
-                            xCm = roundToTwo(0.1154 * hcValue),
-                            yCm = roundToTwo(rawY),
-                            yAdjCm = roundToTwo(rawY + 0.35),
+                            tttCm = BeamF3Calculator.roundToTwo(tttValue),
+                            niCm = BeamF3Calculator.roundToTwo(niValue),
+                            hcCm = BeamF3Calculator.roundToTwo(hcValue),
+                            xCm = result.xCm,
+                            yCm = result.yCm,
+                            yAdjCm = result.yAdjCm,
                             timestampMs = timestamp
                         )
                         val updated = listOf(computed) + records
@@ -452,8 +450,6 @@ private fun formatTimestamp(timestampMs: Long): String {
     val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.US)
     return formatter.format(Date(timestampMs))
 }
-
-private fun roundToTwo(value: Double): Double = round(value * 100) / 100
 
 @Preview(showBackground = true)
 @Composable
