@@ -1,13 +1,14 @@
 package com.cocode.tmsmeasurement
 
+import android.app.Activity
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -19,6 +20,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -29,19 +31,23 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.unit.dp
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import com.cocode.tmsmeasurement.BuildConfig
 import com.cocode.tmsmeasurement.ui.theme.TMSMeasurementTheme
-import java.text.SimpleDateFormat
+import java.text.DateFormat
 import java.util.Date
-import java.util.Locale
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -57,6 +63,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MeasurementApp() {
     val context = LocalContext.current
+    val activity = context as? Activity
     val storage = remember { MeasurementStorage(context) }
     var records by remember {
         mutableStateOf(storage.load().sortedByDescending { it.timestampMs })
@@ -70,6 +77,13 @@ fun MeasurementApp() {
     var hcInput by rememberSaveable { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf<String?>(null) }
     var screen by rememberSaveable { mutableStateOf(AppScreen.Measurement) }
+    val errorClientRequired = stringResource(R.string.error_client_required)
+    val errorTttPositive = stringResource(R.string.error_ttt_positive)
+    val errorNiPositive = stringResource(R.string.error_ni_positive)
+    val errorHcPositive = stringResource(R.string.error_hc_positive)
+    val currentLanguageTag = normalizeLanguageTag(
+        AppCompatDelegate.getApplicationLocales().toLanguageTags()
+    )
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -77,88 +91,109 @@ fun MeasurementApp() {
             TopAppBar(
                 title = {
                     Text(
-                        if (screen == AppScreen.Measurement) {
-                            "TMS F3 Measurement"
-                        } else {
-                            "About"
+                        when (screen) {
+                            AppScreen.Measurement -> stringResource(R.string.screen_title_measurement)
+                            AppScreen.About -> stringResource(R.string.screen_title_about)
+                            AppScreen.Settings -> stringResource(R.string.screen_title_settings)
                         }
                     )
                 },
                 navigationIcon = {
-                    if (screen == AppScreen.About) {
+                    if (screen != AppScreen.Measurement) {
                         TextButton(onClick = { screen = AppScreen.Measurement }) {
-                            Text("Back")
+                            Text(stringResource(R.string.action_back))
                         }
                     }
                 },
                 actions = {
                     if (screen == AppScreen.Measurement) {
+                        TextButton(onClick = { screen = AppScreen.Settings }) {
+                            Text(stringResource(R.string.action_settings))
+                        }
                         TextButton(onClick = { screen = AppScreen.About }) {
-                            Text("About")
+                            Text(stringResource(R.string.action_about))
                         }
                     }
                 }
             )
         }
     ) { innerPadding ->
-        if (screen == AppScreen.Measurement) {
-            MeasurementScreen(
-                innerPadding = innerPadding,
-                clientName = clientName,
-                onClientNameChange = { clientName = it },
-                tttInput = tttInput,
-                onTttChange = { tttInput = it },
-                niInput = niInput,
-                onNiChange = { niInput = it },
-                hcInput = hcInput,
-                onHcChange = { hcInput = it },
-                errorMessage = errorMessage,
-                lastResult = lastResult,
-                records = records,
-                onRecordClick = { selectedRecord = it },
-                onCalculate = {
-                    val trimmedName = clientName.trim()
-                    val ttt = tttInput.toDoubleOrNull()
-                    val ni = niInput.toDoubleOrNull()
-                    val hc = hcInput.toDoubleOrNull()
+        when (screen) {
+            AppScreen.Measurement -> {
+                MeasurementScreen(
+                    innerPadding = innerPadding,
+                    clientName = clientName,
+                    onClientNameChange = { clientName = it },
+                    tttInput = tttInput,
+                    onTttChange = { tttInput = it },
+                    niInput = niInput,
+                    onNiChange = { niInput = it },
+                    hcInput = hcInput,
+                    onHcChange = { hcInput = it },
+                    errorMessage = errorMessage,
+                    lastResult = lastResult,
+                    records = records,
+                    onRecordClick = { selectedRecord = it },
+                    onCalculate = {
+                        val trimmedName = clientName.trim()
+                        val ttt = tttInput.toDoubleOrNull()
+                        val ni = niInput.toDoubleOrNull()
+                        val hc = hcInput.toDoubleOrNull()
 
-                    val validationError = when {
-                        trimmedName.isEmpty() -> "Client name is required."
-                        ttt == null || ttt <= 0 -> "Tragus to tragus must be a positive number."
-                        ni == null || ni <= 0 -> "Nasion to inion must be a positive number."
-                        hc == null || hc <= 0 -> "Head circumference must be a positive number."
-                        else -> null
-                    }
+                        val validationError = when {
+                            trimmedName.isEmpty() -> errorClientRequired
+                            ttt == null || ttt <= 0 -> errorTttPositive
+                            ni == null || ni <= 0 -> errorNiPositive
+                            hc == null || hc <= 0 -> errorHcPositive
+                            else -> null
+                        }
 
-                    if (validationError != null) {
-                        errorMessage = validationError
-                    } else {
-                        val timestamp = System.currentTimeMillis()
-                        val tttValue = requireNotNull(ttt)
-                        val niValue = requireNotNull(ni)
-                        val hcValue = requireNotNull(hc)
-                        val result = BeamF3Calculator.calculate(tttValue, niValue, hcValue)
-                        val computed = MeasurementRecord(
-                            id = timestamp.toString(),
-                            clientName = trimmedName,
-                            tttCm = BeamF3Calculator.roundToTwo(tttValue),
-                            niCm = BeamF3Calculator.roundToTwo(niValue),
-                            hcCm = BeamF3Calculator.roundToTwo(hcValue),
-                            xCm = result.xCm,
-                            yCm = result.yCm,
-                            yAdjCm = result.yAdjCm,
-                            timestampMs = timestamp
-                        )
-                        val updated = listOf(computed) + records
-                        records = updated
-                        storage.saveAll(updated)
-                        lastResult = computed
-                        errorMessage = null
+                        if (validationError != null) {
+                            errorMessage = validationError
+                        } else {
+                            val timestamp = System.currentTimeMillis()
+                            val tttValue = requireNotNull(ttt)
+                            val niValue = requireNotNull(ni)
+                            val hcValue = requireNotNull(hc)
+                            val result = BeamF3Calculator.calculate(tttValue, niValue, hcValue)
+                            val computed = MeasurementRecord(
+                                id = timestamp.toString(),
+                                clientName = trimmedName,
+                                tttCm = BeamF3Calculator.roundToTwo(tttValue),
+                                niCm = BeamF3Calculator.roundToTwo(niValue),
+                                hcCm = BeamF3Calculator.roundToTwo(hcValue),
+                                xCm = result.xCm,
+                                yCm = result.yCm,
+                                yAdjCm = result.yAdjCm,
+                                timestampMs = timestamp
+                            )
+                            val updated = listOf(computed) + records
+                            records = updated
+                            storage.saveAll(updated)
+                            lastResult = computed
+                            errorMessage = null
+                        }
                     }
-                }
-            )
-        } else {
-            AboutScreen(innerPadding = innerPadding)
+                )
+            }
+            AppScreen.About -> {
+                AboutScreen(innerPadding = innerPadding)
+            }
+            AppScreen.Settings -> {
+                SettingsScreen(
+                    innerPadding = innerPadding,
+                    currentLanguageTag = currentLanguageTag,
+                    onLanguageSelected = { selectedTag ->
+                        val locales = if (selectedTag == SYSTEM_LANGUAGE_TAG) {
+                            LocaleListCompat.getEmptyLocaleList()
+                        } else {
+                            LocaleListCompat.forLanguageTags(selectedTag)
+                        }
+                        AppCompatDelegate.setApplicationLocales(locales)
+                        activity?.recreate()
+                    }
+                )
+            }
         }
     }
 
@@ -169,13 +204,13 @@ fun MeasurementApp() {
             title = { Text(record.clientName) },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text("Tragus to tragus: ${formatCm(record.tttCm)}")
-                    Text("Nasion to inion: ${formatCm(record.niCm)}")
-                    Text("Head circumference: ${formatCm(record.hcCm)}")
-                    Text("X (circumference distance): ${formatCm(record.xCm)}")
-                    Text("Y (vertex distance): ${formatCm(record.yCm)}")
-                    Text("Adjusted Y: ${formatCm(record.yAdjCm)}")
-                    Text("Recorded: ${formatTimestamp(record.timestampMs)}")
+                    Text(stringResource(R.string.dialog_ttt, formatCm(record.tttCm)))
+                    Text(stringResource(R.string.dialog_ni, formatCm(record.niCm)))
+                    Text(stringResource(R.string.dialog_hc, formatCm(record.hcCm)))
+                    Text(stringResource(R.string.dialog_x, formatCm(record.xCm)))
+                    Text(stringResource(R.string.dialog_y, formatCm(record.yCm)))
+                    Text(stringResource(R.string.dialog_y_adj, formatCm(record.yAdjCm)))
+                    Text(stringResource(R.string.dialog_recorded, formatTimestamp(record.timestampMs)))
                 }
             },
             confirmButton = {
@@ -187,12 +222,12 @@ fun MeasurementApp() {
                         selectedRecord = null
                     }
                 ) {
-                    Text("Delete")
+                    Text(stringResource(R.string.dialog_delete))
                 }
             },
             dismissButton = {
                 TextButton(onClick = { selectedRecord = null }) {
-                    Text("Close")
+                    Text(stringResource(R.string.dialog_close))
                 }
             }
         )
@@ -201,7 +236,8 @@ fun MeasurementApp() {
 
 private enum class AppScreen {
     Measurement,
-    About
+    About,
+    Settings
 }
 
 @Composable
@@ -252,7 +288,7 @@ private fun MeasurementScreen(
 
         item {
             Text(
-                text = "History",
+                text = stringResource(R.string.section_history),
                 style = MaterialTheme.typography.titleMedium
             )
         }
@@ -260,7 +296,7 @@ private fun MeasurementScreen(
         if (records.isEmpty()) {
             item {
                 Text(
-                    text = "No saved measurements yet.",
+                    text = stringResource(R.string.empty_history),
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
@@ -290,16 +326,19 @@ private fun AboutScreen(innerPadding: PaddingValues) {
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    text = "About",
+                    text = stringResource(R.string.screen_title_about),
                     style = MaterialTheme.typography.titleMedium
                 )
                 Text(
-                    text = "TMS Measurement App implements the Beam F3 heuristic to " +
-                        "help clinicians calculate and store F3 targeting measurements.",
+                    text = stringResource(R.string.about_body),
                     style = MaterialTheme.typography.bodyMedium
                 )
                 Text(
-                    text = "Version ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})",
+                    text = stringResource(
+                        R.string.about_version,
+                        BuildConfig.VERSION_NAME,
+                        BuildConfig.VERSION_CODE
+                    ),
                     style = MaterialTheme.typography.bodySmall
                 )
             }
@@ -310,12 +349,78 @@ private fun AboutScreen(innerPadding: PaddingValues) {
                 verticalArrangement = Arrangement.spacedBy(6.dp)
             ) {
                 Text(
-                    text = "Created by",
+                    text = stringResource(R.string.about_created_by),
                     style = MaterialTheme.typography.titleMedium
                 )
                 Text("Babak Bandpey")
                 Text("bb@cocode.dk")
                 Text("https://cocode.dk")
+            }
+        }
+    }
+}
+
+@Composable
+private fun SettingsScreen(
+    innerPadding: PaddingValues,
+    currentLanguageTag: String,
+    onLanguageSelected: (String) -> Unit
+) {
+    val languageOptions = listOf(
+        LanguageOption(SYSTEM_LANGUAGE_TAG, R.string.language_system),
+        LanguageOption("en", R.string.language_english),
+        LanguageOption("fa", R.string.language_persian),
+        LanguageOption("ar", R.string.language_arabic),
+        LanguageOption("zh-TW", R.string.language_chinese_taiwan)
+    )
+    var selectedTag by rememberSaveable(currentLanguageTag) { mutableStateOf(currentLanguageTag) }
+    val hasChanges = selectedTag != currentLanguageTag
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(innerPadding)
+            .padding(horizontal = 16.dp, vertical = 24.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        Card {
+            Column(
+                modifier = Modifier.padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                Text(
+                    text = stringResource(R.string.settings_language_title),
+                    style = MaterialTheme.typography.titleMedium
+                )
+                languageOptions.forEach { option ->
+                    val isSelected = selectedTag == option.tag
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                selectedTag = option.tag
+                            },
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        RadioButton(
+                            selected = isSelected,
+                            onClick = {
+                                selectedTag = option.tag
+                            }
+                        )
+                        Text(
+                            text = stringResource(option.labelRes),
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                    }
+                }
+                Button(
+                    onClick = { onLanguageSelected(selectedTag) },
+                    enabled = hasChanges,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(stringResource(R.string.button_apply_language))
+                }
             }
         }
     }
@@ -340,48 +445,48 @@ private fun InputSection(
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Text(
-                text = "Client and measurements",
+                text = stringResource(R.string.section_client_measurements),
                 style = MaterialTheme.typography.titleMedium
             )
             OutlinedTextField(
                 value = clientName,
                 onValueChange = onClientNameChange,
-                label = { Text("Client name or ID") },
+                label = { Text(stringResource(R.string.label_client_name)) },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true
             )
             OutlinedTextField(
                 value = tttInput,
                 onValueChange = onTttChange,
-                label = { Text("Tragus to tragus") },
+                label = { Text(stringResource(R.string.label_ttt)) },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true,
-                suffix = { Text("cm") },
+                suffix = { Text(stringResource(R.string.unit_cm)) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
             )
             OutlinedTextField(
                 value = niInput,
                 onValueChange = onNiChange,
-                label = { Text("Nasion to inion") },
+                label = { Text(stringResource(R.string.label_ni)) },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true,
-                suffix = { Text("cm") },
+                suffix = { Text(stringResource(R.string.unit_cm)) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
             )
             OutlinedTextField(
                 value = hcInput,
                 onValueChange = onHcChange,
-                label = { Text("Head circumference") },
+                label = { Text(stringResource(R.string.label_hc)) },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true,
-                suffix = { Text("cm") },
+                suffix = { Text(stringResource(R.string.unit_cm)) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
             )
             Button(
                 onClick = onCalculate,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("Calculate and save")
+                Text(stringResource(R.string.button_calculate_save))
             }
             if (errorMessage != null) {
                 Text(
@@ -402,14 +507,14 @@ private fun ResultSection(record: MeasurementRecord) {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
-                text = "Latest result",
+                text = stringResource(R.string.section_latest_result),
                 style = MaterialTheme.typography.titleMedium
             )
-            Text("Distance along circumference (X): ${formatCm(record.xCm)}")
-            Text("Distance from vertex (Y): ${formatCm(record.yCm)}")
-            Text("Adjusted Y: ${formatCm(record.yAdjCm)}")
+            Text(stringResource(R.string.result_x, formatCm(record.xCm)))
+            Text(stringResource(R.string.result_y, formatCm(record.yCm)))
+            Text(stringResource(R.string.result_y_adj, formatCm(record.yAdjCm)))
             Text(
-                text = "Adjusted Y includes a 0.35 cm correction to align with MRI-guided targeting.",
+                text = stringResource(R.string.result_adjustment_note),
                 style = MaterialTheme.typography.bodySmall
             )
         }
@@ -436,19 +541,49 @@ private fun HistoryRow(record: MeasurementRecord, onClick: () -> Unit) {
                 style = MaterialTheme.typography.bodySmall
             )
             Text(
-                text = "X ${formatCm(record.xCm)} | Y ${formatCm(record.yCm)} | Adj ${formatCm(record.yAdjCm)}",
+                text = stringResource(
+                    R.string.history_summary,
+                    formatCm(record.xCm),
+                    formatCm(record.yCm),
+                    formatCm(record.yAdjCm)
+                ),
                 style = MaterialTheme.typography.bodySmall
             )
         }
     }
 }
 
-private fun formatCm(value: Double): String =
-    String.format(Locale.US, "%.2f cm", value)
+@Composable
+private fun formatCm(value: Double): String {
+    val unit = stringResource(R.string.unit_cm)
+    return stringResource(R.string.value_cm_format, value, unit)
+}
 
 private fun formatTimestamp(timestampMs: Long): String {
-    val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.US)
+    val formatter = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT)
     return formatter.format(Date(timestampMs))
+}
+
+private data class LanguageOption(
+    val tag: String,
+    val labelRes: Int
+)
+
+private const val SYSTEM_LANGUAGE_TAG = "system"
+
+private fun normalizeLanguageTag(rawTags: String): String {
+    val tag = rawTags.split(',').firstOrNull()?.trim().orEmpty()
+    if (tag.isBlank()) {
+        return SYSTEM_LANGUAGE_TAG
+    }
+    val lower = tag.lowercase()
+    return when {
+        lower.startsWith("fa") -> "fa"
+        lower.startsWith("ar") -> "ar"
+        lower == "zh-tw" || lower.startsWith("zh-hant") -> "zh-TW"
+        lower.startsWith("en") -> "en"
+        else -> SYSTEM_LANGUAGE_TAG
+    }
 }
 
 @Preview(showBackground = true)
