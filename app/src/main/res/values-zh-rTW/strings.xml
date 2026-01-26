@@ -5,6 +5,7 @@
     <string name="action_back">返回</string>
     <string name="action_about">關於</string>
     <string name="action_settings">設定</string>
+    <string name="action_help">說明</string>
     <string name="section_client_measurements">個案與測量</string>
     <string name="label_client_name">個案姓名或 ID</string>
     <string name="label_ttt">耳屏到耳屏</string>
@@ -34,6 +35,7 @@
     <string name="dialog_close">關閉</string>
     <string name="history_summary">X %1$s | Y %2$s | 調整 %3$s</string>
     <string name="about_body">TMS 測量 App 使用 Beam F3 方法，協助臨床人員計算並儲存 F3 定位測量。</string>
+    <string name="about_privacy">不會收集或傳送任何資料，也不會在您的裝置上寫入任何 Cookie。</string>
     <string name="about_version">版本 %1$s（%2$d）</string>
     <string name="about_created_by">製作人</string>
     <string name="value_cm_format">%1$.2f %2$s</string>
@@ -45,4 +47,5 @@
     <string name="language_arabic">العربية</string>
     <string name="language_chinese_taiwan">繁體中文</string>
     <string name="button_apply_language">套用語言</string>
+    <string name="error_no_browser">找不到可開啟說明頁面的瀏覽器應用程式。</string>
 </resources>

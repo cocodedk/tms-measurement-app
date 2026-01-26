@@ -5,6 +5,7 @@
     <string name="action_back">رجوع</string>
     <string name="action_about">حول</string>
     <string name="action_settings">الإعدادات</string>
+    <string name="action_help">مساعدة</string>
     <string name="section_client_measurements">العميل والقياسات</string>
     <string name="label_client_name">اسم العميل أو المعرّف</string>
     <string name="label_ttt">من التراجوس إلى التراجوس</string>
@@ -34,6 +35,7 @@
     <string name="dialog_close">إغلاق</string>
     <string name="history_summary">X %1$s | Y %2$s | المعدّل %3$s</string>
     <string name="about_body">يطبّق تطبيق قياس TMS منهج Beam F3 لمساعدة الأطباء على حساب وحفظ قياسات تحديد F3.</string>
+    <string name="about_privacy">لا يتم جمع أي بيانات أو إرسالها، ولا يتم كتابة أي ملفات تعريف ارتباط على جهازك.</string>
     <string name="about_version">الإصدار %1$s (%2$d)</string>
     <string name="about_created_by">أنشئ بواسطة</string>
     <string name="value_cm_format">%1$.2f %2$s</string>
@@ -45,4 +47,5 @@
     <string name="language_arabic">العربية</string>
     <string name="language_chinese_taiwan">繁體中文</string>
     <string name="button_apply_language">تطبيق اللغة</string>
+    <string name="error_no_browser">لا يوجد تطبيق متصفح لفتح صفحة المساعدة.</string>
 </resources>
