@@ -36,7 +36,7 @@
     <meta name="twitter:image:alt" content="EEG 10-20 reference map" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Sora:wght@400;600&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600&family=Noto+Sans+TC:wght@400;600&family=Playfair+Display:wght@600;700&family=Sora:wght@400;600&display=swap");
       :root {
         color-scheme: light;
         --ink: #102a2a;
@@ -58,6 +58,13 @@
         background:
           radial-gradient(circle at 20% 10%, #ffffff 0%, #f5efe4 40%, #ead8c3 100%),
           linear-gradient(120deg, #eef8f4 0%, var(--mint) 45%, #c9e0d6 100%);
+      }
+      html[lang="ar"] body,
+      html[lang="fa"] body {
+        font-family: "Noto Naskh Arabic", "Sora", "Helvetica", sans-serif;
+      }
+      html[lang="zh-TW"] body {
+        font-family: "Noto Sans TC", "Sora", "Helvetica", sans-serif;
       }
       .wrap {
         max-width: 1080px;
@@ -96,6 +103,16 @@
       h2 {
         font-family: "Playfair Display", "Georgia", serif;
       }
+      html[lang="ar"] h1,
+      html[lang="fa"] h1,
+      html[lang="ar"] h2,
+      html[lang="fa"] h2 {
+        font-family: "Noto Naskh Arabic", "Playfair Display", "Georgia", serif;
+      }
+      html[lang="zh-TW"] h1,
+      html[lang="zh-TW"] h2 {
+        font-family: "Noto Sans TC", "Playfair Display", "Georgia", serif;
+      }
       p {
         margin: 0 0 12px;
         line-height: 1.6;
@@ -118,6 +135,28 @@
         padding: 24px;
         box-shadow: 0 16px 36px var(--shadow);
       }
+      .lang-switcher {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+      }
+      .lang-switcher label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+      }
+      .lang-switcher select {
+        border: 1px solid rgba(16, 42, 42, 0.18);
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-family: inherit;
+        background: #fff;
+        color: var(--ink);
+      }
       .feature-grid {
         display: grid;
         gap: 16px;
@@ -138,6 +177,18 @@
         padding: 14px 18px;
         border-radius: 16px;
         font-size: 0.9rem;
+      }
+      html[dir="rtl"] body {
+        direction: rtl;
+        text-align: right;
+      }
+      html[dir="rtl"] .badge,
+      html[dir="rtl"] .lang-switcher {
+        flex-direction: row-reverse;
+      }
+      html[dir="rtl"] .formula {
+        direction: ltr;
+        text-align: left;
       }
       .illustration {
         display: grid;
@@ -199,7 +250,7 @@
         gap: 10px;
         font-weight: 600;
       }
-      .step-label span {
+      .step-label .step-number {
         background: var(--teal);
         color: #fff;
         width: 32px;
@@ -328,26 +379,47 @@
     <main class="wrap">
       <section class="hero">
         <div>
-          <div class="badge"><span>Android</span> TMS Measurement</div>
-          <h1>Fast Beam F3 targeting, ready at the chairside.</h1>
-          <p>
+          <div class="lang-switcher">
+            <label for="language-select" data-i18n="language_label">Language</label>
+            <select id="language-select">
+              <option value="en">English</option>
+              <option value="fa">فارسی</option>
+              <option value="ar">العربية</option>
+              <option value="zh-TW">繁體中文</option>
+            </select>
+          </div>
+          <div class="badge">
+            <span data-i18n="badge_platform">Android</span>
+            <span data-i18n="badge_product">TMS Measurement</span>
+          </div>
+          <h1 data-i18n="hero_title">Fast Beam F3 targeting, ready at the chairside.</h1>
+          <p data-i18n="hero_lede_1">
             TMS Measurement App calculates F3 placement from three head measurements,
             stores client records locally, and keeps your clinical workflow consistent.
           </p>
-          <p>
+          <p data-i18n="hero_lede_2">
             Enter tragus-to-tragus, nasion-to-inion, and head circumference to get
             X and adjusted Y distances with a clear explanation.
           </p>
-          <a class="cta" href="https://github.com/cocodedk/tms-measurement-app">View on GitHub</a>
+          <a class="cta" data-i18n="cta_github" href="https://github.com/cocodedk/tms-measurement-app">
+            View on GitHub
+          </a>
           <div class="feature-grid">
-            <div class="chip">Offline-first history</div>
-            <div class="chip">Beam F3 formula built-in</div>
-            <div class="chip">Clinician-friendly UI</div>
-            <div class="chip">Instant validation</div>
+            <div class="chip" data-i18n="feature_offline">Offline-first history</div>
+            <div class="chip" data-i18n="feature_formula">Beam F3 formula built-in</div>
+            <div class="chip" data-i18n="feature_ui">Clinician-friendly UI</div>
+            <div class="chip" data-i18n="feature_validation">Instant validation</div>
           </div>
         </div>
         <div class="illustration">
-          <svg class="hero-icon" viewBox="0 0 160 160" role="img" aria-label="Head targeting icon">
+          <svg
+            class="hero-icon"
+            viewBox="0 0 160 160"
+            role="img"
+            data-i18n="hero_icon_aria"
+            data-i18n-attr="aria-label"
+            aria-label="Head targeting icon"
+          >
             <defs>
               <linearGradient id="face" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0%" stop-color="#f7efe4" />
@@ -365,128 +437,414 @@
       </section>
 
       <section class="card" style="margin-top: 32px;">
-        <h2 class="section-title">Mark the Beam F3 distances</h2>
-        <p>
+        <h2 class="section-title" data-i18n="section_mark_title">Mark the Beam F3 distances</h2>
+        <p data-i18n="section_mark_body">
           Enter the three head measurements first. Then use the calculated distances
           to mark the site. The images below show the X, Y, and Z distances as labeled
           in the Beam F3 guide.
         </p>
         <div class="step-grid">
           <article class="step-card">
-            <div class="step-label"><span>1</span> X distance from midline</div>
-            <img src="images/beamf3-step-1.jpg" alt="X distance marked from the midline across the forehead" />
-            <p>Mark the X cm distance from the midline across the forehead.</p>
+            <div class="step-label">
+              <span class="step-number">1</span>
+              <span data-i18n="step1_title">X distance from midline</span>
+            </div>
+            <img
+              src="images/beamf3-step-1.jpg"
+              alt="X distance marked from the midline across the forehead"
+              data-i18n="step1_alt"
+              data-i18n-attr="alt"
+            />
+            <p data-i18n="step1_body">Mark the X cm distance from the midline across the forehead.</p>
           </article>
           <article class="step-card">
-            <div class="step-label"><span>2</span> Y distance along the midline</div>
-            <img src="images/beamf3-step-2.jpg" alt="Y distance marked along the midline on top of the head" />
-            <p>Measure the Y cm distance along the midline on the top of the head.</p>
+            <div class="step-label">
+              <span class="step-number">2</span>
+              <span data-i18n="step2_title">Y distance along the midline</span>
+            </div>
+            <img
+              src="images/beamf3-step-2.jpg"
+              alt="Y distance marked along the midline on top of the head"
+              data-i18n="step2_alt"
+              data-i18n-attr="alt"
+            />
+            <p data-i18n="step2_body">Measure the Y cm distance along the midline on the top of the head.</p>
           </article>
           <article class="step-card">
-            <div class="step-label"><span>3</span> Z distance toward the ear</div>
-            <img src="images/beamf3-step-3.jpg" alt="Z distance marked from the vertex toward the ear" />
-            <p>Measure the Z cm distance from the vertex toward the ear.</p>
+            <div class="step-label">
+              <span class="step-number">3</span>
+              <span data-i18n="step3_title">Z distance toward the ear</span>
+            </div>
+            <img
+              src="images/beamf3-step-3.jpg"
+              alt="Z distance marked from the vertex toward the ear"
+              data-i18n="step3_alt"
+              data-i18n-attr="alt"
+            />
+            <p data-i18n="step3_body">Measure the Z cm distance from the vertex toward the ear.</p>
           </article>
         </div>
       </section>
 
       <section class="card" style="margin-top: 24px;">
-        <h2 class="section-title">Locate F3</h2>
-        <p>
+        <h2 class="section-title" data-i18n="section_locate_title">Locate F3</h2>
+        <p data-i18n="section_locate_body">
           The app calculates X and Y from your measurements and applies the Beam F3
           adjustment. Use the steps below to mark the site.
         </p>
-        <div class="formula">
+        <div class="formula" data-i18n="formula_line">
           X = 0.1154 × HC &nbsp;&nbsp;|&nbsp;&nbsp; Y = 0.2637 × ((TTT + NI) / 2) &nbsp;&nbsp;|&nbsp;&nbsp; Yadj = Y + 0.35 cm
         </div>
         <ul class="instruction-list">
-          <li>Measure X along the circumference from the midline toward the left side.</li>
-          <li>From the vertex (Cz), draw a line through the left pre-auricular point.</li>
-          <li>Measure Yadj along that line to locate the F3 point.</li>
+          <li data-i18n="locate_step1">Measure X along the circumference from the midline toward the left side.</li>
+          <li data-i18n="locate_step2">From the vertex (Cz), draw a line through the left pre-auricular point.</li>
+          <li data-i18n="locate_step3">Measure Yadj along that line to locate the F3 point.</li>
         </ul>
       </section>
 
       <section class="card" style="margin-top: 24px;">
-        <h2 class="section-title">Reference map</h2>
+        <h2 class="section-title" data-i18n="section_map_title">Reference map</h2>
         <div class="map-card">
           <div>
-            <p>
+            <p data-i18n="map_body_1">
               The EEG reference map helps confirm the F3 region relative to the 10-20
               system. Use it alongside the calculated distances for placement.
             </p>
-            <p>
+            <p data-i18n="map_body_2">
               The app stores every measurement locally, so clinicians can review
               previous sessions without network access.
             </p>
           </div>
-          <img src="images/beamf3-eeg-map.jpg" alt="EEG 10-20 reference map" />
+          <img
+            src="images/beamf3-eeg-map.jpg"
+            alt="EEG 10-20 reference map"
+            data-i18n="map_alt"
+            data-i18n-attr="alt"
+          />
         </div>
       </section>
 
       <section class="card" style="margin-top: 24px;">
-        <h2 class="section-title">Calculate F3</h2>
-        <p>
+        <h2 class="section-title" data-i18n="section_calc_title">Calculate F3</h2>
+        <p data-i18n="section_calc_body">
           Enter the three head measurements in centimeters to calculate the Beam F3
           distances used for site marking.
         </p>
         <form class="calc-grid" id="beamf3-form">
           <label class="calc-field">
-            <span>Tragus to tragus (TTT)</span>
+            <span data-i18n="calc_label_ttt">Tragus to tragus (TTT)</span>
             <div class="calc-input">
               <input type="number" name="ttt" min="0" step="0.1" inputmode="decimal" placeholder="0.0" required />
               <span>cm</span>
             </div>
           </label>
           <label class="calc-field">
-            <span>Nasion to inion (NI)</span>
+            <span data-i18n="calc_label_ni">Nasion to inion (NI)</span>
             <div class="calc-input">
               <input type="number" name="ni" min="0" step="0.1" inputmode="decimal" placeholder="0.0" required />
               <span>cm</span>
             </div>
           </label>
           <label class="calc-field">
-            <span>Head circumference (HC)</span>
+            <span data-i18n="calc_label_hc">Head circumference (HC)</span>
             <div class="calc-input">
               <input type="number" name="hc" min="0" step="0.1" inputmode="decimal" placeholder="0.0" required />
               <span>cm</span>
             </div>
           </label>
           <div class="calc-actions">
-            <button class="cta calc-button" type="submit">Calculate</button>
-            <button class="cta calc-button calc-reset" type="reset">Reset</button>
+            <button class="cta calc-button" type="submit" data-i18n="calc_button">Calculate</button>
+            <button class="cta calc-button calc-reset" type="reset" data-i18n="calc_reset">Reset</button>
           </div>
         </form>
         <div class="calc-results" aria-live="polite">
           <div class="calc-result">
-            <span>X (circumference)</span>
+            <span data-i18n="calc_result_x">X (circumference)</span>
             <strong id="calc-x">—</strong>
           </div>
           <div class="calc-result">
-            <span>Y (radial distance)</span>
+            <span data-i18n="calc_result_y">Y (radial distance)</span>
             <strong id="calc-y">—</strong>
           </div>
           <div class="calc-result">
-            <span>Yadj (adjusted)</span>
+            <span data-i18n="calc_result_yadj">Yadj (adjusted)</span>
             <strong id="calc-yadj">—</strong>
           </div>
         </div>
-        <p class="calc-note">
+        <p class="calc-note" data-i18n="calc_note">
           X = 0.1154 × HC, Y = 0.2637 × ((TTT + NI) / 2), Yadj = Y + 0.35 cm.
         </p>
       </section>
 
-      <div class="footer">
+      <div class="footer" data-i18n="footer">
         Images sourced from clinicalresearcher.org/F3. Built by cocodedk for fast,
         reliable TMS documentation.
       </div>
     </main>
     <script>
+      const translations = {
+        en: {
+          lang: "en",
+          dir: "ltr",
+          page_title: "TMS Measurement App | Beam F3 Calculator",
+          meta_description:
+            "TMS Measurement App calculates Beam F3 targeting distances from head measurements, helping clinicians locate the F3 site quickly.",
+          language_label: "Language",
+          badge_platform: "Android",
+          badge_product: "TMS Measurement",
+          hero_title: "Fast Beam F3 targeting, ready at the chairside.",
+          hero_lede_1:
+            "TMS Measurement App calculates F3 placement from three head measurements, stores client records locally, and keeps your clinical workflow consistent.",
+          hero_lede_2:
+            "Enter tragus-to-tragus, nasion-to-inion, and head circumference to get X and adjusted Y distances with a clear explanation.",
+          cta_github: "View on GitHub",
+          feature_offline: "Offline-first history",
+          feature_formula: "Beam F3 formula built-in",
+          feature_ui: "Clinician-friendly UI",
+          feature_validation: "Instant validation",
+          hero_icon_aria: "Head targeting icon",
+          section_mark_title: "Mark the Beam F3 distances",
+          section_mark_body:
+            "Enter the three head measurements first. Then use the calculated distances to mark the site. The images below show the X, Y, and Z distances as labeled in the Beam F3 guide.",
+          step1_title: "X distance from midline",
+          step1_alt: "X distance marked from the midline across the forehead",
+          step1_body: "Mark the X cm distance from the midline across the forehead.",
+          step2_title: "Y distance along the midline",
+          step2_alt: "Y distance marked along the midline on top of the head",
+          step2_body: "Measure the Y cm distance along the midline on the top of the head.",
+          step3_title: "Z distance toward the ear",
+          step3_alt: "Z distance marked from the vertex toward the ear",
+          step3_body: "Measure the Z cm distance from the vertex toward the ear.",
+          section_locate_title: "Locate F3",
+          section_locate_body:
+            "The app calculates X and Y from your measurements and applies the Beam F3 adjustment. Use the steps below to mark the site.",
+          formula_line:
+            "X = 0.1154 × HC | Y = 0.2637 × ((TTT + NI) / 2) | Yadj = Y + 0.35 cm",
+          locate_step1: "Measure X along the circumference from the midline toward the left side.",
+          locate_step2:
+            "From the vertex (Cz), draw a line through the left pre-auricular point.",
+          locate_step3: "Measure Yadj along that line to locate the F3 point.",
+          section_map_title: "Reference map",
+          map_body_1:
+            "The EEG reference map helps confirm the F3 region relative to the 10-20 system. Use it alongside the calculated distances for placement.",
+          map_body_2:
+            "The app stores every measurement locally, so clinicians can review previous sessions without network access.",
+          map_alt: "EEG 10-20 reference map",
+          section_calc_title: "Calculate F3",
+          section_calc_body:
+            "Enter the three head measurements in centimeters to calculate the Beam F3 distances used for site marking.",
+          calc_label_ttt: "Tragus to tragus (TTT)",
+          calc_label_ni: "Nasion to inion (NI)",
+          calc_label_hc: "Head circumference (HC)",
+          calc_button: "Calculate",
+          calc_reset: "Reset",
+          calc_result_x: "X (circumference)",
+          calc_result_y: "Y (radial distance)",
+          calc_result_yadj: "Yadj (adjusted)",
+          calc_note: "X = 0.1154 × HC, Y = 0.2637 × ((TTT + NI) / 2), Yadj = Y + 0.35 cm.",
+          footer:
+            "Images sourced from clinicalresearcher.org/F3. Built by cocodedk for fast, reliable TMS documentation.",
+          unit_cm: "cm"
+        },
+        fa: {
+          lang: "fa",
+          dir: "rtl",
+          page_title: "اپلیکیشن اندازه‌گیری TMS | محاسبه‌گر Beam F3",
+          meta_description:
+            "اپلیکیشن اندازه‌گیری TMS فاصله‌های هدف‌گیری Beam F3 را بر اساس اندازه‌گیری‌های سر محاسبه می‌کند تا پزشکان بتوانند سریع‌تر محل F3 را پیدا کنند.",
+          language_label: "زبان",
+          badge_platform: "اندروید",
+          badge_product: "اندازه‌گیری TMS",
+          hero_title: "هدف‌گیری سریع Beam F3، آماده کنار صندلی درمان.",
+          hero_lede_1:
+            "اپلیکیشن اندازه‌گیری TMS موقعیت F3 را از سه اندازه‌گیری سر محاسبه می‌کند، سوابق مراجع را به صورت محلی ذخیره می‌کند و جریان کار بالینی شما را منظم نگه می‌دارد.",
+          hero_lede_2:
+            "فاصله تراگوس تا تراگوس، نازیون تا اینیون و دور سر را وارد کنید تا فاصله‌های X و Y اصلاح‌شده را همراه با توضیح روشن دریافت کنید.",
+          cta_github: "مشاهده در گیت‌هاب",
+          feature_offline: "تاریخچه آفلاین",
+          feature_formula: "فرمول Beam F3 داخلی",
+          feature_ui: "رابط کاربری مناسب بالین",
+          feature_validation: "اعتبارسنجی فوری",
+          hero_icon_aria: "نماد هدف‌گیری سر",
+          section_mark_title: "نشانه‌گذاری فاصله‌های Beam F3",
+          section_mark_body:
+            "ابتدا سه اندازه‌گیری سر را وارد کنید. سپس از فاصله‌های محاسبه‌شده برای نشانه‌گذاری محل استفاده کنید. تصاویر زیر فاصله‌های X، Y و Z را طبق راهنمای Beam F3 نشان می‌دهند.",
+          step1_title: "فاصله X از خط میانی",
+          step1_alt: "فاصله X از خط میانی روی پیشانی مشخص شده است",
+          step1_body: "فاصله X سانتی‌متر را از خط میانی روی پیشانی علامت بزنید.",
+          step2_title: "فاصله Y در امتداد خط میانی",
+          step2_alt: "فاصله Y در امتداد خط میانی روی سر مشخص شده است",
+          step2_body: "فاصله Y سانتی‌متر را در امتداد خط میانی روی سر اندازه بگیرید.",
+          step3_title: "فاصله Z به سمت گوش",
+          step3_alt: "فاصله Z از ورتکس به سمت گوش مشخص شده است",
+          step3_body: "فاصله Z سانتی‌متر را از ورتکس به سمت گوش اندازه بگیرید.",
+          section_locate_title: "مکان‌یابی F3",
+          section_locate_body:
+            "اپلیکیشن فاصله‌های X و Y را از اندازه‌گیری‌ها محاسبه و اصلاح Beam F3 را اعمال می‌کند. از مراحل زیر برای نشانه‌گذاری محل استفاده کنید.",
+          formula_line:
+            "X = 0.1154 × HC | Y = 0.2637 × ((TTT + NI) / 2) | Yadj = Y + 0.35 cm",
+          locate_step1: "X را از خط میانی به سمت چپ روی محیط سر اندازه بگیرید.",
+          locate_step2: "از ورتکس (Cz) خطی از میان نقطه پیش‌گوشی چپ رسم کنید.",
+          locate_step3: "Yadj را روی همان خط اندازه بگیرید تا نقطه F3 مشخص شود.",
+          section_map_title: "نقشه مرجع",
+          map_body_1:
+            "نقشه مرجع EEG به تأیید موقعیت ناحیه F3 نسبت به سیستم 10-20 کمک می‌کند. از آن همراه با فاصله‌های محاسبه‌شده برای جای‌گذاری استفاده کنید.",
+          map_body_2:
+            "اپلیکیشن هر اندازه‌گیری را به صورت محلی ذخیره می‌کند تا پزشکان بتوانند بدون دسترسی شبکه، جلسات قبلی را مرور کنند.",
+          map_alt: "نقشه مرجع EEG 10-20",
+          section_calc_title: "محاسبه F3",
+          section_calc_body:
+            "سه اندازه‌گیری سر را بر حسب سانتی‌متر وارد کنید تا فاصله‌های Beam F3 برای نشانه‌گذاری محاسبه شوند.",
+          calc_label_ttt: "تراگوس تا تراگوس (TTT)",
+          calc_label_ni: "نازیون تا اینیون (NI)",
+          calc_label_hc: "دور سر (HC)",
+          calc_button: "محاسبه",
+          calc_reset: "بازنشانی",
+          calc_result_x: "X (محیط)",
+          calc_result_y: "Y (فاصله شعاعی)",
+          calc_result_yadj: "Yadj (اصلاح‌شده)",
+          calc_note: "X = 0.1154 × HC، Y = 0.2637 × ((TTT + NI) / 2)، Yadj = Y + 0.35 cm.",
+          footer:
+            "تصاویر از clinicalresearcher.org/F3 گرفته شده‌اند. ساخته‌شده توسط cocodedk برای مستندسازی سریع و قابل اعتماد TMS.",
+          unit_cm: "cm"
+        },
+        ar: {
+          lang: "ar",
+          dir: "rtl",
+          page_title: "تطبيق قياس TMS | حاسبة Beam F3",
+          meta_description:
+            "تطبيق قياس TMS يحسب مسافات Beam F3 من قياسات الرأس لمساعدة الأطباء على تحديد موقع F3 بسرعة.",
+          language_label: "اللغة",
+          badge_platform: "أندرويد",
+          badge_product: "قياس TMS",
+          hero_title: "استهداف Beam F3 بسرعة، جاهز بجانب الكرسي.",
+          hero_lede_1:
+            "تطبيق قياس TMS يحسب موضع F3 من ثلاث قياسات للرأس، ويحفظ سجلات العملاء محليًا، ويحافظ على اتساق سير العمل السريري.",
+          hero_lede_2:
+            "أدخل قياس التراجوس إلى التراجوس، والنازيون إلى الإنيون، ومحيط الرأس للحصول على مسافتي X و Y المعدّلة مع شرح واضح.",
+          cta_github: "عرض على GitHub",
+          feature_offline: "سجل يعمل بلا اتصال",
+          feature_formula: "معادلة Beam F3 مدمجة",
+          feature_ui: "واجهة مناسبة للعيادة",
+          feature_validation: "تحقق فوري",
+          hero_icon_aria: "أيقونة استهداف الرأس",
+          section_mark_title: "تمييز مسافات Beam F3",
+          section_mark_body:
+            "أدخل قياسات الرأس الثلاث أولًا. ثم استخدم المسافات المحسوبة لتمييز الموقع. تُظهر الصور أدناه مسافات X و Y و Z كما في دليل Beam F3.",
+          step1_title: "مسافة X من الخط الأوسط",
+          step1_alt: "تحديد مسافة X من الخط الأوسط عبر الجبهة",
+          step1_body: "حدد مسافة X سم من الخط الأوسط عبر الجبهة.",
+          step2_title: "مسافة Y على طول الخط الأوسط",
+          step2_alt: "تحديد مسافة Y على طول الخط الأوسط أعلى الرأس",
+          step2_body: "قِس مسافة Y سم على طول الخط الأوسط أعلى الرأس.",
+          step3_title: "مسافة Z باتجاه الأذن",
+          step3_alt: "تحديد مسافة Z من القمة باتجاه الأذن",
+          step3_body: "قِس مسافة Z سم من القمة باتجاه الأذن.",
+          section_locate_title: "تحديد F3",
+          section_locate_body:
+            "يحسب التطبيق مسافتي X و Y من قياساتك ويطبق تعديل Beam F3. استخدم الخطوات أدناه لتمييز الموقع.",
+          formula_line:
+            "X = 0.1154 × HC | Y = 0.2637 × ((TTT + NI) / 2) | Yadj = Y + 0.35 cm",
+          locate_step1: "قِس X على طول المحيط من الخط الأوسط باتجاه الجانب الأيسر.",
+          locate_step2: "من القمة (Cz)، ارسم خطًا يمر عبر النقطة أمام الأذن اليسرى.",
+          locate_step3: "قِس Yadj على هذا الخط لتحديد نقطة F3.",
+          section_map_title: "خريطة مرجعية",
+          map_body_1:
+            "تساعد خريطة EEG المرجعية في تأكيد منطقة F3 بالنسبة لنظام 10-20. استخدمها مع المسافات المحسوبة للتحديد.",
+          map_body_2:
+            "يحفظ التطبيق كل قياس محليًا، حتى يتمكن الأطباء من مراجعة الجلسات السابقة دون اتصال بالشبكة.",
+          map_alt: "خريطة EEG المرجعية لنظام 10-20",
+          section_calc_title: "احسب F3",
+          section_calc_body:
+            "أدخل قياسات الرأس الثلاث بالسنتيمتر لحساب مسافات Beam F3 المستخدمة في التحديد.",
+          calc_label_ttt: "التراجوس إلى التراجوس (TTT)",
+          calc_label_ni: "النازيون إلى الإنيون (NI)",
+          calc_label_hc: "محيط الرأس (HC)",
+          calc_button: "احسب",
+          calc_reset: "إعادة ضبط",
+          calc_result_x: "X (المحيط)",
+          calc_result_y: "Y (المسافة الشعاعية)",
+          calc_result_yadj: "Yadj (المعدّل)",
+          calc_note: "X = 0.1154 × HC، Y = 0.2637 × ((TTT + NI) / 2)، Yadj = Y + 0.35 cm.",
+          footer:
+            "الصور مأخوذة من clinicalresearcher.org/F3. بُني بواسطة cocodedk لتوثيق TMS بسرعة وموثوقية.",
+          unit_cm: "cm"
+        },
+        "zh-TW": {
+          lang: "zh-TW",
+          dir: "ltr",
+          page_title: "TMS 測量 App | Beam F3 計算器",
+          meta_description:
+            "TMS 測量 App 透過頭部量測計算 Beam F3 目標距離，協助臨床人員快速定位 F3。",
+          language_label: "語言",
+          badge_platform: "Android",
+          badge_product: "TMS 測量",
+          hero_title: "快速 Beam F3 定位，椅旁即可完成。",
+          hero_lede_1:
+            "TMS 測量 App 透過三項頭部量測計算 F3 位置，在本機儲存個案紀錄，維持臨床流程一致。",
+          hero_lede_2:
+            "輸入耳屏到耳屏、鼻根到枕骨與頭圍，即可得到 X 與調整後的 Y 距離與清楚說明。",
+          cta_github: "在 GitHub 查看",
+          feature_offline: "離線優先紀錄",
+          feature_formula: "內建 Beam F3 公式",
+          feature_ui: "臨床友善介面",
+          feature_validation: "即時驗證",
+          hero_icon_aria: "頭部定位圖示",
+          section_mark_title: "標示 Beam F3 距離",
+          section_mark_body:
+            "先輸入三項頭部量測，接著使用計算出的距離標示位置。下方圖片顯示 Beam F3 指南中的 X、Y、Z 距離。",
+          step1_title: "從中線量 X 距離",
+          step1_alt: "從中線在前額標示 X 距離",
+          step1_body: "從中線在前額標示 X 公分的距離。",
+          step2_title: "沿中線量 Y 距離",
+          step2_alt: "沿頭頂中線標示 Y 距離",
+          step2_body: "沿頭頂中線量 Y 公分的距離。",
+          step3_title: "朝耳側量 Z 距離",
+          step3_alt: "從頭頂朝耳側標示 Z 距離",
+          step3_body: "從頭頂朝耳側量 Z 公分的距離。",
+          section_locate_title: "定位 F3",
+          section_locate_body:
+            "App 會根據量測計算 X 與 Y，並套用 Beam F3 調整。請依下列步驟標示位置。",
+          formula_line:
+            "X = 0.1154 × HC | Y = 0.2637 × ((TTT + NI) / 2) | Yadj = Y + 0.35 cm",
+          locate_step1: "沿頭圍從中線往左側量 X 距離。",
+          locate_step2: "由頭頂 (Cz) 向左前耳點畫一直線。",
+          locate_step3: "沿該直線量 Yadj 以定位 F3 點。",
+          section_map_title: "參考圖",
+          map_body_1:
+            "EEG 參考圖可協助確認 F3 區域與 10-20 系統的相對位置，請與計算距離一起使用。",
+          map_body_2:
+            "App 會在本機儲存每次量測，方便臨床人員在無網路時回顧先前紀錄。",
+          map_alt: "EEG 10-20 參考圖",
+          section_calc_title: "計算 F3",
+          section_calc_body:
+            "以公分輸入三項頭部量測，計算用於標示的 Beam F3 距離。",
+          calc_label_ttt: "耳屏到耳屏 (TTT)",
+          calc_label_ni: "鼻根到枕骨 (NI)",
+          calc_label_hc: "頭圍 (HC)",
+          calc_button: "計算",
+          calc_reset: "重設",
+          calc_result_x: "X（頭圍）",
+          calc_result_y: "Y（徑向距離）",
+          calc_result_yadj: "Yadj（調整）",
+          calc_note: "X = 0.1154 × HC，Y = 0.2637 × ((TTT + NI) / 2)，Yadj = Y + 0.35 cm。",
+          footer: "圖片來源：clinicalresearcher.org/F3。由 cocodedk 打造，提供快速可靠的 TMS 記錄。",
+          unit_cm: "cm"
+        }
+      };
+
       const beamForm = document.getElementById("beamf3-form");
       const outputX = document.getElementById("calc-x");
       const outputY = document.getElementById("calc-y");
       const outputYAdj = document.getElementById("calc-yadj");
+      const languageSelect = document.getElementById("language-select");
 
-      const formatCm = (value) => `${value.toFixed(2)} cm`;
+      let currentLang = "en";
+
+      const formatCm = (value) => {
+        const unit = translations[currentLang]?.unit_cm || "cm";
+        return `${value.toFixed(2)} ${unit}`;
+      };
       const clearOutputs = () => {
         outputX.textContent = "—";
         outputY.textContent = "—";
@@ -516,6 +874,65 @@
         outputYAdj.textContent = formatCm(yAdj);
       };
 
+      const normalizeLang = (rawLang) => {
+        if (!rawLang) {
+          return "en";
+        }
+        const lower = rawLang.toLowerCase();
+        if (lower.startsWith("fa")) {
+          return "fa";
+        }
+        if (lower.startsWith("ar")) {
+          return "ar";
+        }
+        if (lower === "zh-tw" || lower.startsWith("zh-hant") || lower.startsWith("zh-hk")) {
+          return "zh-TW";
+        }
+        return "en";
+      };
+
+      const updateMeta = (selector, value) => {
+        const element = document.querySelector(selector);
+        if (element && value) {
+          element.setAttribute("content", value);
+        }
+      };
+
+      const setLanguage = (lang) => {
+        const normalized = normalizeLang(lang);
+        const copy = translations[normalized] || translations.en;
+        currentLang = normalized;
+        document.documentElement.lang = copy.lang;
+        document.documentElement.dir = copy.dir;
+        document.title = copy.page_title;
+        updateMeta('meta[name="description"]', copy.meta_description);
+        updateMeta('meta[property="og:title"]', copy.page_title);
+        updateMeta('meta[property="og:description"]', copy.meta_description);
+        updateMeta('meta[name="twitter:title"]', copy.page_title);
+        updateMeta('meta[name="twitter:description"]', copy.meta_description);
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.getAttribute("data-i18n");
+          const value = copy[key];
+          if (!value) {
+            return;
+          }
+          const attr = element.getAttribute("data-i18n-attr");
+          if (attr) {
+            element.setAttribute(attr, value);
+          } else {
+            element.textContent = value;
+          }
+        });
+        if (languageSelect) {
+          languageSelect.value = normalized;
+        }
+        updateOutputs();
+      };
+
+      const storedLang = localStorage.getItem("tms-language");
+      const urlLang = new URLSearchParams(window.location.search).get("lang");
+      setLanguage(urlLang || storedLang || navigator.language);
+
       beamForm.addEventListener("input", updateOutputs);
       beamForm.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -526,6 +943,13 @@
       beamForm.addEventListener("reset", () => {
         setTimeout(clearOutputs, 0);
       });
+      if (languageSelect) {
+        languageSelect.addEventListener("change", (event) => {
+          const selected = event.target.value;
+          localStorage.setItem("tms-language", selected);
+          setLanguage(selected);
+        });
+      }
     </script>
   </body>
 </html>

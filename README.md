@@ -4,6 +4,9 @@ TMS Measurement App is an Android tool that implements the Beam F3 heuristic for
 transcranial magnetic stimulation targeting. Enter three head measurements to
 calculate X, Y, and adjusted Y distances, and save them per client for follow-up.
 
+## Privacy
+No data is collected, transmitted, or stored outside the device. The app does not write cookies or track users in any way.
+
 ## Features
 - Beam F3 calculations with two-decimal rounding
 - Local history of measurement records
