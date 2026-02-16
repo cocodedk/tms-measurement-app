@@ -6,9 +6,21 @@
     <title>TMS Measurement App | Beam F3 Calculator</title>
     <meta
       name="description"
-      content="TMS Measurement App calculates Beam F3 targeting distances from head measurements, helping clinicians locate the F3 site quickly."
+      content="Free open-source Android app for Beam F3 targeting in transcranial magnetic stimulation (TMS). Calculate F3 site distances from head measurements offline — privacy-first, no data collection."
     />
+    <meta name="keywords" content="TMS, transcranial magnetic stimulation, Beam F3, F3 targeting, DLPFC, EEG 10-20, Android app, head measurement, clinical tool, open-source, offline" />
+    <meta name="author" content="Babak Bandpey" />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://cocodedk.github.io/tms-measurement-app/" />
+    <link rel="alternate" hreflang="en" href="https://cocodedk.github.io/tms-measurement-app/" />
+    <link rel="alternate" hreflang="fa" href="https://cocodedk.github.io/tms-measurement-app/?lang=fa" />
+    <link rel="alternate" hreflang="ar" href="https://cocodedk.github.io/tms-measurement-app/?lang=ar" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://cocodedk.github.io/tms-measurement-app/?lang=zh-TW" />
+    <link rel="alternate" hreflang="fr" href="https://cocodedk.github.io/tms-measurement-app/?lang=fr" />
+    <link rel="alternate" hreflang="es" href="https://cocodedk.github.io/tms-measurement-app/?lang=es" />
+    <link rel="alternate" hreflang="de" href="https://cocodedk.github.io/tms-measurement-app/?lang=de" />
+    <link rel="alternate" hreflang="ja" href="https://cocodedk.github.io/tms-measurement-app/?lang=ja" />
+    <link rel="alternate" hreflang="x-default" href="https://cocodedk.github.io/tms-measurement-app/" />
     <meta property="og:title" content="TMS Measurement App | Beam F3 Calculator" />
     <meta
       property="og:description"
@@ -36,7 +48,7 @@
     <meta name="twitter:image:alt" content="EEG 10-20 reference map" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600&family=Noto+Sans+TC:wght@400;600&family=Playfair+Display:wght@600;700&family=Sora:wght@400;600&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600&family=Noto+Sans+JP:wght@400;600&family=Noto+Sans+TC:wght@400;600&family=Playfair+Display:wght@600;700&family=Sora:wght@400;600&display=swap");
       :root {
         color-scheme: light;
         --ink: #102a2a;
@@ -112,6 +124,13 @@
       html[lang="zh-TW"] h1,
       html[lang="zh-TW"] h2 {
         font-family: "Noto Sans TC", "Playfair Display", "Georgia", serif;
+      }
+      html[lang="ja"] body {
+        font-family: "Noto Sans JP", "Sora", "Helvetica", sans-serif;
+      }
+      html[lang="ja"] h1,
+      html[lang="ja"] h2 {
+        font-family: "Noto Sans JP", "Playfair Display", "Georgia", serif;
       }
       p {
         margin: 0 0 12px;
@@ -374,6 +393,29 @@
         100% { transform: translateY(0px); }
       }
     </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "TMS Measurement App",
+        "operatingSystem": "Android",
+        "applicationCategory": "HealthApplication",
+        "description": "Open-source Android app for Beam F3 targeting in transcranial magnetic stimulation (TMS). Calculate F3 site distances from three head measurements offline.",
+        "url": "https://cocodedk.github.io/tms-measurement-app/",
+        "author": {
+          "@type": "Person",
+          "name": "Babak Bandpey",
+          "url": "https://cocode.dk"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "inLanguage": ["en", "fa", "ar", "zh-TW", "fr", "es", "de", "ja"],
+        "isAccessibleForFree": true
+      }
+    </script>
   </head>
   <body>
     <main class="wrap">
@@ -386,6 +428,10 @@
               <option value="fa">فارسی</option>
               <option value="ar">العربية</option>
               <option value="zh-TW">繁體中文</option>
+              <option value="fr">Français</option>
+              <option value="es">Español</option>
+              <option value="de">Deutsch</option>
+              <option value="ja">日本語</option>
             </select>
           </div>
           <div class="badge">
@@ -830,6 +876,257 @@
           calc_note: "X = 0.1154 × HC，Y = 0.2637 × ((TTT + NI) / 2)，Yadj = Y + 0.35 cm。",
           footer: "圖片來源：clinicalresearcher.org/F3。由 cocodedk 打造，提供快速可靠的 TMS 記錄。",
           unit_cm: "cm"
+        },
+        fr: {
+          lang: "fr",
+          dir: "ltr",
+          page_title: "Appli TMS Measurement | Calculateur Beam F3",
+          meta_description:
+            "L'appli TMS Measurement calcule les distances de ciblage Beam F3 à partir des mesures crâniennes pour aider les cliniciens à localiser rapidement le site F3.",
+          language_label: "Langue",
+          badge_platform: "Android",
+          badge_product: "TMS Measurement",
+          hero_title: "Ciblage Beam F3 rapide, prêt au fauteuil.",
+          hero_lede_1:
+            "L'appli TMS Measurement calcule le placement F3 à partir de trois mesures crâniennes, stocke les dossiers localement et maintient votre flux clinique cohérent.",
+          hero_lede_2:
+            "Entrez les distances tragus-tragus, nasion-inion et le périmètre crânien pour obtenir les distances X et Y ajustée avec une explication claire.",
+          cta_github: "Voir sur GitHub",
+          feature_offline: "Historique hors-ligne",
+          feature_formula: "Formule Beam F3 intégrée",
+          feature_ui: "Interface adaptée au clinicien",
+          feature_validation: "Validation instantanée",
+          hero_icon_aria: "Icône de ciblage crânien",
+          section_mark_title: "Marquer les distances Beam F3",
+          section_mark_body:
+            "Entrez d'abord les trois mesures crâniennes. Utilisez ensuite les distances calculées pour marquer le site. Les images ci-dessous montrent les distances X, Y et Z telles que décrites dans le guide Beam F3.",
+          step1_title: "Distance X depuis la ligne médiane",
+          step1_alt: "Distance X marquée depuis la ligne médiane sur le front",
+          step1_body: "Marquez la distance X cm depuis la ligne médiane sur le front.",
+          step2_title: "Distance Y le long de la ligne médiane",
+          step2_alt: "Distance Y marquée le long de la ligne médiane sur le sommet du crâne",
+          step2_body: "Mesurez la distance Y cm le long de la ligne médiane sur le sommet du crâne.",
+          step3_title: "Distance Z vers l'oreille",
+          step3_alt: "Distance Z marquée du vertex vers l'oreille",
+          step3_body: "Mesurez la distance Z cm du vertex vers l'oreille.",
+          section_locate_title: "Localiser F3",
+          section_locate_body:
+            "L'appli calcule X et Y à partir de vos mesures et applique l'ajustement Beam F3. Suivez les étapes ci-dessous pour marquer le site.",
+          formula_line:
+            "X = 0.1154 × HC | Y = 0.2637 × ((TTT + NI) / 2) | Yadj = Y + 0.35 cm",
+          locate_step1: "Mesurez X le long de la circonférence depuis la ligne médiane vers le côté gauche.",
+          locate_step2:
+            "Depuis le vertex (Cz), tracez une ligne passant par le point pré-auriculaire gauche.",
+          locate_step3: "Mesurez Yadj le long de cette ligne pour localiser le point F3.",
+          section_map_title: "Carte de référence",
+          map_body_1:
+            "La carte de référence EEG aide à confirmer la région F3 par rapport au système 10-20. Utilisez-la avec les distances calculées pour le placement.",
+          map_body_2:
+            "L'appli stocke chaque mesure localement, permettant aux cliniciens de consulter les sessions précédentes sans accès réseau.",
+          map_alt: "Carte de référence EEG 10-20",
+          section_calc_title: "Calculer F3",
+          section_calc_body:
+            "Entrez les trois mesures crâniennes en centimètres pour calculer les distances Beam F3 utilisées pour le marquage.",
+          calc_label_ttt: "Tragus à tragus (TTT)",
+          calc_label_ni: "Nasion à inion (NI)",
+          calc_label_hc: "Périmètre crânien (HC)",
+          calc_button: "Calculer",
+          calc_reset: "Réinitialiser",
+          calc_result_x: "X (circonférence)",
+          calc_result_y: "Y (distance radiale)",
+          calc_result_yadj: "Yadj (ajusté)",
+          calc_note: "X = 0.1154 × HC, Y = 0.2637 × ((TTT + NI) / 2), Yadj = Y + 0.35 cm.",
+          footer:
+            "Images provenant de clinicalresearcher.org/F3. Développé par cocodedk pour une documentation TMS rapide et fiable.",
+          unit_cm: "cm"
+        },
+        es: {
+          lang: "es",
+          dir: "ltr",
+          page_title: "App TMS Measurement | Calculadora Beam F3",
+          meta_description:
+            "La app TMS Measurement calcula las distancias de orientación Beam F3 a partir de mediciones craneales para ayudar a los clínicos a localizar rápidamente el sitio F3.",
+          language_label: "Idioma",
+          badge_platform: "Android",
+          badge_product: "TMS Measurement",
+          hero_title: "Orientación Beam F3 rápida, lista junto al sillón.",
+          hero_lede_1:
+            "La app TMS Measurement calcula la ubicación F3 a partir de tres mediciones craneales, almacena los registros localmente y mantiene su flujo clínico consistente.",
+          hero_lede_2:
+            "Ingrese las distancias trago a trago, nasion a inion y la circunferencia craneal para obtener las distancias X e Y ajustada con una explicación clara.",
+          cta_github: "Ver en GitHub",
+          feature_offline: "Historial sin conexión",
+          feature_formula: "Fórmula Beam F3 integrada",
+          feature_ui: "Interfaz amigable para clínicos",
+          feature_validation: "Validación instantánea",
+          hero_icon_aria: "Ícono de orientación craneal",
+          section_mark_title: "Marcar las distancias Beam F3",
+          section_mark_body:
+            "Ingrese primero las tres mediciones craneales. Luego use las distancias calculadas para marcar el sitio. Las imágenes a continuación muestran las distancias X, Y y Z como se describen en la guía Beam F3.",
+          step1_title: "Distancia X desde la línea media",
+          step1_alt: "Distancia X marcada desde la línea media en la frente",
+          step1_body: "Marque la distancia X cm desde la línea media en la frente.",
+          step2_title: "Distancia Y a lo largo de la línea media",
+          step2_alt: "Distancia Y marcada a lo largo de la línea media en la parte superior de la cabeza",
+          step2_body: "Mida la distancia Y cm a lo largo de la línea media en la parte superior de la cabeza.",
+          step3_title: "Distancia Z hacia la oreja",
+          step3_alt: "Distancia Z marcada desde el vértex hacia la oreja",
+          step3_body: "Mida la distancia Z cm desde el vértex hacia la oreja.",
+          section_locate_title: "Localizar F3",
+          section_locate_body:
+            "La app calcula X e Y a partir de sus mediciones y aplica el ajuste Beam F3. Siga los pasos a continuación para marcar el sitio.",
+          formula_line:
+            "X = 0.1154 × HC | Y = 0.2637 × ((TTT + NI) / 2) | Yadj = Y + 0.35 cm",
+          locate_step1: "Mida X a lo largo de la circunferencia desde la línea media hacia el lado izquierdo.",
+          locate_step2:
+            "Desde el vértex (Cz), trace una línea a través del punto preauricular izquierdo.",
+          locate_step3: "Mida Yadj a lo largo de esa línea para localizar el punto F3.",
+          section_map_title: "Mapa de referencia",
+          map_body_1:
+            "El mapa de referencia EEG ayuda a confirmar la región F3 en relación con el sistema 10-20. Úselo junto con las distancias calculadas para la ubicación.",
+          map_body_2:
+            "La app almacena cada medición localmente, permitiendo a los clínicos revisar sesiones anteriores sin acceso a la red.",
+          map_alt: "Mapa de referencia EEG 10-20",
+          section_calc_title: "Calcular F3",
+          section_calc_body:
+            "Ingrese las tres mediciones craneales en centímetros para calcular las distancias Beam F3 utilizadas para el marcado.",
+          calc_label_ttt: "Trago a trago (TTT)",
+          calc_label_ni: "Nasion a inion (NI)",
+          calc_label_hc: "Circunferencia craneal (HC)",
+          calc_button: "Calcular",
+          calc_reset: "Restablecer",
+          calc_result_x: "X (circunferencia)",
+          calc_result_y: "Y (distancia radial)",
+          calc_result_yadj: "Yadj (ajustado)",
+          calc_note: "X = 0.1154 × HC, Y = 0.2637 × ((TTT + NI) / 2), Yadj = Y + 0.35 cm.",
+          footer:
+            "Imágenes de clinicalresearcher.org/F3. Desarrollado por cocodedk para documentación TMS rápida y confiable.",
+          unit_cm: "cm"
+        },
+        de: {
+          lang: "de",
+          dir: "ltr",
+          page_title: "TMS Measurement App | Beam F3 Rechner",
+          meta_description:
+            "Die TMS Measurement App berechnet Beam-F3-Zielentfernungen aus Kopfmessungen und hilft Klinikern, die F3-Stelle schnell zu lokalisieren.",
+          language_label: "Sprache",
+          badge_platform: "Android",
+          badge_product: "TMS Measurement",
+          hero_title: "Schnelle Beam-F3-Zielbestimmung, bereit am Behandlungsstuhl.",
+          hero_lede_1:
+            "Die TMS Measurement App berechnet die F3-Platzierung aus drei Kopfmessungen, speichert Patientendaten lokal und hält Ihren klinischen Arbeitsablauf konsistent.",
+          hero_lede_2:
+            "Geben Sie Tragus-zu-Tragus, Nasion-zu-Inion und den Kopfumfang ein, um die X- und korrigierte Y-Distanz mit einer klaren Erklärung zu erhalten.",
+          cta_github: "Auf GitHub ansehen",
+          feature_offline: "Offline-Verlauf",
+          feature_formula: "Beam-F3-Formel integriert",
+          feature_ui: "Klinisch angepasste Oberfläche",
+          feature_validation: "Sofortige Validierung",
+          hero_icon_aria: "Kopf-Zielsymbol",
+          section_mark_title: "Beam-F3-Abstände markieren",
+          section_mark_body:
+            "Geben Sie zuerst die drei Kopfmessungen ein. Verwenden Sie dann die berechneten Abstände, um die Stelle zu markieren. Die Bilder unten zeigen die X-, Y- und Z-Abstände wie im Beam-F3-Leitfaden beschrieben.",
+          step1_title: "X-Abstand von der Mittellinie",
+          step1_alt: "X-Abstand von der Mittellinie über die Stirn markiert",
+          step1_body: "Markieren Sie den X-cm-Abstand von der Mittellinie über die Stirn.",
+          step2_title: "Y-Abstand entlang der Mittellinie",
+          step2_alt: "Y-Abstand entlang der Mittellinie auf dem Kopf markiert",
+          step2_body: "Messen Sie den Y-cm-Abstand entlang der Mittellinie auf dem Kopf.",
+          step3_title: "Z-Abstand zum Ohr",
+          step3_alt: "Z-Abstand vom Vertex zum Ohr markiert",
+          step3_body: "Messen Sie den Z-cm-Abstand vom Vertex zum Ohr.",
+          section_locate_title: "F3 lokalisieren",
+          section_locate_body:
+            "Die App berechnet X und Y aus Ihren Messungen und wendet die Beam-F3-Korrektur an. Folgen Sie den Schritten unten, um die Stelle zu markieren.",
+          formula_line:
+            "X = 0.1154 × HC | Y = 0.2637 × ((TTT + NI) / 2) | Yadj = Y + 0.35 cm",
+          locate_step1: "Messen Sie X entlang des Umfangs von der Mittellinie zur linken Seite.",
+          locate_step2:
+            "Ziehen Sie vom Vertex (Cz) eine Linie durch den linken präaurikulären Punkt.",
+          locate_step3: "Messen Sie Yadj entlang dieser Linie, um den F3-Punkt zu lokalisieren.",
+          section_map_title: "Referenzkarte",
+          map_body_1:
+            "Die EEG-Referenzkarte hilft, die F3-Region im 10-20-System zu bestätigen. Verwenden Sie sie zusammen mit den berechneten Abständen zur Platzierung.",
+          map_body_2:
+            "Die App speichert jede Messung lokal, sodass Kliniker frühere Sitzungen ohne Netzwerkzugang überprüfen können.",
+          map_alt: "EEG 10-20 Referenzkarte",
+          section_calc_title: "F3 berechnen",
+          section_calc_body:
+            "Geben Sie die drei Kopfmessungen in Zentimetern ein, um die Beam-F3-Abstände für die Markierung zu berechnen.",
+          calc_label_ttt: "Tragus zu Tragus (TTT)",
+          calc_label_ni: "Nasion zu Inion (NI)",
+          calc_label_hc: "Kopfumfang (HC)",
+          calc_button: "Berechnen",
+          calc_reset: "Zurücksetzen",
+          calc_result_x: "X (Umfang)",
+          calc_result_y: "Y (radiale Distanz)",
+          calc_result_yadj: "Yadj (korrigiert)",
+          calc_note: "X = 0.1154 × HC, Y = 0.2637 × ((TTT + NI) / 2), Yadj = Y + 0.35 cm.",
+          footer:
+            "Bilder von clinicalresearcher.org/F3. Entwickelt von cocodedk für schnelle, zuverlässige TMS-Dokumentation.",
+          unit_cm: "cm"
+        },
+        ja: {
+          lang: "ja",
+          dir: "ltr",
+          page_title: "TMS 測定アプリ | Beam F3 計算機",
+          meta_description:
+            "TMS 測定アプリは頭部計測から Beam F3 ターゲット距離を算出し、臨床家が F3 部位を迅速に特定できるよう支援します。",
+          language_label: "言語",
+          badge_platform: "Android",
+          badge_product: "TMS 測定",
+          hero_title: "高速 Beam F3 ターゲティング、チェアサイドですぐに。",
+          hero_lede_1:
+            "TMS 測定アプリは 3 つの頭部計測から F3 位置を算出し、クライアント記録をローカルに保存して臨床ワークフローの一貫性を保ちます。",
+          hero_lede_2:
+            "耳珠間距離、鼻根-後頭結節間距離、頭囲を入力すると、X および補正 Y 距離が明確な説明とともに表示されます。",
+          cta_github: "GitHub で見る",
+          feature_offline: "オフライン優先の履歴",
+          feature_formula: "Beam F3 公式内蔵",
+          feature_ui: "臨床家向け UI",
+          feature_validation: "即時バリデーション",
+          hero_icon_aria: "頭部ターゲティングアイコン",
+          section_mark_title: "Beam F3 距離をマークする",
+          section_mark_body:
+            "最初に 3 つの頭部計測値を入力します。次に算出された距離を使って部位をマークします。下の画像は Beam F3 ガイドに従った X、Y、Z 距離を示しています。",
+          step1_title: "正中線からの X 距離",
+          step1_alt: "正中線から額を横切って X 距離をマーク",
+          step1_body: "正中線から額を横切って X cm の距離をマークします。",
+          step2_title: "正中線に沿った Y 距離",
+          step2_alt: "頭頂の正中線に沿って Y 距離をマーク",
+          step2_body: "頭頂の正中線に沿って Y cm の距離を測定します。",
+          step3_title: "耳方向への Z 距離",
+          step3_alt: "頭頂から耳方向へ Z 距離をマーク",
+          step3_body: "頭頂から耳方向へ Z cm の距離を測定します。",
+          section_locate_title: "F3 を特定する",
+          section_locate_body:
+            "アプリは計測値から X と Y を算出し、Beam F3 補正を適用します。以下の手順に従って部位をマークしてください。",
+          formula_line:
+            "X = 0.1154 × HC | Y = 0.2637 × ((TTT + NI) / 2) | Yadj = Y + 0.35 cm",
+          locate_step1: "正中線から左側に向かって頭囲に沿って X を測定します。",
+          locate_step2:
+            "頭頂 (Cz) から左前耳点を通る線を引きます。",
+          locate_step3: "その線に沿って Yadj を測定し、F3 ポイントを特定します。",
+          section_map_title: "参照マップ",
+          map_body_1:
+            "EEG 参照マップは 10-20 法における F3 領域の確認に役立ちます。算出された距離と併せて配置に使用してください。",
+          map_body_2:
+            "アプリはすべての計測値をローカルに保存するため、臨床家はネットワーク接続なしで過去のセッションを確認できます。",
+          map_alt: "EEG 10-20 参照マップ",
+          section_calc_title: "F3 を計算する",
+          section_calc_body:
+            "3 つの頭部計測値をセンチメートルで入力し、マーキングに使用する Beam F3 距離を計算します。",
+          calc_label_ttt: "耳珠間距離 (TTT)",
+          calc_label_ni: "鼻根-後頭結節 (NI)",
+          calc_label_hc: "頭囲 (HC)",
+          calc_button: "計算",
+          calc_reset: "リセット",
+          calc_result_x: "X（頭囲）",
+          calc_result_y: "Y（放射距離）",
+          calc_result_yadj: "Yadj（補正済み）",
+          calc_note: "X = 0.1154 × HC、Y = 0.2637 × ((TTT + NI) / 2)、Yadj = Y + 0.35 cm。",
+          footer: "画像出典: clinicalresearcher.org/F3。cocodedk が迅速で信頼性の高い TMS 記録のために開発。",
+          unit_cm: "cm"
         }
       };
 
@@ -887,6 +1184,18 @@
         }
         if (lower === "zh-tw" || lower.startsWith("zh-hant") || lower.startsWith("zh-hk")) {
           return "zh-TW";
+        }
+        if (lower.startsWith("fr")) {
+          return "fr";
+        }
+        if (lower.startsWith("es")) {
+          return "es";
+        }
+        if (lower.startsWith("de")) {
+          return "de";
+        }
+        if (lower.startsWith("ja")) {
+          return "ja";
         }
         return "en";
       };
