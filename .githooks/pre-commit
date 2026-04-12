@@ -1,5 +1,17 @@
-#!/usr/bin/env bash
-set -euo pipefail
+#!/bin/sh
+set -eu
 
-export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
-./gradlew test
+SMOKE_CMD="./gradlew buildSmoke --no-daemon --quiet"
+
+$SMOKE_CMD
+
+# Build signed release if signing env vars are set
+if [ -n "${KEYSTORE_PATH:-}" ] && [ -n "${KEYSTORE_PASSWORD:-}" ] && \
+   [ -n "${KEY_ALIAS:-}" ] && [ -n "${KEY_PASSWORD:-}" ]; then
+  if [ -f "$KEYSTORE_PATH" ]; then
+    ./gradlew assembleRelease --no-daemon --quiet
+  else
+    echo "KEYSTORE_PATH is set but file does not exist: $KEYSTORE_PATH" >&2
+    exit 1
+  fi
+fi
