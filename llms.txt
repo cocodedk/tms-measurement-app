@@ -1,0 +1,22 @@
+# tms-measurement-app
+
+> Open-source, offline Android app for Beam F3 targeting in transcranial magnetic stimulation (TMS). Calculate F3 site distances from head measurements — privacy-first, no data collection.
+
+## Project
+
+- [GitHub Repository](https://github.com/cocodedk/tms-measurement-app)
+- [Website](https://cocodedk.github.io/tms-measurement-app/)
+- [Download](https://github.com/cocodedk/tms-measurement-app/releases/latest/download/TMSMeasurement.apk)
+- [Author](https://cocode.dk)
+
+## Source
+
+- [App module](https://github.com/cocodedk/tms-measurement-app/tree/main/app)
+- [README](https://github.com/cocodedk/tms-measurement-app/blob/main/README.md)
+- [CLAUDE.md](https://github.com/cocodedk/tms-measurement-app/blob/main/CLAUDE.md)
+
+## Stack
+
+- Kotlin, Jetpack Compose, Android SDK 36
+- Room database, Gradle build system
+- Fully offline — no network access, no data collection
