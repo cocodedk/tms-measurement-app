@@ -1,6 +1,7 @@
 package com.cocode.tmsmeasurement.ui
 
 import android.app.Activity
+import androidx.activity.compose.BackHandler
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
@@ -59,24 +60,28 @@ fun MeasurementApp() {
         AppCompatDelegate.getApplicationLocales().toLanguageTags()
     )
 
+    // Shared by the top-bar Back and the system Back gesture: the form returns to the
+    // measurement detail it was opened from; every other non-root screen returns to the list.
+    val navigateBack: () -> Unit = {
+        if (screen == AppScreen.TreatmentForm) {
+            editingTreatmentId = null
+            screen = AppScreen.MeasurementDetail
+        } else {
+            screen = AppScreen.Measurement
+            selectedMeasurementId = null
+            editingTreatmentId = null
+        }
+    }
+    // On the root screen, let the system handle Back (exits the app).
+    BackHandler(enabled = screen != AppScreen.Measurement, onBack = navigateBack)
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             MeasurementTopBar(
                 screen = screen,
                 isEditingTreatment = editingTreatmentId != null,
-                onBack = {
-                    // The form returns to the measurement detail it was opened from;
-                    // every other screen returns to the measurement list.
-                    if (screen == AppScreen.TreatmentForm) {
-                        editingTreatmentId = null
-                        screen = AppScreen.MeasurementDetail
-                    } else {
-                        screen = AppScreen.Measurement
-                        selectedMeasurementId = null
-                        editingTreatmentId = null
-                    }
-                },
+                onBack = navigateBack,
                 onSettings = { screen = AppScreen.Settings },
                 onHelp = { openHelpPage(context) },
                 onAbout = { screen = AppScreen.About }
