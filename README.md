@@ -1,6 +1,6 @@
 # TMS Measurement App
 
-Open-source, offline, privacy-first Android app for Beam F3 targeting in transcranial magnetic stimulation (TMS). Enter three head measurements to calculate X, Y, and adjusted Y distances for F3 site localization, and save them per client for follow-up sessions.
+Open-source, offline, privacy-first Android app for Beam F3 targeting in transcranial magnetic stimulation (TMS). Enter three head measurements to calculate X, Y, and adjusted Y distances for F3 site localization, and save them per client for follow-up sessions. Each measurement can also store a log of treatment sessions — intensity, pulses, frequency, motor threshold, train parameters, site, and notes — saved locally per client.
 
 ## Website
 
@@ -21,6 +21,7 @@ No data is collected, transmitted, or stored outside the device. The app does no
 
 - Beam F3 calculations with two-decimal rounding
 - Local history of measurement records
+- Treatment session logging per measurement (date, intensity % MT, total pulses, frequency, motor threshold % MSO, train breakdown, site, notes)
 - Validation for required fields
 - Multilingual support (English, فارسی, العربية, 繁體中文, Français, Español, Deutsch, 日本語)
 
