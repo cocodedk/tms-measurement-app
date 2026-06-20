@@ -48,4 +48,70 @@
     <string name="language_chinese_taiwan">繁體中文</string>
     <string name="button_apply_language">تطبيق اللغة</string>
     <string name="error_no_browser">لا يوجد تطبيق متصفح لفتح صفحة المساعدة.</string>
+    <!-- Treatment validation errors (Phase 3). -->
+    <string name="error_treatment_intensity_positive">يجب أن تكون الشدة رقمًا موجبًا.</string>
+    <string name="error_treatment_total_pulses_nonnegative">يجب أن يكون إجمالي النبضات عددًا صحيحًا يساوي صفرًا أو أكثر.</string>
+    <string name="error_treatment_frequency_positive">يجب أن يكون التردد رقمًا موجبًا.</string>
+    <!-- "motor threshold" = العتبة الحركية (standard clinical term). -->
+    <string name="error_treatment_motor_threshold_positive">يجب أن تكون العتبة الحركية رقمًا موجبًا.</string>
+    <!-- rTMS "trains" rendered as القطارات; clinical term, needs expert review. -->
+    <string name="error_treatment_trains_nonnegative">يجب أن يكون عدد القطارات عددًا صحيحًا يساوي صفرًا أو أكثر.</string>
+    <!-- "pulses per train" — clinical term, needs expert review. -->
+    <string name="error_treatment_pulses_per_train_nonnegative">يجب أن تكون النبضات لكل قطار عددًا صحيحًا يساوي صفرًا أو أكثر.</string>
+    <!-- "train duration" — clinical term, needs expert review. -->
+    <string name="error_treatment_train_duration_positive">يجب أن تكون مدة القطار رقمًا موجبًا.</string>
+    <!-- "inter-train interval" — clinical term, needs expert review. -->
+    <string name="error_treatment_inter_train_interval_positive">يجب أن يكون الفاصل بين القطارات رقمًا موجبًا.</string>
+    <string name="error_treatment_session_duration_positive">يجب أن تكون مدة الجلسة رقمًا موجبًا.</string>
+    <!-- Measurement detail screen and treatment list (Phase 4c). -->
+    <string name="section_measurement">القياس</string>
+    <string name="section_treatments">جلسات العلاج</string>
+    <string name="treatment_empty">لا توجد جلسات علاج مسجَّلة بعد.</string>
+    <string name="button_add_treatment">إضافة علاج</string>
+    <string name="button_delete_measurement">حذف القياس</string>
+    <string name="treatment_chip_intensity">%1$s %%MT</string>
+    <string name="treatment_chip_total_pulses">%1$s نبضة</string>
+    <string name="treatment_chip_frequency">%1$s Hz</string>
+    <string name="treatment_chip_motor_threshold">%1$s %%MSO</string>
+    <string name="treatment_row_more">اضغط للعرض والتعديل</string>
+    <string name="dialog_delete_measurement_title">حذف القياس؟</string>
+    <string name="dialog_delete_measurement_message">يؤدي هذا إلى حذف هذا القياس وجميع جلسات العلاج المرتبطة به نهائيًا. لا يمكن التراجع عن ذلك.</string>
+    <string name="dialog_cancel">إلغاء</string>
+    <!-- Treatment form screen, add and edit (Phase 4d). -->
+    <string name="screen_title_treatment_add">إضافة علاج</string>
+    <string name="screen_title_treatment_edit">تعديل العلاج</string>
+    <string name="section_treatment_essentials">الأساسيات</string>
+    <!-- "motor threshold" = العتبة الحركية (standard clinical term). -->
+    <string name="section_treatment_motor_threshold">العتبة الحركية</string>
+    <!-- "train breakdown" — rTMS clinical term, needs expert review. -->
+    <string name="section_treatment_train">تفصيل القطارات</string>
+    <string name="section_treatment_context">السياق</string>
+    <string name="label_treatment_date">تاريخ الجلسة</string>
+    <string name="label_treatment_intensity">الشدة</string>
+    <string name="label_treatment_total_pulses">إجمالي النبضات</string>
+    <string name="label_treatment_frequency">التردد</string>
+    <!-- "motor threshold" = العتبة الحركية (standard clinical term). -->
+    <string name="label_treatment_motor_threshold">العتبة الحركية</string>
+    <!-- rTMS "number of trains" — clinical term, needs expert review. -->
+    <string name="label_treatment_trains">عدد القطارات</string>
+    <!-- "pulses per train" — clinical term, needs expert review. -->
+    <string name="label_treatment_pulses_per_train">النبضات لكل قطار</string>
+    <!-- "train duration" — clinical term, needs expert review. -->
+    <string name="label_treatment_train_duration">مدة القطار</string>
+    <!-- "inter-train interval" — clinical term, needs expert review. -->
+    <string name="label_treatment_inter_train_interval">الفاصل بين القطارات</string>
+    <string name="label_treatment_site">موقع التحفيز</string>
+    <string name="label_treatment_session_duration">مدة الجلسة</string>
+    <string name="label_treatment_notes">ملاحظات</string>
+    <string name="unit_percent_mt">%MT</string>
+    <string name="unit_percent_mso">%MSO</string>
+    <string name="unit_hz">Hz</string>
+    <string name="unit_seconds">ث</string>
+    <string name="unit_minutes">د</string>
+    <string name="button_save_treatment">حفظ العلاج</string>
+    <string name="button_delete_treatment">حذف العلاج</string>
+    <string name="action_pick_date">تغيير التاريخ</string>
+    <string name="dialog_date_confirm">موافق</string>
+    <string name="dialog_delete_treatment_title">حذف العلاج؟</string>
+    <string name="dialog_delete_treatment_message">يؤدي هذا إلى حذف جلسة العلاج هذه نهائيًا. لا يمكن التراجع عن ذلك.</string>
 </resources>

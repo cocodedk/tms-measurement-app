@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">TMS Measurement</string>
     <string name="screen_title_measurement">TMS F3 Measurement</string>
     <string name="screen_title_about">About</string>
@@ -48,4 +48,62 @@
     <string name="language_chinese_taiwan">Traditional Chinese (繁體中文)</string>
     <string name="button_apply_language">Apply language</string>
     <string name="error_no_browser">No browser app found to open the help page.</string>
+    <!-- Treatment validation errors (Phase 3). Translations follow in the i18n phase;
+         clinical terms must be verified by the user, so they are not machine-translated. -->
+    <string name="error_treatment_intensity_positive" tools:ignore="MissingTranslation">Intensity must be a positive number.</string>
+    <string name="error_treatment_total_pulses_nonnegative" tools:ignore="MissingTranslation">Total pulses must be a whole number of zero or more.</string>
+    <string name="error_treatment_frequency_positive" tools:ignore="MissingTranslation">Frequency must be a positive number.</string>
+    <string name="error_treatment_motor_threshold_positive" tools:ignore="MissingTranslation">Motor threshold must be a positive number.</string>
+    <string name="error_treatment_trains_nonnegative" tools:ignore="MissingTranslation">Number of trains must be a whole number of zero or more.</string>
+    <string name="error_treatment_pulses_per_train_nonnegative" tools:ignore="MissingTranslation">Pulses per train must be a whole number of zero or more.</string>
+    <string name="error_treatment_train_duration_positive" tools:ignore="MissingTranslation">Train duration must be a positive number.</string>
+    <string name="error_treatment_inter_train_interval_positive" tools:ignore="MissingTranslation">Inter-train interval must be a positive number.</string>
+    <string name="error_treatment_session_duration_positive" tools:ignore="MissingTranslation">Session duration must be a positive number.</string>
+    <!-- Measurement detail screen and treatment list (Phase 4c). Translations follow in
+         the i18n phase; clinical terms are verified by the user, not machine-translated. -->
+    <string name="section_measurement" tools:ignore="MissingTranslation">Measurement</string>
+    <string name="section_treatments" tools:ignore="MissingTranslation">Treatment sessions</string>
+    <string name="treatment_empty" tools:ignore="MissingTranslation">No treatment sessions recorded yet.</string>
+    <string name="button_add_treatment" tools:ignore="MissingTranslation">Add treatment</string>
+    <string name="button_delete_measurement" tools:ignore="MissingTranslation">Delete measurement</string>
+    <string name="treatment_chip_intensity" tools:ignore="MissingTranslation">%1$s %%MT</string>
+    <string name="treatment_chip_total_pulses" tools:ignore="MissingTranslation">%1$s pulses</string>
+    <string name="treatment_chip_frequency" tools:ignore="MissingTranslation">%1$s Hz</string>
+    <string name="treatment_chip_motor_threshold" tools:ignore="MissingTranslation">%1$s %%MSO</string>
+    <string name="treatment_chip_separator" translatable="false"> · </string>
+    <string name="treatment_row_more" tools:ignore="MissingTranslation">Tap to view and edit</string>
+    <string name="dialog_delete_measurement_title" tools:ignore="MissingTranslation">Delete measurement?</string>
+    <string name="dialog_delete_measurement_message" tools:ignore="MissingTranslation">This permanently deletes this measurement and all of its treatment sessions. This cannot be undone.</string>
+    <string name="dialog_cancel" tools:ignore="MissingTranslation">Cancel</string>
+    <!-- Treatment form screen, add and edit (Phase 4d). Translations follow in the i18n
+         phase; clinical terms are verified by the user, not machine-translated. -->
+    <string name="screen_title_treatment_add" tools:ignore="MissingTranslation">Add treatment</string>
+    <string name="screen_title_treatment_edit" tools:ignore="MissingTranslation">Edit treatment</string>
+    <string name="section_treatment_essentials" tools:ignore="MissingTranslation">Essentials</string>
+    <string name="section_treatment_motor_threshold" tools:ignore="MissingTranslation">Motor threshold</string>
+    <string name="section_treatment_train" tools:ignore="MissingTranslation">Train breakdown</string>
+    <string name="section_treatment_context" tools:ignore="MissingTranslation">Context</string>
+    <string name="label_treatment_date" tools:ignore="MissingTranslation">Session date</string>
+    <string name="label_treatment_intensity" tools:ignore="MissingTranslation">Intensity</string>
+    <string name="label_treatment_total_pulses" tools:ignore="MissingTranslation">Total pulses</string>
+    <string name="label_treatment_frequency" tools:ignore="MissingTranslation">Frequency</string>
+    <string name="label_treatment_motor_threshold" tools:ignore="MissingTranslation">Motor threshold</string>
+    <string name="label_treatment_trains" tools:ignore="MissingTranslation">Number of trains</string>
+    <string name="label_treatment_pulses_per_train" tools:ignore="MissingTranslation">Pulses per train</string>
+    <string name="label_treatment_train_duration" tools:ignore="MissingTranslation">Train duration</string>
+    <string name="label_treatment_inter_train_interval" tools:ignore="MissingTranslation">Inter-train interval</string>
+    <string name="label_treatment_site" tools:ignore="MissingTranslation">Stimulation site</string>
+    <string name="label_treatment_session_duration" tools:ignore="MissingTranslation">Session duration</string>
+    <string name="label_treatment_notes" tools:ignore="MissingTranslation">Notes</string>
+    <string name="unit_percent_mt" tools:ignore="MissingTranslation">%MT</string>
+    <string name="unit_percent_mso" tools:ignore="MissingTranslation">%MSO</string>
+    <string name="unit_hz" tools:ignore="MissingTranslation">Hz</string>
+    <string name="unit_seconds" tools:ignore="MissingTranslation">s</string>
+    <string name="unit_minutes" tools:ignore="MissingTranslation">min</string>
+    <string name="button_save_treatment" tools:ignore="MissingTranslation">Save treatment</string>
+    <string name="button_delete_treatment" tools:ignore="MissingTranslation">Delete treatment</string>
+    <string name="action_pick_date" tools:ignore="MissingTranslation">Change date</string>
+    <string name="dialog_date_confirm" tools:ignore="MissingTranslation">OK</string>
+    <string name="dialog_delete_treatment_title" tools:ignore="MissingTranslation">Delete treatment?</string>
+    <string name="dialog_delete_treatment_message" tools:ignore="MissingTranslation">This permanently deletes this treatment session. This cannot be undone.</string>
 </resources>
