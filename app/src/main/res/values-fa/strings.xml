@@ -48,4 +48,70 @@
     <string name="language_chinese_taiwan">繁體中文</string>
     <string name="button_apply_language">اعمال زبان</string>
     <string name="error_no_browser">هیچ مرورگری برای باز کردن صفحه راهنما پیدا نشد.</string>
+    <!-- Treatment validation errors (Phase 3). -->
+    <string name="error_treatment_intensity_positive">شدت باید عددی مثبت باشد.</string>
+    <string name="error_treatment_total_pulses_nonnegative">تعداد کل پالس‌ها باید عددی صحیح برابر صفر یا بیشتر باشد.</string>
+    <string name="error_treatment_frequency_positive">فرکانس باید عددی مثبت باشد.</string>
+    <!-- "motor threshold" = آستانه حرکتی (standard clinical term). -->
+    <string name="error_treatment_motor_threshold_positive">آستانه حرکتی باید عددی مثبت باشد.</string>
+    <!-- rTMS "trains" rendered as قطارها; clinical term, needs expert review. -->
+    <string name="error_treatment_trains_nonnegative">تعداد قطارها باید عددی صحیح برابر صفر یا بیشتر باشد.</string>
+    <!-- "pulses per train" — clinical term, needs expert review. -->
+    <string name="error_treatment_pulses_per_train_nonnegative">پالس در هر قطار باید عددی صحیح برابر صفر یا بیشتر باشد.</string>
+    <!-- "train duration" — clinical term, needs expert review. -->
+    <string name="error_treatment_train_duration_positive">مدت قطار باید عددی مثبت باشد.</string>
+    <!-- "inter-train interval" — clinical term, needs expert review. -->
+    <string name="error_treatment_inter_train_interval_positive">فاصله بین قطارها باید عددی مثبت باشد.</string>
+    <string name="error_treatment_session_duration_positive">مدت جلسه باید عددی مثبت باشد.</string>
+    <!-- Measurement detail screen and treatment list (Phase 4c). -->
+    <string name="section_measurement">اندازه‌گیری</string>
+    <string name="section_treatments">جلسات درمان</string>
+    <string name="treatment_empty">هنوز جلسه درمانی ثبت نشده است.</string>
+    <string name="button_add_treatment">افزودن درمان</string>
+    <string name="button_delete_measurement">حذف اندازه‌گیری</string>
+    <string name="treatment_chip_intensity">%1$s %%MT</string>
+    <string name="treatment_chip_total_pulses">%1$s پالس</string>
+    <string name="treatment_chip_frequency">%1$s Hz</string>
+    <string name="treatment_chip_motor_threshold">%1$s %%MSO</string>
+    <string name="treatment_row_more">برای مشاهده و ویرایش ضربه بزنید</string>
+    <string name="dialog_delete_measurement_title">اندازه‌گیری حذف شود؟</string>
+    <string name="dialog_delete_measurement_message">این کار این اندازه‌گیری و همه جلسات درمانی مرتبط با آن را برای همیشه حذف می‌کند. این عمل قابل بازگشت نیست.</string>
+    <string name="dialog_cancel">انصراف</string>
+    <!-- Treatment form screen, add and edit (Phase 4d). -->
+    <string name="screen_title_treatment_add">افزودن درمان</string>
+    <string name="screen_title_treatment_edit">ویرایش درمان</string>
+    <string name="section_treatment_essentials">موارد ضروری</string>
+    <!-- "motor threshold" = آستانه حرکتی (standard clinical term). -->
+    <string name="section_treatment_motor_threshold">آستانه حرکتی</string>
+    <!-- "train breakdown" — rTMS clinical term, needs expert review. -->
+    <string name="section_treatment_train">تفکیک قطارها</string>
+    <string name="section_treatment_context">زمینه</string>
+    <string name="label_treatment_date">تاریخ جلسه</string>
+    <string name="label_treatment_intensity">شدت</string>
+    <string name="label_treatment_total_pulses">تعداد کل پالس‌ها</string>
+    <string name="label_treatment_frequency">فرکانس</string>
+    <!-- "motor threshold" = آستانه حرکتی (standard clinical term). -->
+    <string name="label_treatment_motor_threshold">آستانه حرکتی</string>
+    <!-- rTMS "number of trains" — clinical term, needs expert review. -->
+    <string name="label_treatment_trains">تعداد قطارها</string>
+    <!-- "pulses per train" — clinical term, needs expert review. -->
+    <string name="label_treatment_pulses_per_train">پالس در هر قطار</string>
+    <!-- "train duration" — clinical term, needs expert review. -->
+    <string name="label_treatment_train_duration">مدت قطار</string>
+    <!-- "inter-train interval" — clinical term, needs expert review. -->
+    <string name="label_treatment_inter_train_interval">فاصله بین قطارها</string>
+    <string name="label_treatment_site">محل تحریک</string>
+    <string name="label_treatment_session_duration">مدت جلسه</string>
+    <string name="label_treatment_notes">یادداشت‌ها</string>
+    <string name="unit_percent_mt">%MT</string>
+    <string name="unit_percent_mso">%MSO</string>
+    <string name="unit_hz">Hz</string>
+    <string name="unit_seconds">ث</string>
+    <string name="unit_minutes">دقیقه</string>
+    <string name="button_save_treatment">ذخیره درمان</string>
+    <string name="button_delete_treatment">حذف درمان</string>
+    <string name="action_pick_date">تغییر تاریخ</string>
+    <string name="dialog_date_confirm">تأیید</string>
+    <string name="dialog_delete_treatment_title">درمان حذف شود؟</string>
+    <string name="dialog_delete_treatment_message">این کار این جلسه درمانی را برای همیشه حذف می‌کند. این عمل قابل بازگشت نیست.</string>
 </resources>
