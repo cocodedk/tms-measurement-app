@@ -14,6 +14,21 @@ if (hasKeystore) {
     keystorePropertiesFile.inputStream().use { keystoreProperties.load(it) }
 }
 
+// The release workflow computes the version from the latest git tag and passes it
+// in; F-Droid passes it as a Gradle property (gradleprops in the build recipe).
+// A local build with neither just gets 0.0.0 and never pretends otherwise.
+val appVersionName: String = providers.gradleProperty("VERSION_NAME").orNull?.takeIf { it.isNotBlank() }
+    ?: System.getenv("VERSION_NAME")?.takeIf { it.isNotBlank() }
+    ?: "0.0.0"
+val semver = appVersionName.split(".")
+val vMajor = semver.getOrNull(0)?.toIntOrNull() ?: 0
+val vMinor = semver.getOrNull(1)?.toIntOrNull() ?: 0
+val vPatch = semver.getOrNull(2)?.toIntOrNull() ?: 0
+// Ceiling: 999 minor and 999 patch releases per level before this overflows. Floored
+// at 1 (only ever engages for the 0.0.0 fallback): AGP rejects versionCode 0 outright,
+// and buildSmoke/CI build with no VERSION_NAME set.
+val appVersionCode: Int = maxOf(1, vMajor * 1_000_000 + vMinor * 1_000 + vPatch)
+
 android {
     namespace = "com.cocode.tmsmeasurement"
     compileSdk = 36
@@ -22,8 +37,8 @@ android {
         applicationId = "com.cocode.tmsmeasurement"
         minSdk = 24
         targetSdk = 36
-        versionCode = 14
-        versionName = "1.1.1"
+        versionCode = appVersionCode
+        versionName = appVersionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
