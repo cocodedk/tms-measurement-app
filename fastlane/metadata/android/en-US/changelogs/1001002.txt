@@ -1,0 +1,1 @@
+No user-facing app changes; this build turns off Google dependency metadata in the APK and adds F-Droid packaging metadata.
