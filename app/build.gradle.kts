@@ -61,6 +61,13 @@ android {
         compose = true
         buildConfig = true
     }
+
+    // AGP otherwise adds a Google-encrypted dependency list to the APK signing block,
+    // and F-Droid rejects any release APK that carries it.
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
+    }
 }
 
 ksp {
