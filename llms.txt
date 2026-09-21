@@ -5,7 +5,7 @@
 ## Project
 
 - [GitHub Repository](https://github.com/cocodedk/tms-measurement-app)
-- [Website](https://cocodedk.github.io/tms-measurement-app/)
+- [Website](https://tms.cocode.dk/)
 - [Download](https://github.com/cocodedk/tms-measurement-app/releases/latest/download/TMSMeasurement.apk)
 - [Author](https://cocode.dk)
 

@@ -5,7 +5,7 @@
 **Last updated:** 14 July 2026
 
 > The always-current version of this policy is published at
-> **https://cocodedk.github.io/tms-measurement-app/privacy.html**
+> **https://tms.cocode.dk/privacy.html**
 
 **The TMS Measurement App collects no personal data, and nothing you enter ever leaves your device.**
 It calculates Beam F3 targeting distances from the head measurements you type in, entirely offline.

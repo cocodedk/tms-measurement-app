@@ -4,14 +4,14 @@ Open-source, offline, privacy-first Android app for Beam F3 targeting in transcr
 
 ## Website
 
-- [English](https://cocodedk.github.io/tms-measurement-app/)
-- [فارسی](https://cocodedk.github.io/tms-measurement-app/?lang=fa)
-- [العربية](https://cocodedk.github.io/tms-measurement-app/?lang=ar)
-- [繁體中文](https://cocodedk.github.io/tms-measurement-app/?lang=zh-TW)
-- [Français](https://cocodedk.github.io/tms-measurement-app/?lang=fr)
-- [Español](https://cocodedk.github.io/tms-measurement-app/?lang=es)
-- [Deutsch](https://cocodedk.github.io/tms-measurement-app/?lang=de)
-- [日本語](https://cocodedk.github.io/tms-measurement-app/?lang=ja)
+- [English](https://tms.cocode.dk/)
+- [فارسی](https://tms.cocode.dk/?lang=fa)
+- [العربية](https://tms.cocode.dk/?lang=ar)
+- [繁體中文](https://tms.cocode.dk/?lang=zh-TW)
+- [Français](https://tms.cocode.dk/?lang=fr)
+- [Español](https://tms.cocode.dk/?lang=es)
+- [Deutsch](https://tms.cocode.dk/?lang=de)
+- [日本語](https://tms.cocode.dk/?lang=ja)
 
 ## Privacy
 
