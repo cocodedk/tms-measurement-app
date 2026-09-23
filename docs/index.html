@@ -12,7 +12,7 @@
     <meta name="author" content="Babak Bandpey" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://tms.cocode.dk/" />
-    <link rel="alternate" hreflang="en" href="https://tms.cocode.dk/" />
+    <link rel="alternate" hreflang="en" href="https://tms.cocode.dk/?lang=en" />
     <link rel="alternate" hreflang="fa" href="https://tms.cocode.dk/?lang=fa" />
     <link rel="alternate" hreflang="ar" href="https://tms.cocode.dk/?lang=ar" />
     <link rel="alternate" hreflang="zh-Hant" href="https://tms.cocode.dk/?lang=zh-TW" />
@@ -407,7 +407,7 @@
          that attribute live without reloading), so the frame is now the one way to switch. -->
     <cocode-head project="TMS Measurement" accent="#e66a2c" on-accent="#ffffff">
       <a href="https://cocode.dk">cocode.dk</a>
-      <a href="./" hreflang="en">EN</a>
+      <a href="?lang=en" hreflang="en">EN</a>
       <a href="?lang=fa" hreflang="fa">FA</a>
       <a href="?lang=ar" hreflang="ar">AR</a>
       <a href="?lang=zh-TW" hreflang="zh-Hant">ZH</a>
@@ -1287,6 +1287,13 @@
 
       const storedLang = localStorage.getItem("tms-language");
       const urlLang = new URLSearchParams(window.location.search).get("lang");
+      // An explicit ?lang= (from the cocode.dk frame's own language links, or a bookmark)
+      // always wins and is remembered, the same way the removed <select> used to remember
+      // a manual choice -- otherwise picking "EN" would silently reopen in a stored or
+      // browser language instead.
+      if (urlLang) {
+        localStorage.setItem("tms-language", normalizeLang(urlLang));
+      }
       setLanguage(urlLang || storedLang || navigator.language);
 
       beamForm.addEventListener("input", updateOutputs);
