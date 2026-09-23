@@ -154,28 +154,6 @@
         padding: 24px;
         box-shadow: 0 16px 36px var(--shadow);
       }
-      .lang-switcher {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 18px;
-        flex-wrap: wrap;
-      }
-      .lang-switcher label {
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--muted);
-      }
-      .lang-switcher select {
-        border: 1px solid rgba(16, 42, 42, 0.18);
-        border-radius: 999px;
-        padding: 6px 12px;
-        font-family: inherit;
-        background: #fff;
-        color: var(--ink);
-      }
       .feature-grid {
         display: grid;
         gap: 16px;
@@ -201,8 +179,7 @@
         direction: rtl;
         text-align: right;
       }
-      html[dir="rtl"] .badge,
-      html[dir="rtl"] .lang-switcher {
+      html[dir="rtl"] .badge {
         flex-direction: row-reverse;
       }
       html[dir="rtl"] .formula {
@@ -392,7 +369,11 @@
         50% { transform: translateY(12px); }
         100% { transform: translateY(0px); }
       }
+      /* The cocode.dk frame lines up with the .wrap column. */
+      cocode-head, cocode-foot { --cocode-max: 1080px; --cocode-gutter: 24px; }
     </style>
+    <link rel="stylesheet" href="https://brand.cocode.dk/v1.css" />
+    <script type="module" src="https://brand.cocode.dk/v1.js"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -418,22 +399,26 @@
     </script>
   </head>
   <body>
+    <!-- The cocode.dk family frame. Without JavaScript its children show instead: a way home
+         and the language links (this page's own client-side i18n keeps working -- these are
+         real navigations to ?lang=xx, which the page's script already reads on load). The old
+         in-page language <select> is dropped: it can't stay in sync with the frame's own
+         switcher (the frame renders once, from <html lang> at load; the old control changed
+         that attribute live without reloading), so the frame is now the one way to switch. -->
+    <cocode-head project="TMS Measurement" accent="#e66a2c" on-accent="#ffffff">
+      <a href="https://cocode.dk">cocode.dk</a>
+      <a href="./" hreflang="en">EN</a>
+      <a href="?lang=fa" hreflang="fa">FA</a>
+      <a href="?lang=ar" hreflang="ar">AR</a>
+      <a href="?lang=zh-TW" hreflang="zh-Hant">ZH</a>
+      <a href="?lang=fr" hreflang="fr">FR</a>
+      <a href="?lang=es" hreflang="es">ES</a>
+      <a href="?lang=de" hreflang="de">DE</a>
+      <a href="?lang=ja" hreflang="ja">JA</a>
+    </cocode-head>
     <main class="wrap">
       <section class="hero">
         <div>
-          <div class="lang-switcher">
-            <label for="language-select" data-i18n="language_label">Language</label>
-            <select id="language-select">
-              <option value="en">English</option>
-              <option value="fa">فارسی</option>
-              <option value="ar">العربية</option>
-              <option value="zh-TW">繁體中文</option>
-              <option value="fr">Français</option>
-              <option value="es">Español</option>
-              <option value="de">Deutsch</option>
-              <option value="ja">日本語</option>
-            </select>
-          </div>
           <div class="badge">
             <span data-i18n="badge_platform">Android</span>
             <span data-i18n="badge_product">TMS Measurement</span>
@@ -634,13 +619,17 @@
       </section>
 
       <div class="footer" data-i18n="footer">
-        Images sourced from clinicalresearcher.org/F3. Built by cocodedk for fast,
-        reliable TMS documentation.
+        Images sourced from clinicalresearcher.org/F3.
       </div>
       <p style="text-align:center;padding:8px 0 24px;font-size:0.9rem;">
         <a href="./privacy.html">Privacy Policy</a>
       </p>
     </main>
+
+    <cocode-foot repo="cocodedk/tms-measurement-app">
+      <a href="https://cocode.dk">cocode.dk</a>
+      <a href="https://github.com/cocodedk/tms-measurement-app">GitHub</a>
+    </cocode-foot>
     <script>
       const translations = {
         en: {
@@ -709,7 +698,7 @@
           calc_result_yadj: "Yadj (adjusted)",
           calc_note: "X = 0.1154 × HC, Y = 0.2637 × ((TTT + NI) / 2), Yadj = Y + 0.35 cm.",
           footer:
-            "Images sourced from clinicalresearcher.org/F3. Built by cocodedk for fast, reliable TMS documentation.",
+            "Images sourced from clinicalresearcher.org/F3.",
           unit_cm: "cm"
         },
         fa: {
@@ -777,7 +766,7 @@
           calc_result_yadj: "Yadj (اصلاح‌شده)",
           calc_note: "X = 0.1154 × HC، Y = 0.2637 × ((TTT + NI) / 2)، Yadj = Y + 0.35 cm.",
           footer:
-            "تصاویر از clinicalresearcher.org/F3 گرفته شده‌اند. ساخته‌شده توسط cocodedk برای مستندسازی سریع و قابل اعتماد TMS.",
+            "تصاویر از clinicalresearcher.org/F3 گرفته شده‌اند.",
           unit_cm: "cm"
         },
         ar: {
@@ -845,7 +834,7 @@
           calc_result_yadj: "Yadj (المعدّل)",
           calc_note: "X = 0.1154 × HC، Y = 0.2637 × ((TTT + NI) / 2)، Yadj = Y + 0.35 cm.",
           footer:
-            "الصور مأخوذة من clinicalresearcher.org/F3. بُني بواسطة cocodedk لتوثيق TMS بسرعة وموثوقية.",
+            "الصور مأخوذة من clinicalresearcher.org/F3.",
           unit_cm: "cm"
         },
         "zh-TW": {
@@ -912,7 +901,7 @@
           calc_result_y: "Y（徑向距離）",
           calc_result_yadj: "Yadj（調整）",
           calc_note: "X = 0.1154 × HC，Y = 0.2637 × ((TTT + NI) / 2)，Yadj = Y + 0.35 cm。",
-          footer: "圖片來源：clinicalresearcher.org/F3。由 cocodedk 打造，提供快速可靠的 TMS 記錄。",
+          footer: "圖片來源：clinicalresearcher.org/F3。",
           unit_cm: "cm"
         },
         fr: {
@@ -981,7 +970,7 @@
           calc_result_yadj: "Yadj (ajusté)",
           calc_note: "X = 0.1154 × HC, Y = 0.2637 × ((TTT + NI) / 2), Yadj = Y + 0.35 cm.",
           footer:
-            "Images provenant de clinicalresearcher.org/F3. Développé par cocodedk pour une documentation TMS rapide et fiable.",
+            "Images provenant de clinicalresearcher.org/F3.",
           unit_cm: "cm"
         },
         es: {
@@ -1050,7 +1039,7 @@
           calc_result_yadj: "Yadj (ajustado)",
           calc_note: "X = 0.1154 × HC, Y = 0.2637 × ((TTT + NI) / 2), Yadj = Y + 0.35 cm.",
           footer:
-            "Imágenes de clinicalresearcher.org/F3. Desarrollado por cocodedk para documentación TMS rápida y confiable.",
+            "Imágenes de clinicalresearcher.org/F3.",
           unit_cm: "cm"
         },
         de: {
@@ -1119,7 +1108,7 @@
           calc_result_yadj: "Yadj (korrigiert)",
           calc_note: "X = 0.1154 × HC, Y = 0.2637 × ((TTT + NI) / 2), Yadj = Y + 0.35 cm.",
           footer:
-            "Bilder von clinicalresearcher.org/F3. Entwickelt von cocodedk für schnelle, zuverlässige TMS-Dokumentation.",
+            "Bilder von clinicalresearcher.org/F3.",
           unit_cm: "cm"
         },
         ja: {
@@ -1187,7 +1176,7 @@
           calc_result_y: "Y（放射距離）",
           calc_result_yadj: "Yadj（補正済み）",
           calc_note: "X = 0.1154 × HC、Y = 0.2637 × ((TTT + NI) / 2)、Yadj = Y + 0.35 cm。",
-          footer: "画像出典: clinicalresearcher.org/F3。cocodedk が迅速で信頼性の高い TMS 記録のために開発。",
+          footer: "画像出典: clinicalresearcher.org/F3。",
           unit_cm: "cm"
         }
       };
@@ -1196,7 +1185,6 @@
       const outputX = document.getElementById("calc-x");
       const outputY = document.getElementById("calc-y");
       const outputYAdj = document.getElementById("calc-yadj");
-      const languageSelect = document.getElementById("language-select");
 
       let currentLang = "en";
 
@@ -1294,9 +1282,6 @@
             element.textContent = value;
           }
         });
-        if (languageSelect) {
-          languageSelect.value = normalized;
-        }
         updateOutputs();
       };
 
@@ -1314,13 +1299,6 @@
       beamForm.addEventListener("reset", () => {
         setTimeout(clearOutputs, 0);
       });
-      if (languageSelect) {
-        languageSelect.addEventListener("change", (event) => {
-          const selected = event.target.value;
-          localStorage.setItem("tms-language", selected);
-          setLanguage(selected);
-        });
-      }
     </script>
   </body>
 </html>
