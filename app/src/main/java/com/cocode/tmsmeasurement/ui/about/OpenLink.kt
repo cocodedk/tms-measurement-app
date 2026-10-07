@@ -18,7 +18,7 @@ internal fun openLink(context: Context, url: String) {
     }
     try {
         context.startActivity(intent)
-    } catch (e: ActivityNotFoundException) {
+    } catch (_: ActivityNotFoundException) {
         Toast.makeText(context, context.getString(R.string.about_no_browser), Toast.LENGTH_LONG).show()
     }
 }
