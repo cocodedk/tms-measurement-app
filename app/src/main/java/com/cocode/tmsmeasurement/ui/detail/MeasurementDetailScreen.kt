@@ -67,6 +67,12 @@ internal fun MeasurementDetailScreen(
                 )
             }
         } else {
+            item {
+                Text(
+                    text = stringResource(R.string.treatment_units_legend),
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
             items(treatments, key = { it.id }) { treatment ->
                 TreatmentRow(
                     treatment = treatment,

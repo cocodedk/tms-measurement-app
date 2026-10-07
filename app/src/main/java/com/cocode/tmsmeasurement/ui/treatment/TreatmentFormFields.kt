@@ -31,7 +31,7 @@ internal fun TreatmentFormFields(
     onDraftChange: (TreatmentDraft) -> Unit,
     errors: TreatmentErrors
 ) {
-    FormSection(R.string.section_treatment_essentials) {
+    FormSection(R.string.section_treatment_essentials, R.string.treatment_help_mt) {
         NumberField(
             value = draft.intensity, label = R.string.label_treatment_intensity,
             unit = R.string.unit_percent_mt, field = TreatmentField.INTENSITY, errors = errors,
@@ -49,7 +49,7 @@ internal fun TreatmentFormFields(
         )
     }
 
-    FormSection(R.string.section_treatment_motor_threshold) {
+    FormSection(R.string.section_treatment_motor_threshold, R.string.treatment_help_mso) {
         NumberField(
             value = draft.motorThreshold, label = R.string.label_treatment_motor_threshold,
             unit = R.string.unit_percent_mso, field = TreatmentField.MOTOR_THRESHOLD, errors = errors,
@@ -57,7 +57,7 @@ internal fun TreatmentFormFields(
         )
     }
 
-    FormSection(R.string.section_treatment_train) {
+    FormSection(R.string.section_treatment_train, R.string.treatment_help_train) {
         NumberField(
             value = draft.trains, label = R.string.label_treatment_trains,
             unit = null, field = TreatmentField.NUMBER_OF_TRAINS, errors = errors,
@@ -102,9 +102,12 @@ internal fun TreatmentFormFields(
     }
 }
 
-/** A titled [Card] grouping related fields, matching the measurement screen's card style. */
+/**
+ * A titled [Card] grouping related fields, matching the measurement screen's card style. The
+ * optional [hintResId] explains a clinical term the fields use, once, under the title.
+ */
 @Composable
-private fun FormSection(titleResId: Int, content: @Composable () -> Unit) {
+private fun FormSection(titleResId: Int, hintResId: Int? = null, content: @Composable () -> Unit) {
     Card {
         Column(
             modifier = Modifier
@@ -116,6 +119,9 @@ private fun FormSection(titleResId: Int, content: @Composable () -> Unit) {
                 text = stringResource(titleResId),
                 style = MaterialTheme.typography.titleMedium
             )
+            hintResId?.let {
+                Text(text = stringResource(it), style = MaterialTheme.typography.bodySmall)
+            }
             content()
         }
     }
