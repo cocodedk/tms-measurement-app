@@ -35,6 +35,7 @@ internal fun SettingsScreen(
     val languageOptions = listOf(
         LanguageOption(SYSTEM_LANGUAGE_TAG, R.string.language_system),
         LanguageOption("en", R.string.language_english),
+        LanguageOption("da", R.string.language_danish),
         LanguageOption("fa", R.string.language_persian),
         LanguageOption("ar", R.string.language_arabic),
         LanguageOption("zh-TW", R.string.language_chinese_taiwan)

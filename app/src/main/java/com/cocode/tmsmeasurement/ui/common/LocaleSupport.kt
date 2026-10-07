@@ -46,6 +46,7 @@ fun normalizeLanguageTag(rawTags: String): String {
         lower.startsWith("ar") -> "ar"
         lower == "zh-tw" || lower.startsWith("zh-hant") -> "zh-TW"
         lower.startsWith("en") -> "en"
+        lower == "da" || lower.startsWith("da-") -> "da"
         else -> SYSTEM_LANGUAGE_TAG
     }
 }
