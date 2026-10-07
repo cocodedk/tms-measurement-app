@@ -881,6 +881,9 @@
           footer:
             "تصاویر از clinicalresearcher.org/F3 گرفته شده‌اند.",
           section_install_title: "نصب روی اندروید",
+          install_fdroid_soon: "به‌زودی در F-Droid",
+          install_apk: "دریافت فایل نصب اندروید (APK) از گیت‌هاب",
+          install_obtainium: "افزودن برنامه به Obtainium، برنامه‌ای که آن را به‌روز نگه می‌دارد",
           unit_cm: "cm"
         },
         ar: {
@@ -950,6 +953,9 @@
           footer:
             "الصور مأخوذة من clinicalresearcher.org/F3.",
           section_install_title: "التثبيت على أندرويد",
+          install_fdroid_soon: "قريبًا على F-Droid",
+          install_apk: "نزّل ملف تثبيت Android (APK) من GitHub",
+          install_obtainium: "أضف التطبيق إلى Obtainium، وهو تطبيق يُبقيه محدّثًا",
           unit_cm: "cm"
         },
         "zh-TW": {
@@ -1018,6 +1024,9 @@
           calc_note: "X = 0.1154 × HC，Y = 0.2637 × ((TTT + NI) / 2)，Yadj = Y + 0.35 cm。",
           footer: "圖片來源：clinicalresearcher.org/F3。",
           section_install_title: "在 Android 上安裝",
+          install_fdroid_soon: "即將在 F-Droid 上架",
+          install_apk: "從 GitHub 下載 Android 安裝檔（APK）",
+          install_obtainium: "將 App 加入 Obtainium，這個工具會讓它保持在最新版本",
           unit_cm: "cm"
         },
         fr: {
@@ -1088,6 +1097,9 @@
           footer:
             "Images provenant de clinicalresearcher.org/F3.",
           section_install_title: "Installer sur Android",
+          install_fdroid_soon: "Bientôt sur F-Droid",
+          install_apk: "Télécharger le fichier d'installation Android (APK) depuis GitHub",
+          install_obtainium: "Ajouter l'application à Obtainium, une application qui la maintient à jour",
           unit_cm: "cm"
         },
         es: {
@@ -1158,6 +1170,9 @@
           footer:
             "Imágenes de clinicalresearcher.org/F3.",
           section_install_title: "Instalar en Android",
+          install_fdroid_soon: "Próximamente en F-Droid",
+          install_apk: "Descargar el archivo de instalación de Android (APK) desde GitHub",
+          install_obtainium: "Añadir la aplicación a Obtainium, una aplicación que la mantiene actualizada",
           unit_cm: "cm"
         },
         de: {
@@ -1228,6 +1243,9 @@
           footer:
             "Bilder von clinicalresearcher.org/F3.",
           section_install_title: "Auf Android installieren",
+          install_fdroid_soon: "Bald bei F-Droid",
+          install_apk: "Die Android-Installationsdatei (APK) von GitHub herunterladen",
+          install_obtainium: "Die App zu Obtainium hinzufügen, einer App, die sie aktuell hält",
           unit_cm: "cm"
         },
         ja: {
@@ -1297,6 +1315,9 @@
           calc_note: "X = 0.1154 × HC、Y = 0.2637 × ((TTT + NI) / 2)、Yadj = Y + 0.35 cm。",
           footer: "画像出典: clinicalresearcher.org/F3。",
           section_install_title: "Android にインストール",
+          install_fdroid_soon: "F-Droid で近日公開予定",
+          install_apk: "Android のインストールファイル（APK）を GitHub からダウンロード",
+          install_obtainium: "アプリを、最新の状態に保つアプリ Obtainium に追加する",
           unit_cm: "cm"
         }
       };
@@ -1402,11 +1423,26 @@
             element.textContent = value;
           }
         });
+        // cocode-apps writes the install block in English between its markers, so its items carry no
+        // data-i18n. Match them by what they link to instead, so a re-render keeps them translated.
+        [
+          [".install .fdroid-soon", "install_fdroid_soon"],
+          ['.install a[href*="/releases/latest/download/"]', "install_apk"],
+          ['.install a[href*="obtainium://"]', "install_obtainium"]
+        ].forEach(([selector, key]) => {
+          const element = document.querySelector(selector);
+          if (element && copy[key]) {
+            element.textContent = copy[key];
+          }
+        });
         updateOutputs();
       };
 
       const storedLang = localStorage.getItem("tms-language");
-      const urlLang = new URLSearchParams(window.location.search).get("lang");
+      // The English link on the Danish page opens "/" with no ?lang=, which would pick the saved or
+      // browser language. The nav block is written by cocode-apps, so treat that visit as ?lang=en here.
+      const fromDanish = document.referrer.startsWith(window.location.origin + "/da/");
+      const urlLang = new URLSearchParams(window.location.search).get("lang") || (fromDanish ? "en" : null);
       // An explicit ?lang= (from the cocode.dk frame's own language links, or a bookmark)
       // always wins and is remembered, the same way the removed <select> used to remember
       // a manual choice -- otherwise picking "EN" would silently reopen in a stored or
