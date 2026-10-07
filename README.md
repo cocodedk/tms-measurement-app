@@ -2,6 +2,14 @@
 
 Open-source, offline, privacy-first Android app for Beam F3 targeting in transcranial magnetic stimulation (TMS). Enter three head measurements to calculate X, Y, and adjusted Y distances for F3 site localization, and save them per client for follow-up sessions. Each measurement can also store a log of treatment sessions — intensity, pulses, frequency, motor threshold, train parameters, site, and notes — saved locally per client.
 
+## Download
+
+<!-- cocode-apps:install:start -->
+- Coming to F-Droid
+- [Download the APK from GitHub](https://github.com/cocodedk/tms-measurement-app/releases/latest/download/TMSMeasurement.apk)
+- [Auto-update the GitHub APK with Obtainium](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/cocodedk/tms-measurement-app)
+<!-- cocode-apps:install:end -->
+
 ## Website
 
 - [English](https://tms.cocode.dk/)
@@ -13,10 +21,6 @@ Open-source, offline, privacy-first Android app for Beam F3 targeting in transcr
 - [Deutsch](https://tms.cocode.dk/?lang=de)
 - [日本語](https://tms.cocode.dk/?lang=ja)
 
-## Privacy
-
-No data is collected, transmitted, or stored outside the device. The app does not write cookies or track users in any way.
-
 ## Features
 
 - Beam F3 calculations with two-decimal rounding
@@ -25,11 +29,13 @@ No data is collected, transmitted, or stored outside the device. The app does no
 - Validation for required fields
 - Multilingual support (English, فارسی, العربية, 繁體中文, Français, Español, Deutsch, 日本語)
 
-## Download
+## Privacy
 
-[**Download TMS Measurement App**](https://github.com/cocodedk/tms-measurement-app/releases/latest)
+No data is collected, transmitted, or stored outside the device. The app does not write cookies or track users in any way.
+It requests no permissions at all, including no internet access. Read the full
+[privacy policy](https://tms.cocode.dk/privacy/).
 
-## Build from Source
+## Build
 
 **Prerequisites:** Android Studio, JDK 17 (Temurin)
 
@@ -47,7 +53,7 @@ cd tms-measurement-app
 ./gradlew buildSmoke --no-daemon  # Full smoke check
 ```
 
-## Release Signing
+### Release signing
 
 Create `keystore.properties` (ignored by git) for local signed builds:
 ```
@@ -80,8 +86,16 @@ TMSMeasurement/
 | Min SDK | 24 (Android 7) |
 | Target SDK | 36 |
 
+## Contributing
+
+Local setup, git hooks, the build and test commands, branch naming and the pull request checklist are in
+[CONTRIBUTING.md](CONTRIBUTING.md). Bugs and ideas go to the
+[issues page](https://github.com/cocodedk/tms-measurement-app/issues).
+
 ## Author
 
 **Babak Bandpey** — [cocode.dk](https://cocode.dk) | [LinkedIn](https://linkedin.com/in/babakbandpey) | [GitHub](https://github.com/cocodedk)
 
-Apache-2.0 | &copy; 2026 [Cocode](https://cocode.dk) | Created by [Babak Bandpey](https://linkedin.com/in/babakbandpey)
+## License
+
+MIT, see [LICENSE](LICENSE). &copy; 2026 [Cocode](https://cocode.dk) | Created by [Babak Bandpey](https://linkedin.com/in/babakbandpey)
