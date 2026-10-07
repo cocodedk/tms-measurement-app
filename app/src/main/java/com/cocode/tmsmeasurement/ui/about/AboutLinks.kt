@@ -6,7 +6,7 @@ enum class AboutLink { Updates, Website, Privacy, Source, Issues }
 
 /**
  * Flip to true once the app is live on F-Droid (apps.yml in cocodedk/cocode-apps says
- * `fdroid: live`). Until then "Check for updates" opens the latest GitHub release.
+ * `fdroid: live`). Until then "See the latest version" opens the latest GitHub release.
  */
 const val FDROID_LIVE = false
 

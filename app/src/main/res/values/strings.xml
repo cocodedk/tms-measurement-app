@@ -38,7 +38,7 @@
     <string name="about_privacy">The app collects no data, and nothing you enter leaves your device.</string>
     <string name="about_version">Version %1$s (%2$d)</string>
     <!-- About screen, cocode-apps standard. Translations follow in the Danish PR. -->
-    <string name="about_check_updates" tools:ignore="MissingTranslation">Check for updates</string>
+    <string name="about_check_updates" tools:ignore="MissingTranslation">See the latest version</string>
     <string name="about_updates_note" tools:ignore="MissingTranslation">Opens the page with the latest version in your browser. The app never checks for updates by itself.</string>
     <string name="about_what_title" tools:ignore="MissingTranslation">What the app does</string>
     <string name="about_privacy_title" tools:ignore="MissingTranslation">Privacy</string>

@@ -26,7 +26,7 @@ import com.cocode.tmsmeasurement.BuildConfig
 import com.cocode.tmsmeasurement.R
 
 /**
- * The About page, in the cocode-apps standard order: name and version with "Check for updates",
+ * The About page, in the cocode-apps standard order: name and version with "See the latest version",
  * what the app does, privacy, links, credits and licences, made by Cocode, support.
  */
 @Composable
