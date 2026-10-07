@@ -13,7 +13,7 @@
     <string name="label_hc">دور سر</string>
     <string name="unit_cm">cm</string>
     <string name="button_calculate_save">محاسبه و ذخیره</string>
-    <string name="error_client_required">نام مراجع الزامی است.</string>
+    <string name="error_client_required">نام یا شناسهٔ مراجع را وارد کنید.</string>
     <string name="error_ttt_positive">تراگوس تا تراگوس باید عددی مثبت باشد.</string>
     <string name="error_ni_positive">نازیون تا اینیون باید عددی مثبت باشد.</string>
     <string name="error_hc_positive">دور سر باید عددی مثبت باشد.</string>
@@ -33,10 +33,27 @@
     <string name="dialog_recorded">ثبت‌شده: %1$s</string>
     <string name="dialog_delete">حذف</string>
     <string name="dialog_close">بستن</string>
-    <string name="history_summary">X %1$s | Y %2$s | اصلاح %3$s</string>
-    <string name="about_body">برنامه اندازه‌گیری TMS از روش Beam F3 برای کمک به محاسبه و ذخیره اندازه‌گیری‌های هدف‌گیری F3 استفاده می‌کند.</string>
-    <string name="about_privacy">هیچ داده‌ای جمع‌آوری یا منتقل نمی‌شود و هیچ کوکی روی دستگاه شما نوشته نمی‌شود.</string>
+    <string name="history_summary">&#8207;X %1$s؛ Y %2$s؛ Y اصلاح‌شده %3$s</string>
+    <string name="about_body">اندازه‌گیری TMS به متخصصان بالینی کمک می‌کند محل F3 را روی سر برای تحریک مغناطیسی فراجمجمه‌ای (TMS) پیدا کنند. روش کار Beam F3 است. شما سه اندازهٔ سر را وارد می‌کنید و برنامه فاصله‌های X، Y و Y اصلاح‌شده را حساب می‌کند. برنامه این نتایج را برای هر مراجع، همراه با ثبت جلسات درمان، ذخیره می‌کند تا در مراجعه‌های بعدی در دسترس باشند. این برنامه یک ابزار کمکی برای محاسبه است و مسئولیت استفادهٔ بالینی از نتایج با خود شماست.</string>
+    <string name="about_privacy">برنامه اندازه‌گیری‌ها و اطلاعات مراجعان شما را روی همین دستگاه ذخیره می‌کند. خود برنامه هرگز آن‌ها را به جایی نمی‌فرستد.</string>
     <string name="about_version">نسخه %1$s (%2$d)</string>
+    <string name="about_check_updates">دیدن آخرین نسخه</string>
+    <string name="about_updates_note">صفحهٔ آخرین نسخه را در مرورگر شما باز می‌کند. برنامه هرگز خودش دنبال نسخهٔ تازه نمی‌گردد.</string>
+    <string name="about_what_title">این برنامه چه کار می‌کند</string>
+    <string name="about_privacy_title">حریم خصوصی</string>
+    <string name="about_privacy_permissions">برنامه مجوز اینترنت ندارد، پس نمی‌تواند به اینترنت وصل شود. هرگز از شما نمی‌خواهد مجوزی را تأیید کنید. تحلیل رفتار کاربران، تبلیغات، ردیابی و کوکی هم ندارد.</string>
+    <string name="about_privacy_backup">اگر از پشتیبان‌گیری اندروید استفاده کنید یا به دستگاه جدید بروید، ممکن است اندروید داده‌های ذخیره‌شده را کپی کند. این کار به تنظیمات دستگاه شما بستگی دارد و توسعه‌دهنده آن‌ها را نمی‌بیند.</string>
+    <string name="about_privacy_link">خواندن سیاست حریم خصوصی</string>
+    <string name="about_links_title">پیوندها</string>
+    <string name="about_links_note">این دکمه‌ها صفحه‌ها را در مرورگر شما باز می‌کنند. خود برنامه آفلاین می‌ماند.</string>
+    <string name="about_website">باز کردن وب‌سایت</string>
+    <string name="about_source">دیدن کد منبع در گیت‌هاب</string>
+    <string name="about_report">گزارش مشکل در گیت‌هاب</string>
+    <string name="about_credits">سازندگان و مجوزها</string>
+    <string name="about_credits_body">اندازه‌گیری TMS متن‌باز است: کد آن عمومی است و می‌توانید طبق مجوز MIT از آن استفاده کنید. برنامه با کتابخانه‌های AndroidX ساخته شده، از جمله Jetpack Compose و Room، که مجوز Apache License 2.0 دارند.</string>
+    <string name="about_made_by">ساختهٔ Cocode (cocode.dk)</string>
+    <string name="about_made_by_contact">توسعه‌دهنده: بابک بندپی. پرسش‌ها: bb@cocode.dk</string>
+    <string name="about_no_browser">مرورگری روی این گوشی پیدا نشد و پیوند باز نشد. یک مرورگر نصب کنید و دوباره امتحان کنید.</string>
     <string name="value_cm_format">%1$.2f %2$s</string>
     <string name="screen_title_settings">تنظیمات</string>
     <string name="settings_language_title">زبان</string>
@@ -49,18 +66,18 @@
     <string name="error_no_browser">هیچ مرورگری برای باز کردن صفحه راهنما پیدا نشد.</string>
     <!-- Treatment validation errors (Phase 3). -->
     <string name="error_treatment_intensity_positive">شدت باید عددی مثبت باشد.</string>
-    <string name="error_treatment_total_pulses_nonnegative">تعداد کل پالس‌ها باید عددی صحیح برابر صفر یا بیشتر باشد.</string>
+    <string name="error_treatment_total_pulses_nonnegative">تعداد کل پالس‌ها باید عددی صحیح و صفر یا بیشتر باشد.</string>
     <string name="error_treatment_frequency_positive">فرکانس باید عددی مثبت باشد.</string>
     <!-- "motor threshold" = آستانه حرکتی (standard clinical term). -->
     <string name="error_treatment_motor_threshold_positive">آستانه حرکتی باید عددی مثبت باشد.</string>
     <!-- rTMS "trains" rendered as قطارها; clinical term, needs expert review. -->
-    <string name="error_treatment_trains_nonnegative">تعداد قطارها باید عددی صحیح برابر صفر یا بیشتر باشد.</string>
+    <string name="error_treatment_trains_nonnegative">تعداد قطارهای پالس باید عددی صحیح و صفر یا بیشتر باشد.</string>
     <!-- "pulses per train" — clinical term, needs expert review. -->
-    <string name="error_treatment_pulses_per_train_nonnegative">پالس در هر قطار باید عددی صحیح برابر صفر یا بیشتر باشد.</string>
+    <string name="error_treatment_pulses_per_train_nonnegative">تعداد پالس در هر قطار باید عددی صحیح و صفر یا بیشتر باشد.</string>
     <!-- "train duration" — clinical term, needs expert review. -->
-    <string name="error_treatment_train_duration_positive">مدت قطار باید عددی مثبت باشد.</string>
+    <string name="error_treatment_train_duration_positive">مدت هر قطار پالس باید عددی مثبت باشد.</string>
     <!-- "inter-train interval" — clinical term, needs expert review. -->
-    <string name="error_treatment_inter_train_interval_positive">فاصله بین قطارها باید عددی مثبت باشد.</string>
+    <string name="error_treatment_inter_train_interval_positive">فاصلهٔ زمانی بین قطارهای پالس باید عددی مثبت باشد.</string>
     <string name="error_treatment_session_duration_positive">مدت جلسه باید عددی مثبت باشد.</string>
     <!-- Measurement detail screen and treatment list (Phase 4c). -->
     <string name="section_measurement">اندازه‌گیری</string>
@@ -74,17 +91,21 @@
     <string name="treatment_chip_motor_threshold">%1$s %%MSO</string>
     <string name="treatment_row_more">برای مشاهده و ویرایش ضربه بزنید</string>
     <string name="dialog_delete_measurement_title">اندازه‌گیری حذف شود؟</string>
-    <string name="dialog_delete_measurement_message">این کار این اندازه‌گیری و همه جلسات درمانی مرتبط با آن را برای همیشه حذف می‌کند. این عمل قابل بازگشت نیست.</string>
+    <string name="dialog_delete_measurement_message">این اندازه‌گیری و همهٔ جلسات درمانی آن حذف می‌شود. این کار قابل بازگشت نیست. رونوشت‌هایی که در پشتیبان دستگاه یا از نسخهٔ قدیمی‌تر برنامه مانده باشند، ممکن است باقی بمانند.</string>
     <string name="dialog_cancel">انصراف</string>
     <!-- Treatment form screen, add and edit (Phase 4d). -->
     <string name="screen_title_treatment_add">افزودن درمان</string>
     <string name="screen_title_treatment_edit">ویرایش درمان</string>
-    <string name="section_treatment_essentials">موارد ضروری</string>
+    <string name="section_treatment_essentials">اطلاعات اصلی</string>
     <!-- "motor threshold" = آستانه حرکتی (standard clinical term). -->
     <string name="section_treatment_motor_threshold">آستانه حرکتی</string>
     <!-- "train breakdown" — rTMS clinical term, needs expert review. -->
-    <string name="section_treatment_train">تفکیک قطارها</string>
+    <string name="section_treatment_train">جزئیات قطارهای پالس</string>
     <string name="section_treatment_context">زمینه</string>
+    <string name="treatment_help_mt">منظور از MT آستانه حرکتی است. شدت را به‌صورت درصدی از MT وارد کنید.</string>
+    <string name="treatment_help_mso">منظور از MSO حداکثر خروجی دستگاه تحریک است. آستانه حرکتی را به‌صورت درصدی از MSO وارد کنید.</string>
+    <string name="treatment_help_train">قطار پالس مجموعه‌ای از پالس‌هاست که پشت سر هم داده می‌شوند. فاصلهٔ زمانی بین قطارهای پالس، هر قطار را از قطار بعدی جدا می‌کند.</string>
+    <string name="treatment_units_legend">منظور از MT آستانه حرکتی و منظور از MSO حداکثر خروجی دستگاه تحریک است.</string>
     <string name="label_treatment_date">تاریخ جلسه</string>
     <string name="label_treatment_intensity">شدت</string>
     <string name="label_treatment_total_pulses">تعداد کل پالس‌ها</string>
@@ -92,13 +113,13 @@
     <!-- "motor threshold" = آستانه حرکتی (standard clinical term). -->
     <string name="label_treatment_motor_threshold">آستانه حرکتی</string>
     <!-- rTMS "number of trains" — clinical term, needs expert review. -->
-    <string name="label_treatment_trains">تعداد قطارها</string>
+    <string name="label_treatment_trains">تعداد قطارهای پالس</string>
     <!-- "pulses per train" — clinical term, needs expert review. -->
-    <string name="label_treatment_pulses_per_train">پالس در هر قطار</string>
+    <string name="label_treatment_pulses_per_train">تعداد پالس در هر قطار</string>
     <!-- "train duration" — clinical term, needs expert review. -->
-    <string name="label_treatment_train_duration">مدت قطار</string>
+    <string name="label_treatment_train_duration">مدت هر قطار پالس</string>
     <!-- "inter-train interval" — clinical term, needs expert review. -->
-    <string name="label_treatment_inter_train_interval">فاصله بین قطارها</string>
+    <string name="label_treatment_inter_train_interval">فاصلهٔ زمانی بین قطارهای پالس</string>
     <string name="label_treatment_site">محل تحریک</string>
     <string name="label_treatment_session_duration">مدت جلسه</string>
     <string name="label_treatment_notes">یادداشت‌ها</string>

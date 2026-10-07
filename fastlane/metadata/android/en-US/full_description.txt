@@ -1,9 +1,11 @@
-TMS Measurement App is an open-source, offline tool for calculating Beam F3 targeting distances used in transcranial magnetic stimulation (TMS) treatment planning.
+TMS Measurement is an open-source tool that works offline. It helps clinicians find the F3 site on the head for transcranial magnetic stimulation (TMS), using the Beam F3 method.
 
-Enter three head measurements to compute the X, Y, and adjusted Y distances for F3 site localization, then save the results per client for follow-up sessions.
+Enter three head measurements (tragus to tragus, nasion to inion, and head circumference) to calculate the distances X, Y and adjusted Y. Then save the results for each client, ready for follow-up sessions.
 
-Each client record can also store a log of treatment sessions, including intensity, pulse count, frequency, motor threshold, train parameters, site, and notes.
+Each saved measurement can also have a log of treatment sessions: intensity, total pulses, frequency, motor threshold, pulse-train details, stimulation site and notes.
 
-The app requests no permissions, has no internet access, and does not collect, transmit, or share any data. All measurements and session logs stay on the device.
+Privacy: the developer receives none of your data. The app saves measurements and session logs on your device. It has no internet permission, so it cannot go online, and it never asks you to approve a permission. Android backup or device transfer may copy the saved data, according to your device settings.
 
-The interface is available in English, Persian, Arabic, Traditional Chinese, French, Spanish, German, and Japanese.
+The app is a calculation aid: clinical use of the results is your responsibility.
+
+The app is available in English, Danish, Persian, Arabic and Traditional Chinese.

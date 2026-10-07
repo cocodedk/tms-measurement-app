@@ -1,1 +1,1 @@
-Mindre download: udgivelsesversioner bliver nu formindsket med R8.
+Appen fylder mindre at hente.
