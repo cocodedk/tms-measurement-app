@@ -56,6 +56,10 @@ internal fun AboutScreen(innerPadding: PaddingValues) {
             ) {
                 Text(stringResource(R.string.about_check_updates))
             }
+            Text(
+                text = stringResource(R.string.about_updates_note),
+                style = MaterialTheme.typography.bodySmall
+            )
         }
         AboutSection(R.string.about_what_title) {
             AboutBody(R.string.about_body)
@@ -63,9 +67,11 @@ internal fun AboutScreen(innerPadding: PaddingValues) {
         AboutSection(R.string.about_privacy_title) {
             AboutBody(R.string.about_privacy)
             AboutBody(R.string.about_privacy_permissions)
+            AboutBody(R.string.about_privacy_backup)
             AboutButton(R.string.about_privacy_link) { open(AboutLink.Privacy) }
         }
         AboutSection(R.string.about_links_title) {
+            AboutBody(R.string.about_links_note)
             AboutButton(R.string.about_website) { open(AboutLink.Website) }
             AboutButton(R.string.about_source) { open(AboutLink.Source) }
             AboutButton(R.string.about_report) { open(AboutLink.Issues) }
