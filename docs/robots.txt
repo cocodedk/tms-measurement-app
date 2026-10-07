@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tms.cocode.dk/sitemap.xml
