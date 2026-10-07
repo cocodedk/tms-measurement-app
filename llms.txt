@@ -1,6 +1,6 @@
 # tms-measurement-app
 
-> Open-source, offline Android app for Beam F3 targeting in transcranial magnetic stimulation (TMS). Calculate F3 site distances from head measurements — privacy-first, no data collection.
+> Open-source Android app that calculates Beam F3 targeting distances for transcranial magnetic stimulation (TMS) and saves measurement records on the device. It works offline and has no internet permission.
 
 ## Project
 
@@ -19,4 +19,4 @@
 
 - Kotlin, Jetpack Compose, Android SDK 36
 - Room database, Gradle build system
-- Fully offline — no network access, no data collection
+- Works offline: no internet permission, no analytics, no advertising

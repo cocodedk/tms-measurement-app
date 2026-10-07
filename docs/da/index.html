@@ -6,9 +6,9 @@
     <title>TMS Measurement | Beam F3-beregner</title>
     <meta
       name="description"
-      content="Gratis Android-app med åben kildekode til Beam F3-lokalisering ved transkraniel magnetisk stimulation (TMS). Beregn F3-afstande ud fra hovedmål uden internet. Privatlivet kommer først, og der indsamles ingen data."
+      content="Gratis Android-app med åben kildekode til Beam F3-lokalisering ved transkraniel magnetisk stimulation (TMS). Beregn F3-afstande ud fra mål af hovedet uden internet. Appen gemmer dine oplysninger på din enhed."
     />
-    <meta name="keywords" content="TMS, transkraniel magnetisk stimulation, Beam F3, F3-lokalisering, DLPFC, EEG 10-20, Android-app, hovedmål, klinisk værktøj, open source, offline" />
+    <meta name="keywords" content="TMS, transkraniel magnetisk stimulation, Beam F3, F3-lokalisering, DLPFC, EEG 10-20, Android-app, mål af hovedet, klinisk værktøj, open source, offline" />
     <meta name="author" content="Babak Bandpey" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://tms.cocode.dk/da/" />
@@ -16,7 +16,7 @@
     <link rel="alternate" hreflang="da" href="https://tms.cocode.dk/da/" />
     <link rel="alternate" hreflang="x-default" href="https://tms.cocode.dk/" />
     <meta property="og:title" content="TMS Measurement | Beam F3-beregner" />
-    <meta property="og:description" content="Beregn Beam F3-afstande ud fra hovedmål, og find F3-punktet til TMS." />
+    <meta property="og:description" content="Beregn Beam F3-afstande ud fra mål af hovedet, og find F3-punktet til TMS." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tms.cocode.dk/da/" />
     <meta property="og:locale" content="da_DK" />
@@ -26,7 +26,7 @@
     <meta property="og:image:alt" content="EEG 10-20-referencekort" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="TMS Measurement | Beam F3-beregner" />
-    <meta name="twitter:description" content="Beregn Beam F3-afstande ud fra hovedmål, og find F3-punktet til TMS." />
+    <meta name="twitter:description" content="Beregn Beam F3-afstande ud fra mål af hovedet, og find F3-punktet til TMS." />
     <meta name="twitter:image" content="https://tms.cocode.dk/images/beamf3-eeg-map.jpg" />
     <meta name="twitter:image:alt" content="EEG 10-20-referencekort" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -43,7 +43,7 @@
         "name": "TMS Measurement App",
         "operatingSystem": "Android",
         "applicationCategory": "HealthApplication",
-        "description": "Android-app med åben kildekode til Beam F3-lokalisering ved transkraniel magnetisk stimulation (TMS). Beregn afstandene til F3-punktet ud fra tre hovedmål uden internet.",
+        "description": "Android-app med åben kildekode til Beam F3-lokalisering ved transkraniel magnetisk stimulation (TMS). Beregn afstandene til F3-punktet ud fra tre mål af hovedet uden internet.",
         "url": "https://tms.cocode.dk/da/",
         "author": { "@type": "Person", "name": "Babak Bandpey", "url": "https://cocode.dk" },
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -82,8 +82,8 @@
           </div>
           <h1>Hurtig Beam F3-lokalisering, klar ved behandlingsstolen.</h1>
           <p>
-            TMS Measurement beregner F3-placeringen ud fra tre hovedmål, gemmer klienternes
-            oplysninger lokalt og gør dit kliniske arbejdsforløb ensartet.
+            TMS Measurement beregner F3-placeringen ud fra tre mål af hovedet og gemmer dine
+            klientoplysninger på din enhed.
           </p>
           <p>
             Indtast tragus til tragus, nasion til inion og hovedomfang, så får du afstandene
@@ -91,10 +91,10 @@
           </p>
           <a class="cta" href="https://github.com/cocodedk/tms-measurement-app">Se på GitHub</a>
           <div class="feature-grid">
-            <div class="chip">Historik, der virker offline</div>
+            <div class="chip">Se historik uden internet</div>
             <div class="chip">Beam F3-formlen er indbygget</div>
-            <div class="chip">Brugerflade tilpasset klinikere</div>
-            <div class="chip">Validering med det samme</div>
+            <div class="chip">Gennemse gemte målinger</div>
+            <div class="chip">Kontrollerer, at påkrævede felter er udfyldt og målingerne er positive</div>
             <div class="chip">Log over behandlingssessioner</div>
           </div>
         </div>
@@ -121,8 +121,8 @@
         <!-- cocode-apps:install:start -->
 <ul class="install" role="list">
   <li><p class="fdroid-soon">Kommer på F-Droid</p></li>
-  <li><a href="https://github.com/cocodedk/tms-measurement-app/releases/latest/download/TMSMeasurement.apk">Hent APK-filen fra GitHub</a></li>
-  <li><a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/cocodedk/tms-measurement-app">Opdatér GitHub-APK&#x27;en automatisk med Obtainium</a></li>
+  <li><a href="https://github.com/cocodedk/tms-measurement-app/releases/latest/download/TMSMeasurement.apk">Hent installationsfilen til Android (APK) fra GitHub</a></li>
+  <li><a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/cocodedk/tms-measurement-app">Tilføj appen i Obtainium, som holder den opdateret</a></li>
 </ul>
 <!-- cocode-apps:install:end -->
       </section>
@@ -130,8 +130,9 @@
       <section class="card" id="how" style="margin-top: 24px;">
         <h2 class="section-title">Markér Beam F3-afstandene</h2>
         <p>
-          Indtast først de tre hovedmål. Brug derefter de beregnede afstande til at markere punktet.
-          Billederne herunder viser afstandene X, Y og Z, som de er betegnet i Beam F3-vejledningen.
+          Indtast først de tre mål af hovedet. Brug derefter de beregnede afstande til at markere punktet.
+          Billederne herunder er fra Beam F3-vejledningen, som også viser en afstand Z.
+          Appen beregner X, Y og justeret Y, ikke Z.
         </p>
         <div class="step-grid">
           <article class="step-card">
@@ -140,14 +141,14 @@
             <p>Markér afstanden på X cm fra midtlinjen hen over panden.</p>
           </article>
           <article class="step-card">
-            <div class="step-label"><span class="step-number">2</span><span>Y-afstand langs midtlinjen</span></div>
-            <img src="/images/beamf3-step-2.jpg" alt="Y-afstanden markeret langs midtlinjen oven på hovedet" />
-            <p>Mål afstanden på Y cm langs midtlinjen oven på hovedet.</p>
+            <div class="step-label"><span class="step-number">2</span><span>Y-afstand fra vertex</span></div>
+            <img src="/images/beamf3-step-2.jpg" alt="Referencetegning: Y måles langs hovedbunden fra vertex mod markeringen på panden" />
+            <p>Mål Y cm langs hovedbunden fra vertex (Cz) mod markeringen på panden.</p>
           </article>
           <article class="step-card">
-            <div class="step-label"><span class="step-number">3</span><span>Z-afstand mod øret</span></div>
-            <img src="/images/beamf3-step-3.jpg" alt="Z-afstanden markeret fra vertex mod øret" />
-            <p>Mål afstanden på Z cm fra vertex mod øret.</p>
+            <div class="step-label"><span class="step-number">3</span><span>Z-afstand på siden af hovedet (kun til orientering)</span></div>
+            <img src="/images/beamf3-step-3.jpg" alt="Referencetegning: Z forbinder de to markeringer på siden af hovedet" />
+            <p>Referencetegning: Z forbinder de to markeringer på siden af hovedet. Appen beregner ikke Z.</p>
           </article>
         </div>
       </section>
@@ -161,8 +162,8 @@
         <div class="formula">X = 0,1154 × HC &nbsp;&nbsp;|&nbsp;&nbsp; Y = 0,2637 × ((TTT + NI) / 2) &nbsp;&nbsp;|&nbsp;&nbsp; Yadj = Y + 0,35 cm</div>
         <ul class="instruction-list">
           <li>Mål X langs omkredsen fra midtlinjen mod venstre side.</li>
-          <li>Træk en linje fra vertex (Cz) gennem det venstre præaurikulære punkt.</li>
-          <li>Mål Yadj langs linjen for at finde F3-punktet.</li>
+          <li>Følg hovedbundens bue fra Cz mod markeringen på panden, som du lavede med X.</li>
+          <li>Mål Yadj langs buen for at finde F3-punktet.</li>
         </ul>
       </section>
 
@@ -185,9 +186,9 @@
 
       <section class="card" style="margin-top: 24px;">
         <h2 class="section-title">Hold styr på behandlingssessioner</h2>
-        <p>Registrér hver TMS-session under dens måling: stimulationsintensitet, pulser, frekvens og meget mere. Hver session gemmes lokalt på enheden, så du kan gennemgå en klients fulde behandlingshistorik uden internet.</p>
+        <p>Registrér hver TMS-session under dens måling: stimulationsintensitet, pulser, frekvens og mere. Hver session gemmes lokalt på enheden, så du kan gennemgå en klients fulde behandlingshistorik uden internet.</p>
         <ul class="instruction-list">
-          <li>Intensitet (% af motorisk tærskel) og baseline for den motoriske tærskel (% MSO)</li>
+          <li>Intensitet (i % af motorisk tærskel, MT) og motorisk tærskel (i % af stimulatorens maksimale effekt, MSO)</li>
           <li>Pulser i alt, frekvens (Hz) og opdeling i pulstog (antal pulstog, pulser pr. pulstog, varigheder)</li>
           <li>Sessionsdato, stimulationssted og noter i fri tekst, som du kan redigere når som helst</li>
         </ul>
@@ -196,7 +197,7 @@
       <section class="card" style="margin-top: 24px;">
         <h2 class="section-title">Beregn F3</h2>
         <p>
-          Indtast de tre hovedmål i centimeter for at beregne de Beam F3-afstande, der bruges til
+          Indtast de tre mål af hovedet i centimeter for at beregne de Beam F3-afstande, der bruges til
           at markere punktet.
         </p>
         <form class="calc-grid" id="beamf3-form">
