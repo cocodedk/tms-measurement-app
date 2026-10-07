@@ -133,5 +133,5 @@
     <string name="action_pick_date">تغییر تاریخ</string>
     <string name="dialog_date_confirm">تأیید</string>
     <string name="dialog_delete_treatment_title">درمان حذف شود؟</string>
-    <string name="dialog_delete_treatment_message">این کار این جلسه درمانی را برای همیشه حذف می‌کند. این عمل قابل بازگشت نیست.</string>
+    <string name="dialog_delete_treatment_message">این جلسهٔ درمان حذف می‌شود. این کار قابل بازگشت نیست. رونوشتی که در پشتیبان دستگاه مانده باشد، ممکن است باقی بماند.</string>
 </resources>

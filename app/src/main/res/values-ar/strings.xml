@@ -133,5 +133,5 @@
     <string name="action_pick_date">تغيير التاريخ</string>
     <string name="dialog_date_confirm">موافق</string>
     <string name="dialog_delete_treatment_title">حذف العلاج؟</string>
-    <string name="dialog_delete_treatment_message">يؤدي هذا إلى حذف جلسة العلاج هذه نهائيًا. لا يمكن التراجع عن ذلك.</string>
+    <string name="dialog_delete_treatment_message">تُحذف جلسة العلاج هذه. لا يمكنك التراجع عن ذلك. وقد تبقى نسخة منها في نسخة احتياطية للجهاز.</string>
 </resources>

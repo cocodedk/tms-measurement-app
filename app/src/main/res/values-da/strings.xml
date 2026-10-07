@@ -118,5 +118,5 @@
     <string name="action_pick_date">Skift dato</string>
     <string name="dialog_date_confirm">OK</string>
     <string name="dialog_delete_treatment_title">Slet behandling?</string>
-    <string name="dialog_delete_treatment_message">Behandlingssessionen slettes permanent. Det kan ikke fortrydes.</string>
+    <string name="dialog_delete_treatment_message">Behandlingssessionen slettes. Det kan ikke fortrydes. En kopi i en sikkerhedskopi af enheden kan blive liggende.</string>
 </resources>
