@@ -9,66 +9,30 @@ The Beam F3 method is a simplified scalp‑based heuristic for locating the F3 E
 
 Circumferential arc (X) – the distance along the head circumference from the midline (FPz–Oz plane) to the F3 plane. In a cohort of 100 MRIs, this arc consistently represented about 11.54 % of the head circumference measured through FPz–Oz.
 
-Radial arc (Y) – the distance from the vertex (Cz) to the F3 point. When expressed relative to head dimensions, Y averaged 26.37 % of the mean of the nasion–inion and left‑to‑right tragus distances. MRI‑guided measurements showed that the MRI‑guided Y distance was on average 0.35 cm longer than the Beam F3 estimate; adding this adjustment (≈3.63 %) improved concordance.
+Radial arc (Y) – the distance from the vertex (Cz) to the F3 point. When expressed relative to head dimensions, Y averaged 26.37 % of the mean of the nasion–inion and left‑to‑right tragus distances. The study observed that the MRI‑guided Y distance was on average 0.35 cm longer than the Beam F3 estimate (about 3.63 %), and suggested that increasing Y by this amount could improve concordance.
 
-The PRD leverages these findings to compute the coordinates used by clinicians. The calculation method is also consistent with updated scalp heuristics recommended by Mir‑Moghtadaei and colleagues (2015) and with web implementations of the Beam F3 program.
+The PRD leverages these findings to compute the coordinates used by clinicians. The calculation method is also consistent with the adjustment suggested by Mir‑Moghtadaei and colleagues (2015) and with web implementations of the Beam F3 program.
 
 Calculation Method
 
 Given three inputs — tragus–tragus distance (TTT), nasion–inion distance (NI) and head circumference (HC) — the app performs the following calculations:
 
 Average anterior–posterior/mediolateral distance –
-
-Avg
-=
-TTT
-+
-NI
-2
-Avg=
-2
-TTT+NI
-	​
-
+Avg = (TTT + NI) / 2
 
 Circumferential distance from midline (X) –
 The F3 plane lies approximately 11.54 % of the head circumference from the midline, so:
-
-𝑋
-=
-0.1154
-×
-HC
-X=0.1154×HC
+X = 0.1154 × HC
 
 Radial distance from vertex (Y) –
 The radial distance from Cz to F3 is roughly 26.37 % of the average of the TTT and NI distances:
+Y = 0.2637 × Avg
 
-𝑌
-=
-0.2637
-×
-Avg
-Y=0.2637×Avg
+Adjusted radial distance (Yadj) –
+In the study's 100 MRIs, the MRI‑guided radial distance was on average 0.35 cm longer than the Beam F3 estimate, and the study suggested that increasing Y by this amount could improve concordance with MRI‑guided neuronavigation. The app therefore adds an adjustment:
+Yadj = Y + 0.35 cm
 
-Adjusted radial distance (Yₐd) –
-MRI studies have shown that Beam F3 underestimates the radial distance by about 0.35 cm. To improve concordance with MRI‑guided neuronavigation, an adjustment is added:
-
-𝑌
-adj
-=
-𝑌
-+
-0.35
- 
-cm
-Y
-adj
-	​
-
-=Y+0.35cm
-
-These computations yield two key values (X and Yₐd). Clinicians use them together with the head measurements to mark the F3 location: measure X cm along the circumference from the midline (toward the left ear), identify a line from the vertex through the pre‑auricular point on the left, and measure Yₐd cm along that line to locate F3. The app displays X and Y and clarifies that Yₐd is an adjustment recommended by Mir‑Moghtadaei et al. (2015).
+These computations yield two key values (X and Yadj). Clinicians use them together with the head measurements to mark the F3 location: mark X cm leftwards along the head circumference from the midline, then, from the vertex (Cz), measure Y cm along the scalp toward that mark (the adjusted Y adds 0.35 cm). The app displays X and Y and explains that Yadj is the adjustment suggested by Mir‑Moghtadaei et al. (2015).
 
 Functional Requirements
 Data Input
@@ -91,7 +55,7 @@ The app validates that all measurement fields contain positive numeric values be
 Calculation & Display
 
 Compute F3 distances –
-Upon pressing Calculate, the app computes X, Y and Yₐd using the formulas above. Calculated values are rounded to two decimal places.
+Press Calculate and save to compute X, Y and Yadj using the formulas above, round them to two decimal places, and save the measurement.
 
 Results panel –
 The app displays a summary such as:
@@ -99,7 +63,7 @@ The app displays a summary such as:
 “Distance along circumference (X) = 6.62 cm; Distance from vertex (Y) = 9.60 cm; Adjusted Y = 9.95 cm.”
 
 Informational note –
-A note explaining that Yₐd includes a 0.35 cm adjustment to better match MRI‑guided targeting should accompany the results. This ensures users understand the difference between unadjusted and adjusted values.
+A note explaining that Yadj includes a 0.35 cm adjustment to better match MRI‑guided targeting should accompany the results. This ensures users understand the difference between unadjusted and adjusted values.
 
 Data Storage & Retrieval
 
@@ -147,12 +111,12 @@ Privacy –
 All client data remain on the device by default. If optional cloud features are added, they must use secure, encrypted channels and abide by relevant privacy regulations (e.g., GDPR, HIPAA). No usage analytics are transmitted without explicit user consent.
 
 Compatibility –
-Support Android API 23 (Android 6.0) and above. The app should adapt gracefully to both phone and tablet screen sizes.
+Support Android API 24 (Android 7.0) and above. The app should adapt gracefully to both phone and tablet screen sizes.
 
 Acceptance Criteria
 
 Accurate calculations –
-When provided with sample measurements, the app must compute X and Y based on the formulas: X = 0.1154 × HC; Y = 0.2637 × ((TTT + NI)/2); Yₐd = Y + 0.35 cm. Results match manual calculations within rounding tolerance.
+When provided with sample measurements, the app must compute X and Y based on the formulas: X = 0.1154 × HC; Y = 0.2637 × ((TTT + NI)/2); Yadj = Y + 0.35 cm. Results match manual calculations within rounding tolerance.
 
 Data persistence –
 Saved records persist across app restarts. Deleting the app data clears the measurement history.

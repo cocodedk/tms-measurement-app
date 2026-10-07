@@ -13,7 +13,7 @@
     <string name="label_hc">محيط الرأس</string>
     <string name="unit_cm">cm</string>
     <string name="button_calculate_save">احسب واحفظ</string>
-    <string name="error_client_required">اسم العميل مطلوب.</string>
+    <string name="error_client_required">أدخل اسم العميل أو المعرّف.</string>
     <string name="error_ttt_positive">يجب أن يكون قياس التراجوس إلى التراجوس رقمًا موجبًا.</string>
     <string name="error_ni_positive">يجب أن يكون قياس النازيون إلى الإنيون رقمًا موجبًا.</string>
     <string name="error_hc_positive">يجب أن يكون محيط الرأس رقمًا موجبًا.</string>
@@ -33,10 +33,27 @@
     <string name="dialog_recorded">تم التسجيل: %1$s</string>
     <string name="dialog_delete">حذف</string>
     <string name="dialog_close">إغلاق</string>
-    <string name="history_summary">X %1$s | Y %2$s | المعدّل %3$s</string>
-    <string name="about_body">يطبّق تطبيق قياس TMS منهج Beam F3 لمساعدة الأطباء على حساب وحفظ قياسات تحديد F3.</string>
-    <string name="about_privacy">لا يتم جمع أي بيانات أو إرسالها، ولا يتم كتابة أي ملفات تعريف ارتباط على جهازك.</string>
+    <string name="history_summary">&#8207;X %1$s؛ Y %2$s؛ Y المعدّل %3$s</string>
+    <string name="about_body">يساعد تطبيق قياس TMS الممارسين السريريين على تحديد موضع F3 على الرأس للتحفيز المغناطيسي عبر الجمجمة (TMS) بطريقة Beam F3. تُدخل ثلاثة قياسات للرأس، ويحسب التطبيق المسافات X وY وY المعدّل. ويحفظها لكل عميل مع سجل لجلسات العلاج، لتكون جاهزة لزيارات المتابعة. التطبيق أداة مساعدة للحساب، والمسؤولية عن الاستخدام السريري للنتائج تقع عليك.</string>
+    <string name="about_privacy">يحفظ التطبيق قياساتك وسجلات العملاء على هذا الجهاز. ولا يرسلها التطبيق نفسه إلى أي مكان.</string>
     <string name="about_version">الإصدار %1$s (%2$d)</string>
+    <string name="about_check_updates">عرض أحدث إصدار</string>
+    <string name="about_updates_note">يفتح صفحة أحدث إصدار في متصفحك. لا يبحث التطبيق عن التحديثات من تلقاء نفسه.</string>
+    <string name="about_what_title">ما الذي يفعله التطبيق</string>
+    <string name="about_privacy_title">الخصوصية</string>
+    <string name="about_privacy_permissions">ليس لدى التطبيق إذن الوصول إلى الإنترنت، لذلك لا يستطيع الاتصال بالإنترنت. ولا يطلب منك أبدًا الموافقة على أي إذن. وليس فيه تحليلات أو إعلانات أو تتبّع أو ملفات تعريف ارتباط.</string>
+    <string name="about_privacy_backup">إذا كنت تستخدم النسخ الاحتياطي في Android أو تنتقل إلى جهاز جديد، فقد ينسخ Android البيانات المحفوظة. تتحكم إعدادات جهازك في ذلك، ولا يستطيع المطوّر رؤيتها.</string>
+    <string name="about_privacy_link">اقرأ سياسة الخصوصية</string>
+    <string name="about_links_title">الروابط</string>
+    <string name="about_links_note">تفتح هذه الأزرار صفحات في متصفحك. أما التطبيق نفسه فيبقى بلا اتصال بالإنترنت.</string>
+    <string name="about_website">افتح الموقع</string>
+    <string name="about_source">اطّلع على الشيفرة المصدرية في GitHub</string>
+    <string name="about_report">أبلغ عن مشكلة في GitHub</string>
+    <string name="about_credits">الشكر والتراخيص</string>
+    <string name="about_credits_body">تطبيق TMS Measurement مفتوح المصدر: شيفرته متاحة للجميع، ويمكنك استخدامه بموجب ترخيص MIT. بُني التطبيق بمكتبات AndroidX، ومنها Jetpack Compose وRoom، وهي مرخّصة بموجب Apache License 2.0.</string>
+    <string name="about_made_by">من تطوير Cocode (cocode.dk)</string>
+    <string name="about_made_by_contact">المطوّر: Babak Bandpey. للأسئلة: bb@cocode.dk</string>
+    <string name="about_no_browser">لم يُعثر على متصفح على هذا الهاتف، لذا تعذّر فتح الرابط. ثبّت متصفحًا ثم حاول مرة أخرى.</string>
     <string name="value_cm_format">%1$.2f %2$s</string>
     <string name="screen_title_settings">الإعدادات</string>
     <string name="settings_language_title">اللغة</string>
@@ -74,17 +91,21 @@
     <string name="treatment_chip_motor_threshold">%1$s %%MSO</string>
     <string name="treatment_row_more">اضغط للعرض والتعديل</string>
     <string name="dialog_delete_measurement_title">حذف القياس؟</string>
-    <string name="dialog_delete_measurement_message">يؤدي هذا إلى حذف هذا القياس وجميع جلسات العلاج المرتبطة به نهائيًا. لا يمكن التراجع عن ذلك.</string>
+    <string name="dialog_delete_measurement_message">يحذف هذا القياس وجميع جلسات العلاج المرتبطة به. لا يمكنك التراجع عن ذلك. وقد تبقى نسخ منه في نسخة احتياطية للجهاز أو محفوظة من إصدار أقدم من التطبيق.</string>
     <string name="dialog_cancel">إلغاء</string>
     <!-- Treatment form screen, add and edit (Phase 4d). -->
     <string name="screen_title_treatment_add">إضافة علاج</string>
     <string name="screen_title_treatment_edit">تعديل العلاج</string>
-    <string name="section_treatment_essentials">الأساسيات</string>
+    <string name="section_treatment_essentials">التفاصيل الرئيسية</string>
     <!-- "motor threshold" = العتبة الحركية (standard clinical term). -->
     <string name="section_treatment_motor_threshold">العتبة الحركية</string>
     <!-- "train breakdown" — rTMS clinical term, needs expert review. -->
     <string name="section_treatment_train">تفصيل القطارات</string>
     <string name="section_treatment_context">السياق</string>
+    <string name="treatment_help_mt">يرمز MT إلى العتبة الحركية. أدخل الشدة كنسبة مئوية من MT.</string>
+    <string name="treatment_help_mso">يرمز MSO إلى أقصى خرج لجهاز التحفيز. أدخل العتبة الحركية كنسبة مئوية من MSO.</string>
+    <string name="treatment_help_train">قطار النبضات هو مجموعة من النبضات تُرسَل الواحدة تلو الأخرى. وتفصل بين القطارات فترة تُسمّى الفاصل بين القطارات.</string>
+    <string name="treatment_units_legend">يرمز MT إلى العتبة الحركية، ويرمز MSO إلى أقصى خرج لجهاز التحفيز.</string>
     <string name="label_treatment_date">تاريخ الجلسة</string>
     <string name="label_treatment_intensity">الشدة</string>
     <string name="label_treatment_total_pulses">إجمالي النبضات</string>
@@ -112,5 +133,5 @@
     <string name="action_pick_date">تغيير التاريخ</string>
     <string name="dialog_date_confirm">موافق</string>
     <string name="dialog_delete_treatment_title">حذف العلاج؟</string>
-    <string name="dialog_delete_treatment_message">يؤدي هذا إلى حذف جلسة العلاج هذه نهائيًا. لا يمكن التراجع عن ذلك.</string>
+    <string name="dialog_delete_treatment_message">تُحذف جلسة العلاج هذه. لا يمكنك التراجع عن ذلك. وقد تبقى نسخة منها في نسخة احتياطية للجهاز.</string>
 </resources>

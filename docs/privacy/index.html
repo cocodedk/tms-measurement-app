@@ -4,9 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy Policy | TMS Measurement App</title>
-  <meta name="description" content="Privacy policy for the TMS Measurement App: it collects no personal data and works entirely offline on your device." />
+  <meta name="description" content="Privacy policy for the TMS Measurement App: the developer receives none of your data, and the app works offline on your device." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://tms.cocode.dk/privacy/" />
+  <link rel="alternate" hreflang="en" href="https://tms.cocode.dk/privacy/" />
+  <link rel="alternate" hreflang="da" href="https://tms.cocode.dk/da/privacy/" />
+  <link rel="alternate" hreflang="x-default" href="https://tms.cocode.dk/privacy/" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -67,6 +70,7 @@
   <a href="/#how" data-nav="how">How it works</a>
   <a href="/#install" data-nav="install">Install</a>
   <a href="/privacy/" data-nav="privacy" aria-current="page">Privacy</a>
+  <a href="/da/privacy/" hreflang="da" lang="da" data-nav="lang">Dansk</a>
   <a href="https://cocode.dk/" data-nav="more">More apps</a>
 </nav>
 <!-- cocode-apps:nav:end -->
@@ -78,28 +82,36 @@
       <section lang="en">
         <h1>Privacy Policy</h1>
         <p class="meta">TMS Measurement App &middot; <code>com.cocode.tmsmeasurement</code></p>
-        <p class="meta">Last updated: 14 July 2026</p>
+        <p class="meta">Last updated: 7 October 2026</p>
 
-        <p><strong>The TMS Measurement App collects no personal data, and nothing you enter ever leaves your device.</strong>
+        <p><strong>The developer receives none of your data.</strong>
+        The app saves what you enter (head measurements, results, client names or IDs, and treatment sessions) on your device, and it cannot go online.
         It calculates Beam F3 targeting distances from the head measurements you type in, entirely offline.</p>
 
         <h2>Data you enter</h2>
-        <p>The head measurements and results you work with are processed on your device to compute the F3 site.
-        The app does not require an account and does not transmit, upload, or share this information with us or anyone else.</p>
+        <p>The app saves your head measurements, results, client names or IDs and treatment sessions on your device, so you can look at them again later.
+        The app does not require an account. It does not send, upload, or share this information with us or anyone else.</p>
 
         <h2>No internet, no tracking</h2>
         <ul>
-          <li>The app requests <strong>no permissions at all</strong> — including no internet access.</li>
-          <li>No analytics, no crash reporting, no advertising.</li>
-          <li>No third-party SDKs, no cookies, no advertising identifiers.</li>
+          <li>The app has <strong>no internet permission</strong>, so it cannot go online. It never asks you to approve a permission.</li>
+          <li>No analytics, no crash reporting, no advertising, no cookies, no advertising identifiers.</li>
+          <li>The app is built with open-source AndroidX libraries, including Jetpack Compose and Room. It includes no analytics, crash-reporting, or advertising libraries.</li>
         </ul>
 
-        <h2>Device backup</h2>
-        <p>If you have enabled Android backup on your device, the operating system may include the app's local data in your own
-        personal Google backup. That is controlled entirely by you and Google — we have no access to it.</p>
+        <h2>Buttons that open web pages</h2>
+        <p>The <strong>Help</strong> button and the buttons on the <strong>About</strong> screen open a web page in your browser: this website, the privacy policy,
+        the latest version, the source code and the issues page on GitHub, and the help page. A page opens only when you tap its button, and your browser loads it.
+        The app itself never connects to anything. Once a page is open, it follows its own privacy rules, for example GitHub's.</p>
+
+        <h2>Device backup and deleting</h2>
+        <p>If Android backup is on, or you move your data to a new device, Android may copy the data the app saved, including your measurements and treatment records,
+        to your own personal Google backup or to the new device. Your device settings control that, and we cannot see it.
+        Deleting a measurement in the app removes it from the app's current history. Copies in a device backup, or kept from an older version of the app, may remain.</p>
 
         <h2>Not a medical device</h2>
-        <p>The app is a calculation aid for clinicians and does not collect health records. Any clinical use of the results is your responsibility.</p>
+        <p>The app is a calculation aid for clinicians. It also stores the client names or IDs, measurements and treatment-session details you enter. The developer does not receive these records.
+        Any clinical use of the results is your responsibility.</p>
 
         <h2>Changes &amp; contact</h2>
         <p>Updates to this policy are posted here with a new date. Questions:
@@ -111,28 +123,36 @@
       <section lang="fa" dir="rtl">
         <h2 class="page-title">سیاست حفظ حریم خصوصی</h2>
         <p class="meta">اپلیکیشن TMS Measurement &middot; <code>com.cocode.tmsmeasurement</code></p>
-        <p class="meta">آخرین به‌روزرسانی: ۱۴ ژوئیه ۲۰۲۶</p>
+        <p class="meta">آخرین به‌روزرسانی: ۷ اکتبر ۲۰۲۶</p>
 
-        <p><strong>اپلیکیشن TMS Measurement هیچ داده شخصی‌ای جمع‌آوری نمی‌کند و هیچ‌چیزی که وارد می‌کنید از دستگاه شما خارج نمی‌شود.</strong>
-        این برنامه فاصله‌های هدف‌گیری Beam F3 را از روی اندازه‌های سر که وارد می‌کنید، به‌صورت کاملاً آفلاین محاسبه می‌کند.</p>
+        <p><strong>توسعه‌دهنده هیچ‌کدام از داده‌های شما را دریافت نمی‌کند.</strong>
+        برنامه آنچه را وارد می‌کنید (اندازه‌های سر، نتایج، نام یا شناسهٔ مراجعان و جلسات درمان) روی دستگاه شما ذخیره می‌کند و نمی‌تواند به اینترنت وصل شود.
+        فاصله‌های هدف‌گیری Beam F3 را از روی اندازه‌های سر که وارد می‌کنید، کاملاً آفلاین محاسبه می‌کند.</p>
 
         <h2>داده‌هایی که وارد می‌کنید</h2>
-        <p>اندازه‌های سر و نتایجی که با آن‌ها کار می‌کنید روی دستگاه شما برای محاسبهٔ نقطهٔ F3 پردازش می‌شوند.
-        برنامه به حساب کاربری نیاز ندارد و این اطلاعات را برای ما یا هیچ‌کس دیگری ارسال یا با کسی به اشتراک نمی‌گذارد.</p>
+        <p>برنامه اندازه‌های سر، نتایج، نام یا شناسهٔ مراجعان و جلسات درمان شما را روی دستگاه ذخیره می‌کند تا بعداً دوباره ببینید.
+        برنامه حساب کاربری نمی‌خواهد و این اطلاعات را برای ما یا کس دیگری نمی‌فرستد، آپلود نمی‌کند و به اشتراک نمی‌گذارد.</p>
 
         <h2>بدون اینترنت، بدون ردیابی</h2>
         <ul>
-          <li>برنامه <strong>هیچ مجوزی</strong> — از جمله دسترسی اینترنتی — درخواست نمی‌کند.</li>
-          <li>بدون ابزار تحلیلی، بدون گزارش خطا، بدون تبلیغات.</li>
-          <li>بدون کیت توسعهٔ شخص ثالث، بدون کوکی، بدون شناسهٔ تبلیغاتی.</li>
+          <li>برنامه <strong>مجوز اینترنت ندارد</strong> و نمی‌تواند به اینترنت وصل شود. هرگز از شما نمی‌خواهد مجوزی را تأیید کنید.</li>
+          <li>بدون ابزار تحلیل رفتار کاربران، بدون گزارش خطا، بدون تبلیغات، بدون کوکی و بدون شناسهٔ تبلیغاتی.</li>
+          <li>برنامه با کتابخانه‌های متن‌باز AndroidX (از جمله Jetpack Compose و Room) ساخته شده و هیچ کتابخانهٔ تحلیل رفتار، گزارش خطا یا تبلیغات ندارد.</li>
         </ul>
 
-        <h2>پشتیبان‌گیری دستگاه</h2>
-        <p>اگر پشتیبان‌گیری اندروید را فعال کرده باشید، سیستم‌عامل ممکن است داده‌های محلی برنامه را در پشتیبان شخصی گوگل شما بگنجاند.
-        این کار کاملاً توسط شما و گوگل کنترل می‌شود و ما به آن دسترسی نداریم.</p>
+        <h2>دکمه‌هایی که صفحهٔ وب باز می‌کنند</h2>
+        <p>دکمهٔ <strong>راهنما</strong> و دکمه‌های صفحهٔ <strong>درباره</strong> یک صفحهٔ وب را در مرورگر شما باز می‌کنند: همین وب‌سایت، سیاست حریم خصوصی،
+        آخرین نسخه، کد منبع و صفحهٔ گزارش مشکل در گیت‌هاب، و صفحهٔ راهنما. هر صفحه فقط وقتی باز می‌شود که دکمهٔ آن را بزنید، و این مرورگر شماست که آن را از اینترنت می‌گیرد.
+        خود برنامه هرگز به چیزی وصل نمی‌شود. بعد از باز شدن صفحه، همان صفحه (مثلاً گیت‌هاب) قواعد حریم خصوصی خودش را دارد.</p>
 
-        <h2>ابزار پزشکی نیست</h2>
-        <p>این برنامه یک کمک‌محاسباتی برای متخصصان بالینی است و سوابق سلامت را جمع‌آوری نمی‌کند. مسئولیت هر استفادهٔ بالینی از نتایج با خود شماست.</p>
+        <h2>پشتیبان‌گیری دستگاه و حذف</h2>
+        <p>اگر پشتیبان‌گیری اندروید روشن باشد یا داده‌هایتان را به دستگاه جدید منتقل کنید، ممکن است اندروید داده‌های ذخیره‌شدهٔ برنامه، از جمله اندازه‌گیری‌ها و سوابق درمان،
+        را در پشتیبان شخصی گوگل شما یا روی دستگاه جدید کپی کند. این کار به تنظیمات دستگاه شما بستگی دارد و ما آن را نمی‌بینیم.
+        حذف یک اندازه‌گیری در برنامه، آن را از تاریخچهٔ فعلی برنامه پاک می‌کند. رونوشت‌هایی که در پشتیبان دستگاه یا از نسخهٔ قدیمی‌تر برنامه مانده باشند، ممکن است باقی بمانند.</p>
+
+        <h2>وسیلهٔ پزشکی نیست</h2>
+        <p>این برنامه ابزاری برای کمک به محاسبه است و برای متخصصان بالینی ساخته شده. نام یا شناسهٔ مراجعان، اندازه‌گیری‌ها و جزئیات جلسات درمان را هم که وارد می‌کنید ذخیره می‌کند، اما توسعه‌دهنده این سوابق را دریافت نمی‌کند.
+        مسئولیت هر استفادهٔ بالینی از نتایج با خود شماست.</p>
 
         <h2>تغییرات و تماس</h2>
         <p>به‌روزرسانی‌های این سیاست با تاریخ جدید در همین صفحه منتشر می‌شود. پرسش‌ها:

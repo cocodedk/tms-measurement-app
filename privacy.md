@@ -1,35 +1,46 @@
-# Privacy Policy — TMS Measurement App
+# Privacy Policy: TMS Measurement App
 
 **App:** TMS Measurement App (`com.cocode.tmsmeasurement`)
-**Developer:** CoCode.dk — Babak Bandpey
-**Last updated:** 14 July 2026
+**Developer:** CoCode.dk, Babak Bandpey
+**Last updated:** 7 October 2026
 
 > The always-current version of this policy is published at
-> **https://tms.cocode.dk/privacy.html**
+> **https://tms.cocode.dk/privacy/**
 
-**The TMS Measurement App collects no personal data, and nothing you enter ever leaves your device.**
-It calculates Beam F3 targeting distances from the head measurements you type in, entirely offline.
+**The developer receives none of your data.** The app saves what you enter (head measurements, results, client names or IDs,
+and treatment sessions) on your device, and it cannot go online. It calculates Beam F3 targeting distances from the head
+measurements you type in, entirely offline.
 
 ## Data you enter
 
-The head measurements and results you work with are processed on your device to compute the F3 site. The app
-requires no account and does not transmit, upload, or share this information with us or anyone else.
+The app saves your head measurements, results, client names or IDs and treatment sessions on your device, so you can look at
+them again later. The app does not require an account. It does not send, upload, or share this information with us or anyone else.
 
 ## No internet, no tracking
 
-- The app requests **no permissions at all** — including no internet access.
-- No analytics, no crash reporting, no advertising.
-- No third-party SDKs, no cookies, no advertising identifiers.
+- The app has **no internet permission**, so it cannot go online. It never asks you to approve a permission.
+- No analytics, no crash reporting, no advertising, no cookies, no advertising identifiers.
+- The app is built with open-source AndroidX libraries, including Jetpack Compose and Room. It includes no analytics,
+  crash-reporting, or advertising libraries.
 
-## Device backup
+## Buttons that open web pages
 
-If you have enabled Android backup, the operating system may include the app's local data in your own personal
-Google backup. That is controlled entirely by you and Google — we have no access to it.
+The **Help** button and the buttons on the **About** screen open a web page in your browser: this website, the privacy policy,
+the latest version, the source code and the issues page on GitHub, and the help page. A page opens only when you tap its
+button, and your browser loads it. The app itself never connects to anything. Once a page is open, it follows its own privacy
+rules, for example GitHub's.
+
+## Device backup and deleting
+
+If Android backup is on, or you move your data to a new device, Android may copy the data the app saved, including your
+measurements and treatment records, to your own personal Google backup or to the new device. Your device settings control that,
+and we cannot see it. Deleting a measurement in the app removes it from the app's current history. Copies in a device backup,
+or kept from an older version of the app, may remain.
 
 ## Not a medical device
 
-The app is a calculation aid for clinicians and does not collect health records. Any clinical use of the results
-is your responsibility.
+The app is a calculation aid for clinicians. It also stores the client names or IDs, measurements and treatment-session details
+you enter. The developer does not receive these records. Any clinical use of the results is your responsibility.
 
 ## Changes & contact
 

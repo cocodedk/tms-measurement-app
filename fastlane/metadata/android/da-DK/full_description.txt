@@ -1,0 +1,11 @@
+TMS Measurement er et open source-værktøj, der virker uden internet. Det hjælper klinikere med at finde F3-punktet på hovedet til transkraniel magnetisk stimulation (TMS) med Beam F3-metoden.
+
+Indtast tre mål af hovedet (tragus til tragus, nasion til inion og hovedomfang) for at beregne afstandene X, Y og justeret Y. Gem derefter resultaterne for hver klient, så de er klar til opfølgningssessioner.
+
+Til hver gemt måling kan du også føre en log over behandlingssessioner: intensitet, pulser i alt, frekvens, motorisk tærskel, oplysninger om pulstog, stimulationssted og noter.
+
+Privatliv: udvikleren modtager ingen af dine data. Appen gemmer målinger og sessionslogge på din enhed. Den har ingen tilladelse til at bruge internettet, så den kan ikke gå online, og den beder dig aldrig om at godkende en tilladelse. Android-sikkerhedskopiering eller overførsel til en ny enhed kan kopiere de gemte data, alt efter indstillingerne på din enhed.
+
+Appen er et beregningsværktøj: du har selv ansvaret for den kliniske brug af resultaterne.
+
+Appen findes på engelsk, dansk, persisk, arabisk og traditionel kinesisk.
