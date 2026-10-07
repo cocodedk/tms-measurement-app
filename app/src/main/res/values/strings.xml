@@ -127,5 +127,5 @@
     <string name="action_pick_date" tools:ignore="MissingTranslation">Change date</string>
     <string name="dialog_date_confirm" tools:ignore="MissingTranslation">OK</string>
     <string name="dialog_delete_treatment_title" tools:ignore="MissingTranslation">Delete treatment?</string>
-    <string name="dialog_delete_treatment_message" tools:ignore="MissingTranslation">This permanently deletes this treatment session. This cannot be undone.</string>
+    <string name="dialog_delete_treatment_message" tools:ignore="MissingTranslation">This deletes this treatment session. You cannot undo this. A copy in a device backup may remain.</string>
 </resources>
