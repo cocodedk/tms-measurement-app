@@ -1,0 +1,9 @@
+TMS Measurement er et open source-værktøj, der virker uden internet, til at beregne de Beam F3-afstande, der bruges til lokalisering i planlægningen af behandling med transkraniel magnetisk stimulation (TMS).
+
+Indtast tre hovedmål for at beregne afstandene X, Y og justeret Y til lokalisering af F3-punktet, og gem derefter resultaterne pr. klient til opfølgende sessioner.
+
+Til hver klient kan du også gemme en log over behandlingssessioner med intensitet, antal pulser, frekvens, motorisk tærskel, parametre for pulstog, sted og noter.
+
+Appen beder ikke om nogen tilladelser, har ikke adgang til internettet og indsamler, sender eller deler ingen data. Alle målinger og logge over sessioner bliver på enheden.
+
+Brugerfladen findes på engelsk, persisk, arabisk, traditionel kinesisk, fransk, spansk, tysk og japansk.

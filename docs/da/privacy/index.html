@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privatlivspolitik | TMS Measurement</title>
+  <meta name="description" content="Privatlivspolitik for TMS Measurement: appen indsamler ingen personoplysninger og virker helt uden internet på din enhed." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tms.cocode.dk/da/privacy/" />
+  <link rel="alternate" hreflang="en" href="https://tms.cocode.dk/privacy/" />
+  <link rel="alternate" hreflang="da" href="https://tms.cocode.dk/da/privacy/" />
+  <link rel="alternate" hreflang="x-default" href="https://tms.cocode.dk/privacy/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #102a2a; --muted: rgba(16, 42, 42, 0.72); --accent: #e66a2c;
+      --teal: #2a6f6b; --sand: #f3e6d6; --mint: #d9efe7; --card: #fffaf3;
+      --shadow: 0 20px 60px rgba(16, 42, 42, 0.16); --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: "Sora", "Helvetica", sans-serif; color: var(--ink); line-height: 1.65;
+      background: radial-gradient(1100px 600px at 15% -10%, #ffffff 0%, var(--mint) 55%, var(--sand) 100%);
+    }
+    a { color: var(--teal); }
+    .container { width: min(760px, 92vw); margin: 0 auto; padding: 44px 0 60px; }
+    .back { display: inline-block; margin-bottom: 20px; color: var(--muted); text-decoration: none; font-size: 0.92rem; }
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(24px, 5vw, 44px); }
+    h1 { font-weight: 700; font-size: clamp(1.8rem, 5vw, 2.4rem); margin: 0 0 6px; color: var(--teal); }
+    h2 { font-weight: 600; font-size: 1.2rem; margin: 28px 0 8px; }
+    .meta { color: var(--muted); font-size: 0.9rem; margin: 0 0 6px; }
+    p, li { color: #1b3a38; }
+    li { margin: 4px 0; }
+    strong { color: var(--teal); }
+    /* The shared cocode-apps navigation and footer, on the same 760px column. */
+    .site-nav, .site-footer { width: min(760px, 92vw); margin: 0 auto; }
+    .site-nav { padding-top: 12px; }
+    .site-footer { padding: 0 0 36px; text-align: center; font-size: 0.9rem; color: var(--muted); }
+    .cocode-nav a, .cocode-footer a { color: var(--ink); text-decoration: none; }
+    .cocode-nav a:hover, .cocode-footer a:hover { color: var(--teal); text-decoration: underline; }
+    .cocode-nav a[aria-current="page"]:not(.brand) { color: var(--teal); font-weight: 600; }
+    .cocode-nav .brand { font-size: 1.15rem; font-weight: 700; }
+    main:focus { outline: 0; }
+    /* The cocode.dk frame lines up with .container's column: min(760px, 92vw), no side padding. */
+    cocode-head, cocode-foot { --cocode-max: 760px; --cocode-gutter: 16px; }
+    @media (min-width: 768px) { cocode-head, cocode-foot { --cocode-gutter: 0px; } }
+  </style>
+  <link rel="stylesheet" href="https://brand.cocode.dk/v1.css" />
+  <script type="module" src="https://brand.cocode.dk/v1.js"></script>
+</head>
+<body>
+  <!-- The cocode.dk family frame. Without JavaScript its children show instead: a way home and
+       the language links. The page's own "← TMS Measurement" link goes back to the home page. -->
+  <cocode-head project="TMS Measurement" accent="#e66a2c" on-accent="#ffffff">
+    <a href="https://cocode.dk">cocode.dk</a>
+    <a href="/privacy/" hreflang="en">EN</a>
+    <a href="/da/privacy/" hreflang="da">DA</a>
+  </cocode-head>
+  <header class="site-nav">
+    <!-- cocode-apps:nav:start -->
+<link rel="stylesheet" href="/css/cocode-nav.css">
+<a class="skip" href="#main">Spring til indhold</a>
+<nav class="cocode-nav" aria-label="TMS Measurement">
+  <a class="brand" href="/da/" data-nav="home"><img src="/img/icon.png" alt="" width="32" height="32">TMS Measurement</a>
+  <a href="/da/#how" data-nav="how">Sådan virker det</a>
+  <a href="/da/#install" data-nav="install">Installér</a>
+  <a href="/da/privacy/" data-nav="privacy" aria-current="page">Privatliv</a>
+  <a href="https://cocode.dk/" data-nav="more">Flere apps</a>
+</nav>
+<!-- cocode-apps:nav:end -->
+  </header>
+  <main id="main" tabindex="-1" class="container">
+    <a class="back" href="/da/">&larr; TMS Measurement</a>
+    <div class="card">
+      <h1>Privatlivspolitik</h1>
+      <p class="meta">TMS Measurement &middot; <code>com.cocode.tmsmeasurement</code></p>
+      <p class="meta">Sidst opdateret: 14. juli 2026</p>
+
+      <p><strong>TMS Measurement indsamler ingen personoplysninger, og intet, du indtaster, forlader nogensinde din enhed.</strong>
+      Appen beregner Beam F3-afstande til lokalisering ud fra de hovedmål, du skriver ind, helt uden internet.</p>
+
+      <h2>Data, du indtaster</h2>
+      <p>De hovedmål og resultater, du arbejder med, behandles på din enhed for at beregne F3-punktet.
+      Appen kræver ingen konto og sender, uploader eller deler ikke disse oplysninger med os eller andre.</p>
+
+      <h2>Intet internet, ingen sporing</h2>
+      <ul>
+        <li>Appen beder <strong>ikke om nogen tilladelser overhovedet</strong>, heller ikke om adgang til internettet.</li>
+        <li>Ingen analyse, ingen nedbrudsrapporter, ingen reklamer.</li>
+        <li>Ingen tredjeparts-SDK'er, ingen cookies, ingen reklame-id'er.</li>
+      </ul>
+
+      <h2>Sikkerhedskopi af enheden</h2>
+      <p>Hvis du har slået Android-sikkerhedskopiering til på din enhed, kan operativsystemet tage appens lokale data med i din
+      egen personlige Google-sikkerhedskopi. Det styrer du og Google helt selv, og vi har ingen adgang til den.</p>
+
+      <h2>Ikke medicinsk udstyr</h2>
+      <p>Appen er et beregningsværktøj for klinikere og indsamler ikke sundhedsoplysninger. Du har selv ansvaret for enhver klinisk brug af resultaterne.</p>
+
+      <h2>Ændringer og kontakt</h2>
+      <p>Ændringer i denne politik offentliggøres her med en ny dato. Spørgsmål:
+      <a href="mailto:bb@cocode.dk">bb@cocode.dk</a> (CoCode.dk, udvikler: Babak Bandpey).</p>
+    </div>
+  </main>
+
+  <div class="site-footer">
+    <!-- cocode-apps:footer:start -->
+<footer class="cocode-footer">
+  <a href="https://github.com/cocodedk/tms-measurement-app">Kildekode</a> ·
+  <a href="/da/privacy/">Privatliv</a> ·
+  Licens: MIT ·
+  <a href="https://cocode.dk/">Lavet af Cocode (cocode.dk)</a>
+</footer>
+<!-- cocode-apps:footer:end -->
+  </div>
+
+  <cocode-foot repo="cocodedk/tms-measurement-app">
+    <a href="https://cocode.dk">cocode.dk</a>
+    <a href="https://github.com/cocodedk/tms-measurement-app">GitHub</a>
+  </cocode-foot>
+</body>
+</html>
