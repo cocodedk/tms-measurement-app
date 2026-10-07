@@ -17,6 +17,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.heading
@@ -32,7 +33,8 @@ import com.cocode.tmsmeasurement.R
 @Composable
 internal fun AboutScreen(innerPadding: PaddingValues) {
     val context = LocalContext.current
-    val open = { link: AboutLink -> openLink(context, aboutUrl(link)) }
+    val language = LocalConfiguration.current.locales[0].language
+    val open = { link: AboutLink -> openLink(context, aboutUrl(link, language)) }
     Column(
         modifier = Modifier
             .fillMaxSize()
